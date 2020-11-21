@@ -11,39 +11,64 @@
 </head>
 
 <body>
-    <header>
-        <div>
-            <h1>GutHub</h1>
-            <h3>Recipe and Meal Planner</h3>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">Search</a></li>
-                <li><a href="#">Create</a></li>
-                <li><a href="#">Saved</a></li>
-                <li><a href="#">Cooklists</a></li>
-                <li><a href="#">Friends</a></li>
-                <li><a href="#">Shopping</a></li>
-            </ul>
+    <div class='App'>
+        <nav class="App__nav">
+            <div class='NoteListNav'>
+                <ul class='NoteListNav__list'>
+                    <li>
+                        <h3 class='NoteListNav__folder-link'><a href="./list-search.html">Search</a></h3>
+                    </li>
+                    <li>
+                        <h3 class='NoteListNav__folder-link'><a href="./recipe-create.html">Create</a></h3>
+                    </li>
+                    <li>
+                        <h3 class='NoteListNav__folder-link'><a href="./list-savedrecipes.html">Saved</a></h3>
+                    </li>
+                    <li>
+                        <h3 class='NoteListNav__folder-link'><a href="./list-savedcooklists.html">Cooklists</a></h3>
+                    </li>
+                    <li>
+                        <h3 class='NoteListNav__folder-link'><a href="./list-buddies.html">Buddies</a></h3>
+                    </li>
+                    <li>
+                        <h3 class='NoteListNav__folder-link'><a href="./shopping-list.html">Shopping</a></h3>
+                    </li>
+                </ul>
+            </div>
         </nav>
-    </header>
-    <main>
-        <article id="development-projects">
-            <section class="group">
-                <div class="item">
-                    <h2>List of Cooklists</h3>
+        <header class="App__header">
+            <a href="./home-screen.html">
+                <h1>GutHub</h1>
+            </a>
+        </header>
+        <main class="App__main">
+            <div>
+                <h2>CookLists</h3>
+                    <ul>
+                        <li class='recipe'><a href="./list-cooklist.html">Weekly</a>
+                            <button type='button'>Remove CookList</button>
+                            <p>List for weekly nutrition and efficiency</p>
+                            <p>Beef stew, salad, BBQ Ribs...</p>
+                        </li>
+                        <li class='recipe'><a href="./list-cooklist.html">Holiday</a>
+                            <button type='button'>Remove CookList</button>
+                            <p>List for Festivities!</p>
+                            <p>Gingerbread, Turkey, Candy Corn...</p>
+                        </li>
+                        <li class='recipe'><a href="./list-cooklist.html">Desserts</a>
+                            <button type='button'>Remove CookList</button>
+                            <p>Yummy Desserts</p>
+                            <p>Brownies, Brownies, more Brownies!</p>
+                        </li>
+                        <li class='recipe'><a href="./list-cooklist.html">Mannie's Favorites</a>
+                            <button type='button'>Remove CookList</button>
+                            <p>Stuff Mannie wishes he could always be eating</p>
+                            <p>Brownies, Brownies, more Brownies!</p>
+                        </li>
+                    </ul>
+            </div>
+        </main>
 
-                    <ol>
-                        <li>Cut all</li>
-                        <li>Mix Them</li>
-                        <li>Oil and Vinegar</li>
-                    </ol>
-
-                </div>
-    </main>
-    <footer>
-        <h3>(c) GutHub 2020</h3>
-    </footer>
 </body>
 
 </html>

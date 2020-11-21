@@ -11,39 +11,41 @@
 </head>
 
 <body>
-    <header>
-        <div>
-            <h1>GutHub</h1>
-            <h3>Recipe and Meal Planner</h3>
-        </div>
-    </header>
-    <main>
-        <div class="item">
-            <h2>Log in</h2>
-            <form>
+    <div class='App'>
+        <nav class="App__nav">
+            <div class='NoteListNav'>
+                <ul class='NoteListNav__list'>
+                </ul>
+            </div>
+        </nav>
+        <header class="App__header">
+            <a href="./home-screen.html">
+                <h1>GutHub</h1>
+            </a>
+        </header>
+        <main class="App__main">
+            <h2>Create Account</h2>
+            <form class='recipe'>
                 <label for='username'>Username:</label>
-                <input type='text' name='username' id='username' placeholder=' ' required />
+                <input type='text' name='username' id='username' placeholder=' ' required /><br>
                 <label htmlFor='password'>Password:</label>
-                <input type='text' name='password' id='password' placeholder=' ' required />
+                <input type='text' name='password' id='password' placeholder=' ' required /><br>
                 <label htmlFor='password'>Password Again:</label>
-                <input type='text' name='password' id='password' placeholder=' ' required />
+                <input type='text' name='password' id='password' placeholder=' ' required /><br>
                 <label htmlFor='password'>Email:</label>
-                <input type='text' name='password' id='password' placeholder=' ' required />
-            </form>
+                <input type='text' name='password' id='password' placeholder=' ' required /><br>
 
-        </div>
-        <div className='login__buttons'>
-            <button type='button'>
-                Cancel
-            </button>
-            <button type='submit'>
-                Login
-            </button>
-        </div>
-    </main>
-    <footer>
-        <h3>(c) GutHub 2020</h3>
-    </footer>
+
+                <div className='login__buttons'>
+                    <button type='button'>
+                        Cancel
+                    </button>
+                    <button type='submit'>
+                        Login
+                    </button>
+                </div>
+            </form>
+        </main>
 </body>
 
 </html>
