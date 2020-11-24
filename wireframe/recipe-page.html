@@ -5,95 +5,82 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Guthub</title>
+    <title>GutHub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
     <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-    <div class='App'>
-        <nav class="App__nav">
-            <div class='NoteListNav'>
-                <ul class='NoteListNav__list'>
-                    <li>
-                        <h3 class='NoteListNav__folder-link'><a href="./list-search.html">Find Recipes</a></h3>
-                    </li>
-                    <li>
-                        <h3 class='NoteListNav__folder-link'><a href="./recipe-create.html">Create a Recipe</a></h3>
-                    </li>
-                    <li>
-                        <h3 class='NoteListNav__folder-link'><a href="./list-savedcooklists.html">CookLists</a></h3>
-                    </li>
-                    <li>
-                        <h3 class='NoteListNav__folder-link'><a href="./list-buddies.html">Buddies</a></h3>
-                    </li>
-                    <li>
-                        <h3 class='NoteListNav__folder-link'><a href="./shopping-list.html">Shopping List</a></h3>
-                    </li>
-                </ul>
+    <nav>
+        <ul class='cooklist'>
+            <li>
+                <h3><a href="./list-search.html">Find Recipes</a></h3>
+            </li>
+            <li>
+                <h3><a href="./recipe-create.html">Create a Recipe</a></h3>
+            </li>
+            <li>
+                <h3><a href="./list-savedcooklists.html">CookLists</a></h3>
+            </li>
+            <li>
+                <h3><a href="./list-buddies.html">Buddies</a></h3>
+            </li>
+            <li>
+                <h3><a href="./shopping-list.html">Shopping List</a></h3>
+            </li>
+        </ul>
+    </nav>
+    <header class="App__header">
+        <a href="../index.html">
+            <h1>GutHub</h1>
+        </a>
+    </header>
+    <main class="App__main">
+        <div class='recipe'>
+            <span class="package-item js-package-item tracking-title">
+                <h2>Simple Salad</h2>
+                <a href='./recipe-edit.html'>edit</a>
+            </span>
+            <h3 class="li-nickname">by: username</h3>
+            <hr>
+            <p class="li-description">This is a super easy and tasty salad.</p>
+            <div class="status-div">
+                <ol>
+                    <h4>Ingredients</h4>
+                    <p class="li-status item">1 Cucumbers</p>
+                    <p class="li-status item">Lettuce</p>
+                    <p class="li-status item">1 Tomato</p>
+                    <p class="li-status item">1/2 Onion</p>
+                    <p class="li-status item">1 Tbsp Olive Oil</p>
+                    <p class="li-status item">1 Tbsp Vinegar</p>
+                    <p class="li-status item">Salt</p>
+                </ol>
             </div>
-        </nav>
-        <header class="App__header">
-            <a href="../index.html"><h1>GutHub</h1></a>
-        </header>
-        <main class="App__main">
-            <ul>
-                <!-- referencing ez-trakr/index.js-->
-
-                <li class='recipe'>
-                    <span class="package-item js-package-item tracking-title">
-                        <h2>Simple Salad</h2>
-                        <a href='./recipe-edit.html'>edit</a>
-                    </span>
-                    <h3 class="li-nickname">by: username</h3>
-                    <hr>
-                    <p class="li-description">This is a super easy and tasty salad.</p>
-                    <div class="status-div">
-                        <ol>
-                            <h4>Ingredients</h4>
-                            <p class="li-status item">1 Cucumbers</p>
-                            <p class="li-status item">Lettuce</p>
-                            <p class="li-status item">1 Tomato</p>
-                            <p class="li-status item">1/2 Onion</p>
-                            <p class="li-status item">1 Tbsp Olive Oil</p>
-                            <p class="li-status item">1 Tbsp Vinegar</p>
-                            <p class="li-status item">Salt</p>
-                        </ol>
-                    </div>
-                    <div>
-                        <p class="li-location">1. Cut all your veggies up to whatever size you like</p>
-                        <p class="li-location">2. Mix them all up in a bowl</p>
-                        <p class="li-location">3. Add the oil and Vinegar</p>
-                        <p class="li-location">4. Salt to preference and enjoy!</p>
-
-
-                    </div>
-                    <div class="package-item-controls">
-                        <!--these classes need to be created-->
-                        <button class="package-item-delete js-item-delete">
-                            <span class="button-label">Save</span>
-                        </button>
-                        <button class="package-item-delete js-item-delete">
-                            <span class="button-label">Share</span>
-                        </button>
-                        <button class="package-item-delete js-item-delete">
-                            <span class="button-label">+CookList</span>
-                        </button>
-                        <button class="package-item-delete js-item-delete">
-                            <span class="button-label">+Shop</span>
-                        </button>
-                        <button class="package-item-delete js-item-delete">
-                            <span class="button-label">Remove</span>
-                        </button>
-                    </div>
-                </li>
-
-
-
-
-            </ul>
-        </main>
-    </div>
+            <div>
+                <p class="li-location">1. Cut all your veggies up to whatever size you like</p>
+                <p class="li-location">2. Mix them all up in a bowl</p>
+                <p class="li-location">3. Add the oil and Vinegar</p>
+                <p class="li-location">4. Salt to preference and enjoy!</p>
+            </div>
+            <div class="package-item-controls">
+                <button class="package-item-delete js-item-delete">
+                    <span class="button-label">Save</span>
+                </button>
+                <button class="package-item-delete js-item-delete">
+                    <span class="button-label">Share</span>
+                </button>
+                <button class="package-item-delete js-item-delete">
+                    <span class="button-label">+CookList</span>
+                </button>
+                <button class="package-item-delete js-item-delete">
+                    <span class="button-label">+Shop</span>
+                </button>
+                <button class="package-item-delete js-item-delete">
+                    <span class="button-label">Remove</span>
+                </button>
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>

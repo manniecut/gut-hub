@@ -5,66 +5,60 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Guthub</title>
+    <title>GutHub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
     <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-    <div class='App'>
-        <nav class="App__nav">
-            <div class='NoteListNav'>
-                <ul class='NoteListNav__list'>
-                    <li>
-                        <h3 class='NoteListNav__folder-link'><a href="./list-search.html">Find Recipes</a></h3>
-                    </li>
-                    <li>
-                        <h3 class='NoteListNav__folder-link'><a href="./recipe-create.html">Create a Recipe</a></h3>
-                    </li>
-                    <li>
-                        <h3 class='NoteListNav__folder-link'><a href="./list-savedcooklists.html">CookLists</a></h3>
-                    </li>
-                    <li>
-                        <h3 class='NoteListNav__folder-link'><a href="./list-buddies.html">Buddies</a></h3>
-                    </li>
-                    <li>
-                        <h3 class='NoteListNav__folder-link'><a href="./shopping-list.html">Shopping List</a></h3>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <header class="App__header">
-            <a href="../index.html">
-                <h1>GutHub</h1>
-            </a>
-        </header>
-        <main class="App__main">
-            <div>
-                <h2>CookLists</h3>
-                    <ul>
-                        <li class='recipe'><a href="./list-cooklist.html">Weekly</a>
-                            <button type='button'>Remove CookList</button>
-                            <p>List for weekly nutrition and efficiency</p>
-                            <p>Beef stew, salad, BBQ Ribs...</p>
-                        </li>
-                        <li class='recipe'><a href="./list-cooklist.html">Holiday</a>
-                            <button type='button'>Remove CookList</button>
-                            <p>List for Festivities!</p>
-                            <p>Gingerbread, Turkey, Candy Corn...</p>
-                        </li>
-                        <li class='recipe'><a href="./list-cooklist.html">Desserts</a>
-                            <button type='button'>Remove CookList</button>
-                            <p>Yummy Desserts</p>
-                            <p>Brownies, Brownies, more Brownies!</p>
-                        </li>
-                        <li class='recipe'><a href="./list-cooklist.html">Mannie's Favorites</a>
-                            <button type='button'>Remove CookList</button>
-                            <p>Stuff Mannie wishes he could always be eating</p>
-                            <p>Brownies, Brownies, more Brownies!</p>
-                        </li>
-                    </ul>
-            </div>
-        </main>
+    <nav>
+        <ul class='cooklist'>
+            <li>
+                <h3><a href="./list-search.html">Find Recipes</a></h3>
+            </li>
+            <li>
+                <h3><a href="./recipe-create.html">Create a Recipe</a></h3>
+            </li>
+            <li>
+                <h3><a href="./list-savedcooklists.html">CookLists</a></h3>
+            </li>
+            <li>
+                <h3><a href="./list-buddies.html">Buddies</a></h3>
+            </li>
+            <li>
+                <h3><a href="./shopping-list.html">Shopping List</a></h3>
+            </li>
+        </ul>
+    </nav>
+    <header class="App__header">
+        <a href="../index.html">
+            <h1>GutHub</h1>
+        </a>
+    </header>
+    <main class="App__main">
+        <div>
+            <h2>CookLists</h2>
+            <ul>
+                <li class='cooklist'><a href="./list-cooklist.html">Weekly</a><br>
+                    <p>List for weekly nutrition and efficiency</p><br>
+                    <button type='button'>Remove CookList</button>
+                </li>
+                <li class='cooklist'><a href="./list-cooklist.html">Holiday</a><br>
+
+                    <p>List for Festivities!</p><br>
+                    <button type='button'>Remove CookList</button>
+                </li>
+                <li class='cooklist'><a href="./list-cooklist.html">Desserts</a><br>
+                    <p>Yummy Desserts</p><br>
+                    <button type='button'>Remove CookList</button>
+                </li>
+                <li class='cooklist'><a href="./list-cooklist.html">Mannie's Favorites</a><br>
+                    <p>Mannie's favorite food</p><br>
+                    <button type='button'>Remove CookList</button>
+                </li>
+            </ul>
+        </div>
+    </main>
 
 </body>
 

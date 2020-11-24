@@ -5,79 +5,82 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Guthub</title>
+    <title>GutHub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
     <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-    <div class='App'>
-        <nav class="App__nav">
-            <div class='NoteListNav'>
-                <ul class='NoteListNav__list'>
-                    <li>
-                        <h3 class='NoteListNav__folder-link'><a href="./list-search.html">Find Recipes</a></h3>
-                    </li>
-                    <li>
-                        <h3 class='NoteListNav__folder-link'><a href="./recipe-create.html">Create a Recipe</a></h3>
-                    </li>
-                    <li>
-                        <h3 class='NoteListNav__folder-link'><a href="./list-savedcooklists.html">CookLists</a></h3>
-                    </li>
-                    <li>
-                        <h3 class='NoteListNav__folder-link'><a href="./list-buddies.html">Buddies</a></h3>
-                    </li>
-                    <li>
-                        <h3 class='NoteListNav__folder-link'><a href="./shopping-list.html">Shopping List</a></h3>
-                    </li>
-                </ul>
+    <nav>
+        <ul class='cooklist'>
+            <li>
+                <h3><a href="./list-search.html">Find Recipes</a></h3>
+            </li>
+            <li>
+                <h3><a href="./recipe-create.html">Create a Recipe</a></h3>
+            </li>
+            <li>
+                <h3><a href="./list-savedcooklists.html">CookLists</a></h3>
+            </li>
+            <li>
+                <h3><a href="./list-buddies.html">Buddies</a></h3>
+            </li>
+            <li>
+                <h3><a href="./shopping-list.html">Shopping List</a></h3>
+            </li>
+        </ul>
+    </nav>
+    <header class="App__header">
+        <a href="../index.html">
+            <h1>GutHub</h1>
+        </a>
+    </header>
+    <main class="App__main">
+        <form class="search__form">
+            <h2>Search:</h2>
+            <div>
+                <input type='query' name='query' id='query' required />
             </div>
-        </nav>
-        <header class="App__header">
-            <a href="../index.html">
-                <h1>GutHub</h1>
-            </a>
-        </header>
-        <main class="App__main">
-            <form>
-                <h2>Search:</h3>
-                    <div>
-                        <input type='query' name='query' id='query' required />
-                    </div>
+            <label for='querytype'>Search Options:</label><br>
+            <select id='searchfor' name='searchfor'>
+                <option>Recipe Title</option>
+                <option>Ingredient</option>
+                <option>Cooking Method</option>
+                <option>Contributer</option>
+            </select><br>
+            <select id='source' name='source'>
+                <option>Saved Recipes</option>
+                <option>All Recipes</option>
+            </select>
+            <div className='AddNote__buttons'>
+                <button type='button'>
+                    Clear
+                </button>
+                <button type='submit'>
+                    Search
+                </button>
+            </div>
 
-                    <label for='querytype'>Search Options:</label><br>
-                    <select id='searchfor' name='searchfor'>
-                        <option>Recipe Title</option>
-                        <option>Ingredient</option>
-                        <option>Cooking Method</option>
-                        <option>Contributer</option>
-                    </select><br>
-                    <select id='source' name='source'>
-                        <option>Saved Recipes</option>
-                        <option>All Recipes</option>
-                    </select>
-
-                    
-                    <div className='AddNote__buttons'>
-                        <button type='button'>
-                            Clear
-                        </button>
-                        <button type='submit'>
-                            Search
-                        </button>
-                    </div>
-
-                    </ul>
-            </form>
-            <ol>Results:
-                <li><a href="./recipe-page.html">Hot Dogs</a></li>
-                <li><a href="./recipe-page.html">Fried Chicken</a></li>
-                <li><a href="./recipe-page.html">Beef Stew</a></li>
-                <li><a href="./recipe-page.html">Pasta Alfredo</a></li>
-                <li><a href="./recipe-page.html">Pizza</a></li>
-            </ol>
-        </main>
-
+            </ul>
+        </form>
+        <ol>Results:
+            <li><a href="./recipe-page.html">Hot Dogs</a>
+                <p>Quick description so yummy.</p>
+            </li>
+            <li><a href="./recipe-page.html">Fried Chicken</a>
+                <p>Quick description so yummy.</p>
+            </li>
+            <li><a href="./recipe-page.html">Beef Stew</a>
+                <p>Quick description so yummy.</p>
+            </li>
+            <li><a href="./recipe-page.html">Pasta Alfredo</a>
+                <p>Quick description so yummy.</p>
+            </li>
+            <li><a href="./recipe-page.html">Pizza</a>
+                <p>Quick description so yummy.</p>
+            </li>
+        </ol>
+    </main>
 </body>
 
 </html>
