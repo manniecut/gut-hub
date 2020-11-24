@@ -16,13 +16,10 @@
             <div class='NoteListNav'>
                 <ul class='NoteListNav__list'>
                     <li>
-                        <h3 class='NoteListNav__folder-link'><a href="./list-search.html">Search</a></h3>
+                        <h3 class='NoteListNav__folder-link'><a href="./list-search.html">Find Recipes</a></h3>
                     </li>
                     <li>
-                        <h3 class='NoteListNav__folder-link'><a href="./recipe-create.html">Create</a></h3>
-                    </li>
-                    <li>
-                        <h3 class='NoteListNav__folder-link'><a href="./list-savedrecipes.html">Saved</a></h3>
+                        <h3 class='NoteListNav__folder-link'><a href="./recipe-create.html">Create a Recipe</a></h3>
                     </li>
                     <li>
                         <h3 class='NoteListNav__folder-link'><a href="./list-savedcooklists.html">CookLists</a></h3>
@@ -31,7 +28,7 @@
                         <h3 class='NoteListNav__folder-link'><a href="./list-buddies.html">Buddies</a></h3>
                     </li>
                     <li>
-                        <h3 class='NoteListNav__folder-link'><a href="./shopping-list.html">Shopping</a></h3>
+                        <h3 class='NoteListNav__folder-link'><a href="./shopping-list.html">Shopping List</a></h3>
                     </li>
                 </ul>
             </div>
@@ -48,14 +45,19 @@
                         <input type='query' name='query' id='query' required />
                     </div>
 
-                    <label for='querytype'>Search Options:</label>
-                    <select id='folder' name='folder'>
+                    <label for='querytype'>Search Options:</label><br>
+                    <select id='searchfor' name='searchfor'>
                         <option>Recipe Title</option>
                         <option>Ingredient</option>
                         <option>Cooking Method</option>
                         <option>Contributer</option>
-
+                    </select><br>
+                    <select id='source' name='source'>
+                        <option>Saved Recipes</option>
+                        <option>All Recipes</option>
                     </select>
+
+                    
                     <div className='AddNote__buttons'>
                         <button type='button'>
                             Clear
