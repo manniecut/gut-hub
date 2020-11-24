@@ -36,30 +36,28 @@
         </a>
     </header>
     <main class="App__main">
-        <form>
-
+        <form class='search__form'>
 
             <div>
-                <label for='title'>Edit Recipe</label>
-                <input type='text' name='title' id='title' placeholder='recipe' required />
+                <label for='title'>Edit Recipe</label><br>
+                <input type='text' name='title' id='title' placeholder='Simple Salad' required />
             </div>
             <div>
-                <label for='folder'>Select Cooking Method:</label>
+                <label for='folder'>Select Cooking Method:</label><br>
                 <select id='folder' name='folder'>
-                    <option>
-                        Blanching
-                    </option>
-
+                    <option>Salad</option>
+                    <option>Frying</option>
+                    <option>Baking</option>
                 </select>
             </div>
             <div>
-                <label for='ingredients'>Ingredients</label>
+                <label for='ingredients'>Ingredients</label><br>
                 <textarea name='ingredients' id='ingredients' placeholder='filled with ingredients from recipe'
                     required></textarea>
 
             </div>
             <div>
-                <label for='directions'>Note Content</label>
+                <label for='directions'>Directions</label><br>
                 <textarea name='directions' id='directions' placeholder='filled with directions from recipe'
                     required></textarea>
 
@@ -77,12 +75,3 @@
 </body>
 
 </html>
-
-<!--
-    reference
-noteful-editnote.js
-
-
-
-
--->
