@@ -1,0 +1,9 @@
+.recipe {
+    padding: 10px;
+    padding-top: 0;
+    margin-left: 15px;
+    align-content: center;
+    width: 90%;
+    border: solid 3px black;
+    background: white;
+}

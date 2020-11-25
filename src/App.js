@@ -9,6 +9,18 @@
 */
 
 import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom';
+import HomeScreen from './HomeScreen/HomeScreen';
+import Navbar from './Navbar/Navbar';
+import Search from './Search/Search';
+import Buddies from './Buddies/Buddies';
+import Recipe from './Recipes/Recipe/Recipe';
+import SavedCookLists from './CookLists/SavedCookLists/SavedCookLists';
+import Groceries from './Groceries/Groceries';
+import CookList from './CookLists/CookList/CookList';
+import EditRecipe from './Recipes/EditRecipe/EditRecipe';
+import Login from './Login/Login';
+import CreateAccount from './Login/CreateAccount/CreateAccount';
 
 class App extends Component {
   state = {
@@ -21,23 +33,23 @@ class App extends Component {
   /******** FETCH INTO STATE ON STARTUP ********/
   // initially fetch user's stuff
 
-  componentDidMount() {
-    userId = this.state.user.id;
-    Promise.all([
-      fetch(`${config.API_ENDPOINT}/users/${userId}`),
-    ])
-      .then(/* check */)
-      .then(/* set state */)
-      .catch(error => {
-        this.setState({ error })
-      });
+  //componentDidMount() {
+  //userId = this.state.user.id;
+  //Promise.all([
+  //fetch(`${config.API_ENDPOINT}/users/${userId}`),
+  //])
+  //      .then(/* check */)
+  //      .then(/* set state */)
+  //      .catch(error => {
+  //        this.setState({ error })
+  //      });
 
-  }
+  //}
 
 
   /******** CREATE/UPDATE/DELETE ********/
 
-  /* Users */
+  /* Users *
 
   handleAddUser()
 
@@ -47,7 +59,7 @@ class App extends Component {
 
 
 
-  /* Recipe */
+  /* Recipe *
 
   handleAddRecipe()
 
@@ -56,7 +68,7 @@ class App extends Component {
   handleDeleteRecipe()
 
 
-  /* Cooklists */
+  /* Cooklists *
 
   handleAddCooklist()
 
@@ -65,7 +77,7 @@ class App extends Component {
   handleDeleteCooklist()
 
 
-  /* Messages */
+  /* Messages *
   // send will be same as add
 
   handleSendMessage()
@@ -77,7 +89,7 @@ class App extends Component {
   /******** RENDERING ********/
 
 
-  /* Render Navigation */
+  /* Render Navigation *
 
   // this might not need to be so complicated since nav won't change like noteful
   // but don't forget error component
@@ -96,8 +108,44 @@ class App extends Component {
 
   renderMainRoutes() {
     //home screen, recipes/search, saved lists, buddies, shopping list
+
+    //recipe will become recipe/:recipeid
+
     return (
       <>
+        <Route
+          exact
+          path="/"
+          component={HomeScreen} />
+        <Route
+          path="/recipes"
+          component={Search} />
+        <Route
+          path="/cooklists"
+          component={SavedCookLists} />
+        <Route
+          path="/buddies"
+          component={Buddies} />
+        <Route
+          path="/groceries"
+          component={Groceries} />
+
+        <Route
+          path="/recipe"
+          component={Recipe} />
+        <Route
+          path="/edit/recipe"
+          component={EditRecipe} />
+        <Route
+          path="/cooklist"
+          component={CookList} />
+
+        <Route
+          path="/login"
+          component={Login} />
+        <Route
+          path="/createaccount"
+          component={CreateAccount} />
       </>
     )
   }
@@ -114,28 +162,20 @@ class App extends Component {
   // Do in componentDidMount?
   // componentDidMount might also fetch all users
 
+  // also could be able to browse without being logged in but have a button to log in
+
 
   render() {
-    //for context
-    const value = {
 
-      /*state and functions*/
-
-    };
     return (
 
       <div className='App' >
-        <nav className="App__nav">{this.renderNavRoutes()}</nav>
-        <header className="App__header">
-          <h1>
-            <Link to='/'>GutHub</Link>
-          </h1>
-        </header>
+        <Navbar />
         <main className="App__main">{this.renderMainRoutes()}</main>
       </div>
 
     );
-  }
+  };
 }
 
 
