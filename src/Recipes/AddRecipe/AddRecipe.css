@@ -1,0 +1,60 @@
+.add__recipe__form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-weight: 550;
+    padding: 10px;
+    padding-top: 0;
+    margin: auto;
+    max-width: 500px;
+    border: solid 3px black;
+    border-radius: 4px;
+    background-color:rgb(141, 141, 141);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+h3, h4 {
+    padding: 2px;
+    padding-top: 4px;
+    margin: 0;
+}
+
+input[type="submit"] {
+    font-weight: 550;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: 13pt;
+    padding: 10px;
+    width: 100%;
+    border: 0;
+    background-color: rgb(148, 148, 148);
+}
+
+input[type="text"], select {
+    padding: 10px;
+    width: 80%;
+    border: 1px solid black;
+}
+
+
+input[type="text"]#direction {
+    height: 200px;
+}
+
+.addrecipe__button {
+    font-weight: 550;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    padding: 10px;
+    margin: 5px;
+    width: 100%;
+    border: 0;
+    background-color: #383838;
+    border-radius: 5px;
+    color: #bdbcbc;
+    font-size: 12px;
+    height: var(--note-button-height);
+    position: relative;
+    top: calc((var(--note-button-height) -5px) * -1);
+    width: calc(var(--note-height));
+    
+}
+

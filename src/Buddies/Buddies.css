@@ -1,0 +1,9 @@
+.buddiespage {
+    margin: auto;
+    width: 97%;
+    max-width: 500px;
+}
+
+ul {
+    list-style: none;
+}

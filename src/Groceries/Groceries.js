@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import './Groceries.css'
 
 class Groceries extends Component {
 
     render() {
         return (
-            <>
-                <h2>Shopping List</h2>
+            <div className='grocerypage'>
+                <h2>Grocery List</h2>
                 <ul>
                     <li>3 Cucumbers</li>
                     <li>2 Lettuce</li>
@@ -15,9 +16,9 @@ class Groceries extends Component {
                     <li>4 Vinegar</li>
                 </ul>
                 <button type='button'>
-                    Clear Shopping List
+                    Clear List
                     </button>
-            </>
+            </div>
         )
     }
 }

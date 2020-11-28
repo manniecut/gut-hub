@@ -40,12 +40,6 @@ header nav ul li:last-child a {
     margin-right: 0;
 }
 
-img {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
 ul, ol {
     width: 75%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;

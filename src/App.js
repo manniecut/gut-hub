@@ -21,12 +21,14 @@ import CookList from './CookLists/CookList/CookList';
 import EditRecipe from './Recipes/EditRecipe/EditRecipe';
 import Login from './Login/Login';
 import CreateAccount from './Login/CreateAccount/CreateAccount';
+import AddRecipe from './Recipes/AddRecipe/AddRecipe'
+import './App.css'
 
 class App extends Component {
   state = {
     user: [],
     /* still planning */
-    loggedin: false,
+    loggedin: true,
   }
 
 
@@ -111,45 +113,62 @@ class App extends Component {
 
     //recipe will become recipe/:recipeid
 
-    return (
-      <>
-        <Route
-          exact
-          path="/"
-          component={HomeScreen} />
-        <Route
-          path="/recipes"
-          component={Search} />
-        <Route
-          path="/cooklists"
-          component={SavedCookLists} />
-        <Route
-          path="/buddies"
-          component={Buddies} />
-        <Route
-          path="/groceries"
-          component={Groceries} />
+    if (this.state.loggedin === true) {
+      return (
+        <>
+          <Route
+            exact
+            path="/"
+            component={HomeScreen} />
+          <Route
+            path="/recipes"
+            component={Search} />
+          <Route
+            path="/cooklists"
+            component={SavedCookLists} />
+          <Route
+            path="/buddies"
+            component={Buddies} />
+          <Route
+            path="/groceries"
+            component={Groceries} />
 
-        <Route
-          path="/recipe"
-          component={Recipe} />
-        <Route
-          path="/edit/recipe"
-          component={EditRecipe} />
-        <Route
-          path="/cooklist"
-          component={CookList} />
+          <Route
+            path="/recipe"
+            component={Recipe} />
+          <Route
+            path="/edit/recipe"
+            component={EditRecipe} />
+          <Route
+            path="/cooklist"
+            component={CookList} />
 
-        <Route
-          path="/login"
-          component={Login} />
-        <Route
-          path="/createaccount"
-          component={CreateAccount} />
-      </>
-    )
+          <Route
+            path="/login"
+            component={Login} />
+          <Route
+            path="/createaccount"
+            component={CreateAccount} />
+
+          <Route
+            path="/add/recipe"
+            component={AddRecipe} />
+        </>
+      )
+
+
+    } else {
+
+
+      return (
+        <>
+          <Route
+            path="/"
+            component={Login} />
+        </>
+      )
+    }
   }
-
 
 
   /* App Render */

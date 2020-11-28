@@ -6,8 +6,8 @@ class CreateAccount extends Component {
         return (
             <>
                 <h2>Create Account</h2>
-                <form class='recipe'>
-                    <label for='username'>Username:</label>
+                <form className='recipe'>
+                    <label htmlFor='username'>Username:</label>
                     <input type='text' name='username' id='username' placeholder=' ' required />
                     <label htmlFor='password'>Password:</label>
                     <input type='text' name='password' id='password' placeholder=' ' required />

@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
+import './Login.css'
 
 class Login extends Component {
 
     render() {
         return (
             <>
-                <form class='recipe'>
+                <form className='LoginPage'>
                     <div>
-                        <label for='username'>Username:</label>
+                        <label htmlFor='username'><h4>Username:</h4></label>
                         <input type='text' name='username' id='username' placeholder=' ' required />
-                        <label htmlFor='password'>Password:</label>
+                        <label htmlFor='password'><h4>Password:</h4></label>
                         <input type='text' name='password' id='password' placeholder=' ' required />
                     </div>
-                    <div className='login__buttons'>
-                        <button type='button'>
-                            Cancel
-                </button>
-                        <button type='submit'>
+                    <div>
+                        <button type='submit' className='login__button'>
                             Login
                 </button>
+                        <button type='button' className='login__button'>
+                            Cancel
+                </button>
+
                     </div>
                 </form>
                 <p>Or <a href='/createaccount'>Create an Account</a></p>
