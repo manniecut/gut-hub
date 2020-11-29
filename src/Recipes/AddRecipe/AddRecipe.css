@@ -58,3 +58,8 @@ input[type="text"]#direction {
     
 }
 
+.expanding_forms {
+    margin:5px;
+    padding: 3px;
+    border: 2px solid gray;
+}

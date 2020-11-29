@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Buddy.css'
 
 class Buddy extends Component {
@@ -8,12 +9,12 @@ class Buddy extends Component {
             <>
 
                 <li className='Buddy'>
-                    <a href="/search/userid">
+                    <Link to="/search/userid">
                         <h3 className='Buddy__username'>Buddy</h3>
-                    </a>
+                    </Link>
                     <button className='Buddy__delete' type='button'>Remove Buddy</button>
                     <p>
-                        Received: <a href="/recipe">Recipe</a>
+                        Received: <Link to="/recipe">Recipe</Link>
                     </p>
 
                 </li>

@@ -9,22 +9,22 @@ class Navbar extends Component {
             <header className="App__header">
                 <div>
                     <h1>
-                        <Link to='/'>GutHub</Link>
+                        <Link className='nav__link' to='/'>GutHub</Link>
                     </h1>
                 </div>
                 <nav>
                     <ul>
                         <li>
-                            <h3><a href="/recipes">Recipes</a></h3>
+                            <h3><NavLink className='nav__link' to="/recipes">Recipes</NavLink></h3>
                         </li>
                         <li>
-                            <h3><a href="/cooklists">CookLists</a></h3>
+                            <h3><NavLink className='nav__link' to="/cooklists">CookLists</NavLink></h3>
                         </li>
                         <li>
-                            <h3><a href="/buddies">Buddies</a></h3>
+                            <h3><NavLink className='nav__link' to="/buddies">Buddies</NavLink></h3>
                         </li>
                         <li>
-                            <h3><a href="/groceries">Groceries</a></h3>
+                            <h3><NavLink className='nav__link' to="/groceries">Groceries</NavLink></h3>
                         </li>
                     </ul>
                 </nav>

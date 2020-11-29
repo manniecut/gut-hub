@@ -1,15 +1,6 @@
-/* To Do:
-  login system
-  state
-
-  fill in crud functions
-
-
-
-*/
-
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
+
 import HomeScreen from './HomeScreen/HomeScreen';
 import Navbar from './Navbar/Navbar';
 import Search from './Search/Search';
@@ -21,15 +12,23 @@ import CookList from './CookLists/CookList/CookList';
 import EditRecipe from './Recipes/EditRecipe/EditRecipe';
 import Login from './Login/Login';
 import CreateAccount from './Login/CreateAccount/CreateAccount';
-import AddRecipe from './Recipes/AddRecipe/AddRecipe'
-import './App.css'
+import AddRecipe from './Recipes/AddRecipe/AddRecipe';
 import AddBuddy from './Buddies/AddBuddy/AddBuddy';
+import GutHubTutorial from './GutHubTutorial/GutHubTutorial';
+
+import GutHubContext from './GutHubContext';
+import config from './config';
+import './App.css';
 
 class App extends Component {
   state = {
-    user: [],
-    /* still planning */
-    loggedin: true,
+    user: {
+      username: '',
+      userid: null,
+    },
+    recipes: [],
+    buddies: [],
+    loggedin: '',
   }
 
 
@@ -37,24 +36,43 @@ class App extends Component {
   // initially fetch user's stuff
 
   //componentDidMount() {
-  //userId = this.state.user.id;
-  //Promise.all([
-  //fetch(`${config.API_ENDPOINT}/users/${userId}`),
-  //])
-  //      .then(/* check */)
-  //      .then(/* set state */)
-  //      .catch(error => {
-  //        this.setState({ error })
-  //      });
+  //  userId = this.state.user.id;
+  //  Promise.all([
+  //   fetch(`${config.API_ENDPOINT}/users/${userId}`),
+  //  ])
+  //    .then(/* check */)
+  //   .then(/* set state */)
+  //  .catch(error => {
+  //     this.setState({ error })
+  //    });
 
-  //}
+  // }
 
 
   /******** CREATE/UPDATE/DELETE ********/
 
-  /* Users *
+  /* Users */
 
-  handleAddUser()
+  handleLogin = (username) => {
+    this.setState({
+      user: {
+        username:'mannie',
+        userid:1,
+      },
+      loggedin: true
+    })
+  };
+
+  handleLogout = () => {
+    this.setState({
+      loggedin: false
+    })
+  };
+
+
+
+
+  /*handleAddUser()
 
   handleUpdateUser()
 
@@ -92,21 +110,6 @@ class App extends Component {
   /******** RENDERING ********/
 
 
-  /* Render Navigation *
-
-  // this might not need to be so complicated since nav won't change like noteful
-  // but don't forget error component
-
-  renderNavRoutes() {
-    // when in home screen, render only logout
-    // else render same as main routes, minus home screen
-    return (
-      <>
-      </>
-    )
-  }
-
-
   /* Render Main */
 
   renderMainRoutes() {
@@ -114,7 +117,15 @@ class App extends Component {
 
     //recipe will become recipe/:recipeid
 
-    if (this.state.loggedin === true) {
+    if (this.state.loggedin !== true) {
+      return (
+        <>
+          <Route
+            path="/"
+            component={Login} />
+        </>
+      )
+    } else {
       return (
         <>
           <Route
@@ -133,10 +144,14 @@ class App extends Component {
           <Route
             path="/groceries"
             component={Groceries} />
+          <Route
+            path="/tutorial"
+            component={GutHubTutorial} />
 
           <Route
-            path="/recipe"
+            path="/recipes/:recipeid"
             component={Recipe} />
+          
           <Route
             path="/edit/recipe"
             component={EditRecipe} />
@@ -154,21 +169,9 @@ class App extends Component {
           <Route
             path="/add/recipe"
             component={AddRecipe} />
-            <Route
+          <Route
             path="/add/buddy"
             component={AddBuddy} />
-        </>
-      )
-
-
-    } else {
-
-
-      return (
-        <>
-          <Route
-            path="/"
-            component={Login} />
         </>
       )
     }
@@ -189,13 +192,20 @@ class App extends Component {
 
 
   render() {
+    const value = {
+      user: this.state.user,
+
+      login: this.handleLogin,
+      logout: this.handleLogout
+    }
 
     return (
-
-      <div className='App' >
-        <Navbar />
-        <main className="App__main">{this.renderMainRoutes()}</main>
-      </div>
+      <GutHubContext.Provider value={value}>
+        <div className='App' >
+          <Navbar />
+          <main className="App__main">{this.renderMainRoutes()}</main>
+        </div>
+      </GutHubContext.Provider>
 
     );
   };

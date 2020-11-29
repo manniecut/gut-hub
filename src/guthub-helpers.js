@@ -9,10 +9,11 @@ export const findFolder = (folders = [], folderid) =>
 export const findNote = (notes = [], noteId) =>
   notes.find(note => note.id === noteId)
 
-export const getNotesForFolder = (notes = [], folder_id) => (
+*/
+
+export const getResultsForSearch = (results = [], query) => (
   (!folder_id)
-    ? notes
-    : notes.filter(note => note.folderid === parseInt(folder_id))
+    ? results
+    : results.filter(result => result.query === query)
 )
 
-*/

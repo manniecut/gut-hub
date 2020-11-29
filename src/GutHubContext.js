@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const GutHubContext = React.createContext({
     /* not final */
@@ -6,6 +6,10 @@ const GutHubContext = React.createContext({
     recipes: [],
     lists: [],
     buddies: [],
+
+    handleLogin: ( ) => { },
+
+
     addRecipe: ( ) => { },
     updateRecipe: ( ) => { },
     deleteRecipe: ( ) => { },

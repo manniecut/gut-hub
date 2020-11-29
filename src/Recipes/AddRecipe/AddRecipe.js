@@ -52,8 +52,12 @@ class AddRecipe extends Component {
         return (
             <form className='add__recipe__form' onSubmit={this.handleSubmit}>
                 <div>
-                    <label htmlFor='title'><h2>New Recipe</h2></label>
+                    <label htmlFor='title'><h3>New Recipe</h3></label>
                     <input type='text' name='title' id='title' required />
+                </div>
+                <div>
+                    <label htmlFor='quickdesc'><h4>Quick Description:</h4></label>
+                    <input type='text' name='quickdesc' id='quickdesc' />
                 </div>
                 <div>
                     <label htmlFor='recipetype'><h4>Select Recipe Type:</h4></label>
@@ -71,7 +75,7 @@ class AddRecipe extends Component {
                         <option>Other</option>
                     </select>
                 </div>
-                <div onChange={this.handleIngredientChange}>
+                <div className='expanding_forms' onChange={this.handleIngredientChange}>
                     <label htmlFor='ingredients'><h4>Ingredients</h4></label>
                     {
                         ingredients.map((ingredient, index) => {
@@ -92,7 +96,7 @@ class AddRecipe extends Component {
                     }
                     <button className='addrecipe__button' onClick={this.addIngredient}>+ New Ingredient</button>
                 </div>
-                <div onChange={this.handleDirectionChange}>
+                <div className='expanding_forms' onChange={this.handleDirectionChange}>
                     <label htmlFor='directions'><h4>Directions</h4></label>
 
                     {
@@ -113,6 +117,10 @@ class AddRecipe extends Component {
                         })
                     }
                     <button className='addrecipe__button' onClick={this.addDirection}>+ New Direction</button>
+                </div>
+                <div>
+                    <label htmlFor='addtlnotes'><h4>Additional Notes:</h4></label>
+                    <input type='text' name='addtlnotes' id='addtlnotes' />
                 </div>
 
                 <button className='addrecipe__button' type='submit'>
