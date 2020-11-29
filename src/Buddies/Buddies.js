@@ -15,7 +15,7 @@ class Buddies extends Component {
                     <Buddy />
                 </ul>
                 <button className="float">
-                    <span className="button-label my-float">Add Buddy</span>
+                    <span className="button-label my-float"><a className="buddy__add__button" href="/add/buddy">Add Buddy</a></span>
                 </button>
             </div>
         )

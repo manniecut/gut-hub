@@ -23,6 +23,7 @@ import Login from './Login/Login';
 import CreateAccount from './Login/CreateAccount/CreateAccount';
 import AddRecipe from './Recipes/AddRecipe/AddRecipe'
 import './App.css'
+import AddBuddy from './Buddies/AddBuddy/AddBuddy';
 
 class App extends Component {
   state = {
@@ -153,6 +154,9 @@ class App extends Component {
           <Route
             path="/add/recipe"
             component={AddRecipe} />
+            <Route
+            path="/add/buddy"
+            component={AddBuddy} />
         </>
       )
 
