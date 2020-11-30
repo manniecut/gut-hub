@@ -1,11 +1,22 @@
 .buddiespage {
     margin: auto;
     width: 97%;
-    max-width: 500px;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
 }
 
-ul {
+.buddylist__ul {
     list-style: none;
+    margin: auto;
+}
+
+.buddylist__ol {
+    margin: auto;
+}
+
+.buddylist__column {
+    flex: 50%;
 }
 
 .float {
@@ -31,4 +42,10 @@ ul {
 .buddy__add__button {
     color: #ffffff;
     text-decoration: none;
+}
+
+@media all and (min-width: 800px) {
+    .buddylist__row {
+        flex-direction: row;
+    }
 }

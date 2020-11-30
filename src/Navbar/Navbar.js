@@ -23,9 +23,6 @@ class Navbar extends Component {
                         <li>
                             <h3><NavLink className='nav__link' to="/buddies">Buddies</NavLink></h3>
                         </li>
-                        <li>
-                            <h3><NavLink className='nav__link' to="/groceries">Groceries</NavLink></h3>
-                        </li>
                     </ul>
                 </nav>
             </header>
@@ -34,3 +31,13 @@ class Navbar extends Component {
 }
 
 export default Navbar;
+
+
+/*
+
+To Do
+<li>
+   <h3><NavLink className='nav__link' to="/groceries">Groceries</NavLink></h3>
+</li>
+
+    */

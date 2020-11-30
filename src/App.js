@@ -35,18 +35,22 @@ class App extends Component {
   /******** FETCH INTO STATE ON STARTUP ********/
   // initially fetch user's stuff
 
-  //componentDidMount() {
-  //  userId = this.state.user.id;
-  //  Promise.all([
-  //   fetch(`${config.API_ENDPOINT}/users/${userId}`),
-  //  ])
-  //    .then(/* check */)
-  //   .then(/* set state */)
-  //  .catch(error => {
-  //     this.setState({ error })
-  //    });
+  componentDidMount() {
+    fetch(`${config.API_ENDPOINT}/users/`)
+      .then(res => {
+        if (!res.ok)
+          return res.json().then(e => Promise.reject(e));
+        return res.json();
+      })
+      .then(users =>
+        this.setState({
+          users: users
+        })
+      )
+      .catch(error => { alert('Unable to get users.') })
+  };
 
-  // }
+
 
 
   /******** CREATE/UPDATE/DELETE ********/
@@ -56,8 +60,8 @@ class App extends Component {
   handleLogin = (username) => {
     this.setState({
       user: {
-        username:'mannie',
-        userid:1,
+        username: 'mannie',
+        userid: 1,
       },
       loggedin: true
     })
@@ -73,40 +77,40 @@ class App extends Component {
 
 
   /*handleAddUser()
-
+  
   handleUpdateUser()
-
+  
   handleDeleteUser()
-
-
-
+  
+  
+  
   /* Recipe *
-
+  
   handleAddRecipe()
-
+  
   handleUpdateRecipe()
-
+  
   handleDeleteRecipe()
-
-
+  
+  
   /* Cooklists *
-
+  
   handleAddCooklist()
-
+  
   handleUpdateCooklist()
-
+  
   handleDeleteCooklist()
-
-
+  
+  
   /* Messages *
   // send will be same as add
-
+  
   handleSendMessage()
-
+  
   handleDeleteMessage()
-
-
-
+  
+  
+  
   /******** RENDERING ********/
 
 
@@ -151,7 +155,7 @@ class App extends Component {
           <Route
             path="/recipes/:recipeid"
             component={Recipe} />
-          
+
           <Route
             path="/edit/recipe"
             component={EditRecipe} />
@@ -194,6 +198,7 @@ class App extends Component {
   render() {
     const value = {
       user: this.state.user,
+      users: this.state.users,
 
       login: this.handleLogin,
       logout: this.handleLogout
