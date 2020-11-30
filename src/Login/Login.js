@@ -12,9 +12,9 @@ class Login extends Component {
                 <form className='LoginPage'>
                     <div>
                         <label htmlFor='username'><h4>Username:</h4></label>
-                        <input type='text' name='username' id='username' placeholder=' ' required />
+                        <input type='text' name='username' id='username' value='Guest' required readOnly />
                         <label htmlFor='password'><h4>Password:</h4></label>
-                        <input type='text' name='password' id='password' placeholder=' ' required />
+                        <input type='text' name='password' id='password' value='*****' required readOnly />
                     </div>
                     <div>
                         <button type='submit' className='login__button' onClick={this.context.login}>

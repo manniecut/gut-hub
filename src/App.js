@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import HomeScreen from './HomeScreen/HomeScreen';
 import Navbar from './Navbar/Navbar';
@@ -60,8 +60,8 @@ class App extends Component {
   handleLogin = (username) => {
     this.setState({
       user: {
-        username: 'mannie',
-        userid: 1,
+        username: 'Guest',
+        userid: 4,
       },
       loggedin: true
     })
@@ -137,6 +137,7 @@ class App extends Component {
             path="/"
             component={HomeScreen} />
           <Route
+            exact
             path="/recipes"
             component={Search} />
           <Route
@@ -153,6 +154,7 @@ class App extends Component {
             component={GutHubTutorial} />
 
           <Route
+            exact
             path="/recipes/:recipeid"
             component={Recipe} />
 

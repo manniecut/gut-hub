@@ -43,6 +43,7 @@ class SavedCookLists extends Component {
                     {this.state.cooklists.map(cooklist =>
 
                         <CookListSummary
+                            key={cooklist.id}
                             id={cooklist.id}
                             title={cooklist.title}
                             quickdesc={cooklist.quickdesc}

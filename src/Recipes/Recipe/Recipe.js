@@ -1,35 +1,126 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Ingredient from './Ingredient/Ingredient';
+import Direction from './Direction/Direction';
+import GutHubContext from '../../GutHubContext';
+import config from '../../config';
 import './Recipe.css';
 
 class Recipe extends Component {
+    state = {
+        recipe: [],
+        parsed: [],
+        buddy: []
+    }
+
+    static contextType = GutHubContext;
+
+    componentDidMount() {
+        const id = this.props.match.params.recipeid
+        fetch(`${config.API_ENDPOINT}/recipes/${id}`)
+            .then(res => {
+                if (!res.ok)
+                    return res.json().then(e => Promise.reject(e));
+                return res.json();
+            })
+            .then(recipe => {
+                this.getCreatorName(recipe.creator)
+                this.setState({
+                    recipe: recipe,
+                    parsed: {
+                        ingredients: JSON.parse(recipe.ingredients),
+                        directions: JSON.parse(recipe.directions)
+                    }
+                })
+            })
+            .catch(error => alert('Messages could not be found. Please Try Again'));
+    }
+
+    getCreatorName = (buddyId) => {
+        fetch(`${config.API_ENDPOINT}/users/${buddyId}/`)
+            .then(res => {
+                if (!res.ok)
+                    return res.json().then(e => Promise.reject(e));
+                return res.json();
+            })
+            .then(buddy => {
+                this.setState({ buddy: buddy })
+            })
+            .catch(error => alert('Buddy could not be found. Please Try Again'));
+    }
+
+
+    renderIngredientsList = (ingredients) => {
+        console.log(typeof (ingredients))
+        console.log(ingredients)
+        /*Object.entries(ingredients).map(([key, ingredient], i) =>(
+            <Ingredient 
+                ingredientId={key}
+                ingredientName={ingredient[key]}
+            />
+        ))*/
+
+        /*
+        const objectLength = Object.keys(ingredients).length;
+
+        for (let i = 0; i <= objectLength; i++) {
+            return (
+                <Ingredient
+                    ingredientId={i}
+                    ingredientName={ingredients[i]} />
+            )
+
+
+        }*/
+
+
+
+        
+        for (const key in ingredients) {
+            return (
+                <Ingredient
+                    ingredientId={key}
+                    ingredientName={ingredients[key]} />
+            )
+        }
+
+    }
+
+    renderDirectionsList = (directions) => {
+        for (const key in directions) {
+            return (
+                <Direction
+                    directionId={key}
+                    directionText={directions[key]}
+                />
+            )
+        }
+    }
 
     render() {
+        const recipe = this.state.recipe
+        const directions = this.state.parsed.directions
+        const ingredients = this.state.parsed.ingredients
+        console.log(ingredients, directions)
         return (
             <div className='recipe'>
                 <span >
-                    <h2>Simple Salad</h2>
-                    <Link to='/edit/recipe'>edit</Link>
+                    <h2>{recipe.title}</h2>
+                    <Link to={`/edit/recipe/${recipe.id}`}>edit</Link>
                 </span>
-                <h3>by: username</h3>
-                <p>This is a super easy and tasty salad.</p>
+                <h3>by: {this.state.buddy.username}</h3>
+                <p>{recipe.quickdesc}</p>
                 <div>
-                    <ol>
-                        <h4>Ingredients</h4>
-                        <p>1 Cucumbers</p>
-                        <p>Lettuce</p>
-                        <p>1 Tomato</p>
-                        <p>1/2 Onion</p>
-                        <p>1 Tbsp Olive Oil</p>
-                        <p>1 Tbsp Vinegar</p>
-                        <p>Salt</p>
-                    </ol>
+                    <ul>
+                        <h3>Ingredients</h3>
+                        {this.renderIngredientsList(ingredients)}
+                    </ul>
                 </div>
                 <div>
-                    <p>1. Cut all your veggies up to whatever size you like</p>
-                    <p>2. Mix them all up in a bowl</p>
-                    <p>3. Add the oil and Vinegar</p>
-                    <p>4. Salt to preference and enjoy!</p>
+                    <ol>
+                        <h3>Directions</h3>
+                        {this.renderDirectionsList(directions)}
+                    </ol>
                 </div>
                 <div className="recipe__controls">
                     <button className="recipe__button">
@@ -42,9 +133,6 @@ class Recipe extends Component {
                         <span>+CookList</span>
                     </button>
                     <button className="recipe__button">
-                        <span>+Groceries</span>
-                    </button>
-                    <button className="recipe__button">
                         <span>Remove</span>
                     </button>
                 </div>
@@ -54,3 +142,12 @@ class Recipe extends Component {
 }
 
 export default Recipe;
+
+/*
+TO DO:
+<button className="recipe__button">
+    <span>+Groceries</span>
+</button>
+
+
+*/

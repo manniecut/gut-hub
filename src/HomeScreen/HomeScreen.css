@@ -3,3 +3,23 @@
     width: 97%;
     max-width: 500px;
 }
+
+.float {
+    font-weight: 550;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    position: fixed;
+    border: 0;
+    background-color: #383838;
+    border-radius: 5px;
+    color: #bdbcbc;
+    width: 75px;
+    height: 50px;
+    bottom: 40px;
+    right: 40px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.my-float {
+    margin-top: 22px;
+}

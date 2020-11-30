@@ -16,17 +16,13 @@ class CookListSummary extends Component {
         const { id, title, quickdesc } = this.props
         const cooklistUrl = (`/cooklist/${id}`)
         return (
-            <>
-
-                <li className='CookListSummary' key={id}>
+                <li className='CookListSummary'>
                     <h3 className='CookListSummary__username'><Link to={cooklistUrl}>{title}</Link></h3>
                     <p>
                         {quickdesc}
                     </p>
                     <button className='CookListSummary__delete' type='button'>Remove CookList</button>
-
                 </li>
-            </>
         )
     }
 }

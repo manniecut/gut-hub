@@ -15,7 +15,8 @@ class HomeScreen extends Component {
                 </div>
                 <div>
                     <p><Link to='/tutorial'>Click here for a quick rundown on using GutHub</Link></p>
-                    <button onClick={this.context.logout}>Log Out</button>
+                    <button className="float" onClick={this.context.logout}>
+                        <span className="button-label my-float">Log Out</span></button>
                 </div>
             </div>
         )

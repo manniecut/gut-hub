@@ -12,7 +12,7 @@ class Result extends Component {
 
     render() {
         const { id, title, quickdesc } = this.props
-        const recipeUrl = (`/recipe/${id}`)
+        const recipeUrl = (`/recipes/${id}`)
         return (
             <>
                 <li key={id} className='Result'>

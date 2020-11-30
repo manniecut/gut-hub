@@ -40,10 +40,10 @@ class Buddy extends Component {
         return (
             <>
                 <li className='Buddy'>
-                    <Link to={`/search/${this.state.buddy.id}`}>
-                        <h3 className='Buddy__username'>{this.state.buddy.username}</h3>
-                    </Link>
-                    <button className='Buddy__delete' type='button'>Remove Buddy</button>
+                    <h3 className='Buddy__username'>
+                            {this.state.buddy.username}
+                    </h3>
+                    <button className='Buddy__delete' type='button'>Remove</button>
                 </li>
             </>
         )

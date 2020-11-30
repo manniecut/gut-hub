@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GutHubContext from '../../../GutHubContext';
 import { Link } from 'react-router-dom';
 import config from '../../../config'
-//import './Buddy.css'
+import './Message.css'
 
 class Message extends Component {
     state = {
@@ -48,14 +48,13 @@ class Message extends Component {
         const { id } = this.props
         return (
             <>
-                <li key={id} className='Buddy'>
-                    <Link to={`/recipes/`}>
-                        <h3 className='Buddy__username'>{this.state.buddyName}</h3>
-                    </Link>
-                    <button className='Buddy__delete' type='button'>Clear Messages</button>
+                <li key={id} className='Message'>
+                    <h3 className="Message__title"><Link to={this.props.sentobject}>{this.state.sent.title}</Link></h3>
                     <p>
-                        Received: <Link to={this.props.sentobject}>{this.state.sent.title}</Link>
+                        From: {this.state.buddyName}
                     </p>
+                    <button className='Message__delete' type='button'>Delete</button>
+
 
                 </li>
             </>

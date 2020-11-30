@@ -6,18 +6,18 @@ class CookList extends Component {
     render() {
         return (
             <>
-                <h2>CookList: Holiday</h2>
+                <h2>CookList: Summer Grilling</h2>
                 <p>
-                    Some recipies to enjoy on holiday.
+                    Some recipies to enjoy outside in the summer.
             </p>
                 <ul>
-                    <li className='recipe'><Link to="/recipe">Hot Dogs</Link>
+                    <li className='recipe'><Link to="/recipe">Grilled Chicken</Link>
                         <button type='button'>Remove</button></li>
-                    <li className='recipe'><Link to="/recipe">Fried Chicken</Link>
+                    <li className='recipe'><Link to="/recipe">Grilled Steak</Link>
                         <button type='button'>Remove</button></li>
-                    <li className='recipe'><Link to="/recipe">Beef Stew</Link>
+                    <li className='recipe'><Link to="/recipe">S'mores</Link>
                         <button type='button'>Remove</button></li>
-                    <li className='recipe'><Link to="/recipe">Pasta Alfredo</Link>
+                    <li className='recipe'><Link to="/recipe">Campfire Baked Potato</Link>
                         <button type='button'>Remove</button></li>
                     <li className='recipe'><Link to="/recipe">Pizza</Link>
                         <button type='button'>Remove</button></li>
