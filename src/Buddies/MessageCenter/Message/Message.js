@@ -35,7 +35,6 @@ class Message extends Component {
                 return Promise.all([buddyRes.json(), objRes.json()]);
             })
             .then(([buddy, sent]) => {
-                console.log(buddy, sent)
                 this.setState({
                     buddyName: buddy.username,
                     sent: sent

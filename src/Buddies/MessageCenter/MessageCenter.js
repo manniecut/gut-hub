@@ -7,7 +7,7 @@ import config from '../../config';
 class MessageCenter extends Component {
     state = {
         messages: [],
-        allMessages:[]
+        allMessages: []
     }
     static defaultProps = {
         onDeleteMessage: () => { }
@@ -18,14 +18,12 @@ class MessageCenter extends Component {
     getMessagesForUser = (allMessages) => {
         const loggedInUser = this.context.user.userid
         const recMessages = this.context.users[loggedInUser - 1].received.split(',')
-        console.log('user received: ' + recMessages)
         const userMessages = []
         recMessages.forEach(recMsg => {
             allMessages.forEach(message => {
                 if (message.id === parseInt(recMsg)) {
                     userMessages.push(message)
-                } else {
-                    console.log('no match')
+
                 }
             })
         })
@@ -38,7 +36,6 @@ class MessageCenter extends Component {
                 if (!res.ok)
                     return res.json().then(e => Promise.reject(e));
                 return res.json();
-
             })
             .then(messages => {
                 const userMessages = this.getMessagesForUser(messages)
@@ -57,8 +54,6 @@ class MessageCenter extends Component {
 
     render() {
         const receivedMessages = this.state.messages
-        console.log('messages in state:')
-        console.log(receivedMessages)
         return (
             <ol className='buddylist__ol'><h2>Message Center</h2>
                 {receivedMessages.map(message =>
