@@ -53,9 +53,6 @@ input[type="text"]#direction {
     font-size: 12px;
     height: var(--note-button-height);
     position: relative;
-    top: calc((var(--note-button-height) -5px) * -1);
-    width: calc(var(--note-height));
-    
 }
 
 .expanding_forms {
