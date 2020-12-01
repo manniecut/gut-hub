@@ -97,6 +97,16 @@ class Recipe extends Component {
         }
     }
 
+    renderRecipeButtons = () => {
+        /*
+        if user is creator
+        render buttons with edit
+        if not
+        render without
+        */
+    }
+    
+
     render() {
         const recipe = this.state.recipe
         const directions = this.state.parsed.directions
@@ -149,5 +159,7 @@ TO DO:
     <span>+Groceries</span>
 </button>
 
+
+if 
 
 */
