@@ -11,14 +11,14 @@ class Result extends Component {
     static contextType = GutHubContext;
 
     render() {
-        const { id, title, quickdesc } = this.props
-        const recipeUrl = (`/recipes/${id}`)
+        const { id, title, quickdesc, resultType } = this.props
+        const url = (`/${resultType}/${id}`)
         return (
             <>
                 <li key={id} className='Result'>
 
                     <h3 className='Result__username'>
-                        <Link to={recipeUrl}>{title}</Link>
+                        <Link to={url}>{title}</Link>
                     </h3>
                     <p>
                         {quickdesc}

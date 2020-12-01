@@ -52,9 +52,8 @@ class Search extends Component {
                     id={recipe.id}
                     title={recipe.title}
                     quickdesc={recipe.quickdesc} 
-                        
+                    resultType="recipes"
                     />
-                
                 )}
                 </ol>
                 <button className="float">

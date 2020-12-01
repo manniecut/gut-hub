@@ -1,3 +1,9 @@
+.cooklist__page {
+    margin: auto;
+    width: 97%;
+    max-width: 500px;
+}
+
 .cooklist {
     --note-height: 100px;
     color: #000000;
@@ -10,7 +16,7 @@
     border-radius: 3px;
 }
 
-.Buddy__delete {
+.cooklist__delete {
     --note-button-height: 32px;
     background-color: #383838;
     border: 0;
@@ -24,17 +30,16 @@
     transform-origin: right bottom;
     transform: rotate(-90deg);
     width: calc(var(--note-height));
-    
 }
 
-.Buddy__delete:hover {
+.cooklist__delete:hover {
     background-color: #bd0909;
     color: white;
     cursor: pointer;
     font-weight: bold;
 }
 
-.Buddy__title {
+.cooklist__title {
     font-family: var(--custom-font);
     font-size: 20px;
     margin: 0;
@@ -43,12 +48,12 @@
     text-align: center;
 }
 
-.Buddy__title a {
+.cooklist__title a {
     color: #000000;
     display: block;
     text-decoration: none;
 }
 
-.Buddy__title a:hover {
+.cooklist__title a:hover {
     color: #2fe0ff;
 }

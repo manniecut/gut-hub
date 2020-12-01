@@ -36,24 +36,30 @@ class App extends Component {
   // initially fetch user's stuff
 
   componentDidMount() {
-    fetch(`${config.API_ENDPOINT}/users/`)
-      .then(res => {
-        if (!res.ok)
-          return res.json().then(e => Promise.reject(e));
-        return res.json();
+    Promise.all([
+      fetch(`${config.API_ENDPOINT}/users`),
+      fetch(`${config.API_ENDPOINT}/recipes`)
+    ])
+      .then(([usersRes, recipesRes]) => {
+        if (!usersRes.ok)
+          return usersRes.json().then(e => Promise.reject(e));
+        if (!recipesRes.ok)
+          return recipesRes.json().then(e => Promise.reject(e));
+        return Promise.all([usersRes.json(), recipesRes.json()]);
       })
-      .then(users =>
+      .then(([users, recipes]) =>
         this.setState({
-          users: users
+          users: users,
+          recipes: recipes
         })
       )
-      .catch(error => { alert('Unable to get users.') })
+      .catch(error => { alert('Unable to load information.') })
   };
 
 
 
-
   /******** CREATE/UPDATE/DELETE ********/
+
 
   /* Users */
 
@@ -73,15 +79,11 @@ class App extends Component {
     })
   };
 
-
-
-
   /*handleAddUser()
   
   handleUpdateUser()
   
   handleDeleteUser()
-  
   
   
   /* Recipe *
@@ -103,9 +105,8 @@ class App extends Component {
   
   
   /* Messages *
-  // send will be same as add
   
-  handleSendMessage()
+  handleSendMessage()  // same as any previous Add function
   
   handleDeleteMessage()
   
@@ -117,10 +118,6 @@ class App extends Component {
   /* Render Main */
 
   renderMainRoutes() {
-    //home screen, recipes/search, saved lists, buddies, shopping list
-
-    //recipe will become recipe/:recipeid
-
     if (this.state.loggedin !== true) {
       return (
         <>
@@ -133,6 +130,13 @@ class App extends Component {
       return (
         <>
           <Route
+            path="/login"
+            component={Login} />
+          <Route
+            path="/createaccount"
+            component={CreateAccount} />
+
+          <Route
             exact
             path="/"
             component={HomeScreen} />
@@ -141,6 +145,7 @@ class App extends Component {
             path="/recipes"
             component={Search} />
           <Route
+            exact
             path="/cooklists"
             component={SavedCookLists} />
           <Route
@@ -157,24 +162,18 @@ class App extends Component {
             exact
             path="/recipes/:recipeid"
             component={Recipe} />
-
-          <Route
-            path="/edit/recipe"
-            component={EditRecipe} />
-          <Route
-            path="/cooklist"
-            component={CookList} />
-
-          <Route
-            path="/login"
-            component={Login} />
-          <Route
-            path="/createaccount"
-            component={CreateAccount} />
-
           <Route
             path="/add/recipe"
             component={AddRecipe} />
+          <Route
+            path="/edit/recipe/:recipeid"
+            component={EditRecipe} />
+
+          <Route
+            exact
+            path="/cooklists/:cooklistid"
+            component={CookList} />
+
           <Route
             path="/add/buddy"
             component={AddBuddy} />
@@ -184,23 +183,15 @@ class App extends Component {
   }
 
 
+
   /* App Render */
-
-  // If state.loggedin is false, show login screen, else
-
-  // Will have to render login screen first,
-  // then pass user data to state and update loggedin.
-  // then
-  // Do in componentDidMount?
-  // componentDidMount might also fetch all users
-
-  // also could be able to browse without being logged in but have a button to log in
 
 
   render() {
     const value = {
       user: this.state.user,
       users: this.state.users,
+      recipes: this.state.recipes,
 
       login: this.handleLogin,
       logout: this.handleLogout

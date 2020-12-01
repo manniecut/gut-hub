@@ -14,7 +14,7 @@ class CookListSummary extends Component {
 
     render() {
         const { id, title, quickdesc } = this.props
-        const cooklistUrl = (`/cooklist/${id}`)
+        const cooklistUrl = (`/cooklists/${id}`)
         return (
                 <li className='CookListSummary'>
                     <h3 className='CookListSummary__username'><Link to={cooklistUrl}>{title}</Link></h3>

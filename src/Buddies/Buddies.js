@@ -22,7 +22,7 @@ class Buddies extends Component {
     static contextType = GutHubContext
 
     componentDidMount() {
-        const loggedInUser = 1;
+        const loggedInUser = 4;
         fetch(`${config.API_ENDPOINT}/users/${loggedInUser}/`)
             .then(res => {
                 if (!res.ok)

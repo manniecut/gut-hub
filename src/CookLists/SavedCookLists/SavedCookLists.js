@@ -10,12 +10,6 @@ class SavedCookLists extends Component {
         cooklists: []
     }
 
-    static defaultProps = {
-        match: {
-            params: {}
-        }
-    }
-
     static contextType = GutHubContext
 
     componentDidMount() {
@@ -24,7 +18,6 @@ class SavedCookLists extends Component {
                 if (!res.ok)
                     return res.json().then(e => Promise.reject(e));
                 return res.json();
-
             })
             .then(cooklists => {
                 this.setState({
