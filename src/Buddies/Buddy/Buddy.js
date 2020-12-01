@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import GutHubContext from '../../GutHubContext';
 import config from '../../config';
 import './Buddy.css'
@@ -36,7 +35,6 @@ class Buddy extends Component {
     }
 
     render() {
-        const { id } = this.props
         return (
             <>
                 <li className='Buddy'>
