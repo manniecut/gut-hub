@@ -4,12 +4,12 @@ class Ingredient extends React.Component {
 
 
     render() {
-        const { ingredientId, ingredientName } = this.props
-        console.log(ingredientId)
+        const { key, value } = this.props
+        console.log(this.props)
 
         return (
-            <li key={ingredientId}>
-                {ingredientName}
+            <li key={key}>
+                {value}
             </li>
         )
 

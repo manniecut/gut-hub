@@ -1,12 +1,70 @@
 import React, { Component } from 'react';
+import GutHubContext from '../../GutHubContext';
 import './AddRecipe.css'
 
 class AddRecipe extends Component {
     state = {
-        title: [],
+        title: '',
+        recipetype: '',
+        quickdesc: '',
         ingredients: [],
-        directions: []
+        directions: [],
+        addtlnotes: ''
     }
+
+    static contextType = GutHubContext;
+
+    static defaultProps = {
+        history: {
+            goBack: () => { }
+        }
+    }
+
+    handleCancel = () => {
+        this.props.history.goBack()
+    }
+
+    handleSubmit = e => {
+        e.preventDefault();
+        const newRecipe = {
+            title: this.state.title,
+            creator: this.context.user.userid,
+            recipetype: this.state.recipetype,
+            quickdesc: this.state.quickdesc,
+            ingredients: this.state.ingredients.toString(),
+            directions: this.state.directions.toString(),
+            addtlnotes: this.state.addtlnotes
+        }
+        console.log(newRecipe)
+    }
+
+    handleTitleUpdate = title => {
+        this.setState({
+            title: title
+        })
+    }
+
+    handleTypeUpdate = type => {
+        this.setState({
+            recipetype: type
+        })
+    }
+
+    handleDescUpdate = quickdesc => {
+        this.setState({
+            quickdesc: quickdesc
+        })
+    }
+
+    handleNotesUpdate = addtlnotes => {
+        this.setState({
+            addtlnotes: addtlnotes
+        })
+    }
+
+
+
+    /** Dynamic Form Functions */
 
     handleIngredientChange = (e) => {
         if ("ingredient".includes(e.target.className)) {
@@ -33,19 +91,21 @@ class AddRecipe extends Component {
 
     }
 
-
-
     addIngredient = (e) => {
         this.setState((prevState) => ({
             ingredients: [...prevState.ingredients, { ingredient: "" }]
         }))
     }
+
     addDirection = (e) => {
         this.setState((prevState) => ({
             directions: [...prevState.directions, { direction: "" }]
         }))
     }
-    handleSubmit = (e) => { e.preventDefault() }
+
+
+
+    /** Render */
 
     render() {
         let { ingredients, directions } = this.state
@@ -53,28 +113,48 @@ class AddRecipe extends Component {
             <form className='add__recipe__form' onSubmit={this.handleSubmit}>
                 <div>
                     <label htmlFor='title'><h3>New Recipe</h3></label>
-                    <input type='text' name='title' id='title' required />
+                    <input
+                        type='text'
+                        name='title'
+                        id='title'
+                        onChange={e => this.handleTitleUpdate(e.target.value)}
+                        required />
                 </div>
                 <div>
                     <label htmlFor='quickdesc'><h4>Quick Description:</h4></label>
-                    <input type='text' name='quickdesc' id='quickdesc' />
+                    <input
+                        type='text'
+                        name='quickdesc'
+                        id='quickdesc'
+                        onChange={e => this.handleDescUpdate(e.target.value)}
+                    />
                 </div>
                 <div>
                     <label htmlFor='recipetype'><h4>Select Recipe Type:</h4></label>
-                    <select id='recipetype' name='recipetype'>
-                        <option>Baking</option>
-                        <option>Blender</option>
-                        <option>Drink</option>
-                        <option>Frying</option>
-                        <option>Grilling</option>
-                        <option>Pressure Cooking</option>
-                        <option>Salad</option>
-                        <option>Sandwich</option>
-                        <option>Slow Cooking</option>
-                        <option>Soups</option>
-                        <option>Other</option>
+                    <select
+                        id='recipetype'
+                        name='recipetype'
+                        onChange={e => this.handleTypeUpdate(e.target.value)}
+                        defaultValue=""
+                        required
+                    >
+                        <option value="" disabled hidden>Choose here</option>
+                        <option value='Baking'>Baking</option>
+                        <option value='Blender'>Blender</option>
+                        <option value='Drink'>Drink</option>
+                        <option value='Frying'>Frying</option>
+                        <option value='Grilling'>Grilling</option>
+                        <option value='Pressure Cooking'>Pressure Cooking</option>
+                        <option value='Salad'>Salad</option>
+                        <option value='Sandwich'>Sandwich</option>
+                        <option value='Slow Cooking'>Slow Cooking</option>
+                        <option value='Soups'>Soups</option>
+                        <option value='Other'>Other</option>
                     </select>
                 </div>
+
+
+
                 <div className='expanding_forms' onChange={this.handleIngredientChange}>
                     <label htmlFor='ingredients'><h4>Ingredients</h4></label>
                     {
@@ -94,8 +174,12 @@ class AddRecipe extends Component {
                             )
                         })
                     }
-                    <button className='addrecipe__button' onClick={this.addIngredient}>+ New Ingredient</button>
+                    <button type='button' className='addrecipe__button' onClick={this.addIngredient}>+ New Ingredient</button>
                 </div>
+
+
+
+
                 <div className='expanding_forms' onChange={this.handleDirectionChange}>
                     <label htmlFor='directions'><h4>Directions</h4></label>
 
@@ -116,17 +200,21 @@ class AddRecipe extends Component {
                             )
                         })
                     }
-                    <button className='addrecipe__button' onClick={this.addDirection}>+ New Direction</button>
+                    <button type='button' className='addrecipe__button' onClick={this.addDirection}>+ New Direction</button>
                 </div>
+
+
+
+
                 <div>
                     <label htmlFor='addtlnotes'><h4>Additional Notes:</h4></label>
-                    <input type='text' name='addtlnotes' id='addtlnotes' />
+                    <input type='text' name='addtlnotes' id='addtlnotes' onChange={e => this.handleNotesUpdate(e.target.value)} />
                 </div>
 
                 <button className='addrecipe__button' type='submit'>
                     Save
                     </button>
-                <button className='addrecipe__button' type='button'>
+                <button className='addrecipe__button' type='button' onClick={this.handleCancel}>
                     Cancel
                     </button>
 

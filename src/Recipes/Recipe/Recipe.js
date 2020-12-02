@@ -5,12 +5,15 @@ import Direction from './Direction/Direction';
 import GutHubContext from '../../GutHubContext';
 import config from '../../config';
 import './Recipe.css';
+import RecipeControls from './RecipeControls';
+import RecipeControlsEdit from './RecipeControls';
 
 class Recipe extends Component {
     state = {
         recipe: [],
         parsed: [],
-        buddy: []
+        buddy: [],
+        partsReady: false
     }
 
     static contextType = GutHubContext;
@@ -30,7 +33,8 @@ class Recipe extends Component {
                     parsed: {
                         ingredients: JSON.parse(recipe.ingredients),
                         directions: JSON.parse(recipe.directions)
-                    }
+                    },
+                    partsReady: true
                 })
             })
             .catch(error => alert('Messages could not be found. Please Try Again'));
@@ -50,104 +54,152 @@ class Recipe extends Component {
     }
 
 
-    renderIngredientsList = (ingredients) => {
-        console.log(typeof (ingredients))
-        console.log(ingredients)
-        /*Object.entries(ingredients).map(([key, ingredient], i) =>(
+    renderIngredientsList = () => {
+        if (this.state.partsReady === true) {
+            const ingredients = Object.entries(this.state.parsed.ingredients)
+            Object.entries(ingredients).forEach(pair => {
+                console.log(pair[1])
+                let key = pair[1][0]
+                let value = pair[1][1]
+                console.log(key)
+                console.log(value)
+                return (
+                    <Ingredient
+                        key={key}
+                        value={value} />
+                )
+            })
+        } else {
+            return (
+                <Ingredient
+                    key={0}
+                    value={'loading'}
+                />
+            )
+
+        }
+
+
+        /*ingredients.forEach(value => {
+            console.log(value)
+            return (
+                <Ingredient
+                    ingredientId={value[0]}
+                    ingredientName={value[1]} />
+ 
+            )
+ 
+        })*/
+
+
+        /*for (const [key, value] of Object.entries(ingredients)) {
+            console.log(value)
+            return (
+                <Ingredient
+                    ingredientId={value[0]}
+                    ingredientName={value[1]} />
+ 
+            )
+        }*/
+
+
+        /*.map(([key, ingredient], i) =>(
             <Ingredient 
                 ingredientId={key}
                 ingredientName={ingredient[key]}
             />
         ))*/
 
-        /*
-        const objectLength = Object.keys(ingredients).length;
 
-        for (let i = 0; i <= objectLength; i++) {
+        /*for (let i = 1; i < ingredients.length; i++) {
+            const ingredient = ingredients[i].value
             return (
                 <Ingredient
                     ingredientId={i}
-                    ingredientName={ingredients[i]} />
+                    ingredientName={ingredient} />
             )
-
-
+ 
         }*/
 
 
-
-        
-        for (const key in ingredients) {
+        /*for (const key in ingredients) {
+            console.log(key)
             return (
                 <Ingredient
                     ingredientId={key}
                     ingredientName={ingredients[key]} />
             )
-        }
-
+        }*/
     }
 
-    renderDirectionsList = (directions) => {
-        for (const key in directions) {
+
+
+    renderRecipeControls = () => {
+        if (this.state.partsReady === true) {
+            return (
+                <RecipeControlsEdit
+                    recipeid={this.state.recipe.id}
+                />
+            )
+        }
+        else {
+            return (
+                <RecipeControls />
+            )
+        }
+    }
+
+
+
+    renderDirectionsList = () => {
+        if (this.state.partsReady === true) {
+            const directions = this.state.parsed.directions
+            for (const key in directions) {
+                return (
+                    <Direction
+                        directionId={key}
+                        directionText={directions[key]}
+                    />
+                )
+            }
+        } else {
             return (
                 <Direction
-                    directionId={key}
-                    directionText={directions[key]}
+                    directionId={0}
+                    directionText={'loading'}
                 />
             )
         }
     }
 
-    renderRecipeButtons = () => {
-        /*
-        if user is creator
-        render buttons with edit
-        if not
-        render without
-        */
-    }
-    
+
 
     render() {
         const recipe = this.state.recipe
-        const directions = this.state.parsed.directions
-        const ingredients = this.state.parsed.ingredients
-        console.log(ingredients, directions)
         return (
             <div className='recipe'>
                 <span >
                     <h2>{recipe.title}</h2>
-                    <Link to={`/edit/recipe/${recipe.id}`}>edit</Link>
                 </span>
                 <h3>by: {this.state.buddy.username}</h3>
                 <p>{recipe.quickdesc}</p>
                 <div>
                     <ul>
                         <h3>Ingredients</h3>
-                        {this.renderIngredientsList(ingredients)}
+                        {this.renderIngredientsList()}
                     </ul>
                 </div>
                 <div>
                     <ol>
                         <h3>Directions</h3>
-                        {this.renderDirectionsList(directions)}
+                        {this.renderDirectionsList()}
                     </ol>
                 </div>
-                <div className="recipe__controls">
-                    <button className="recipe__button">
-                        <span>Save</span>
-                    </button>
-                    <button className="recipe__button">
-                        <span>Share</span>
-                    </button>
-                    <button className="recipe__button">
-                        <span>+CookList</span>
-                    </button>
-                    <button className="recipe__button">
-                        <span>Remove</span>
-                    </button>
-                </div>
+                {this.renderRecipeControls()}
             </div>
         )
+
+
     }
 }
 
@@ -160,6 +212,6 @@ TO DO:
 </button>
 
 
-if 
+if
 
 */
