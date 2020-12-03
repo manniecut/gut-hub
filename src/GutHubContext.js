@@ -11,13 +11,14 @@ const GutHubContext = React.createContext({
 
 
     addRecipe: ( ) => { },
-    updateRecipe: ( ) => { },
-    deleteRecipe: ( ) => { },
+
     addCooklist: ( ) => { },
     updateCooklist: ( ) => { },
     deleteCooklist: ( ) => { },
+
     sendMessage: ( ) => { },
     deleteMessage: ( ) => { },
+    
     fetchError: null,
 })
 

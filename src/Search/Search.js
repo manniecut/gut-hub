@@ -9,7 +9,9 @@ import './Search.css';
 class Search extends Component {
 
     state = {
-        recipes: []
+        recipes: [],
+        query: '',
+        saved: false
     }
 
     static defaultProps = {
@@ -36,23 +38,42 @@ class Search extends Component {
             })
             .catch(error => alert('Recipes could not be found. Please Try Again'));
 
-        }
+    }
+
+    handleQueryUpdate = query => {
+        this.setState({
+            query: query
+        })
+
+    }
+
+    handleSavedFilter = filter => {
+        this.setState({
+            saved: filter
+        })
+    }
 
 
 
     render() {
+        let filteredRecipes = this.state.recipes.filter((recipe) => {
+            return recipe.title.toLowerCase().includes(this.state.query.toLowerCase())
+        })
         return (
             <div className='SearchPage'>
                 <h2>Recipes</h2>
-                <SearchForm />
+                <SearchForm 
+                    updateQuery={this.handleQueryUpdate}
+                    updateFilter={this.handleSavedFilter}
+                />
                 <ol className='rectangle-list'>Results:
-                {this.state.recipes.map(recipe => 
+                {filteredRecipes.map(recipe =>
                     <Result
-                    key={recipe.id}
-                    id={recipe.id}
-                    title={recipe.title}
-                    quickdesc={recipe.quickdesc} 
-                    resultType="recipes"
+                        key={recipe.id}
+                        id={recipe.id}
+                        title={recipe.title}
+                        quickdesc={recipe.quickdesc}
+                        resultType="recipes"
                     />
                 )}
                 </ol>

@@ -1,14 +1,15 @@
 import React from 'react';
+import './Ingredient.css'
 
 class Ingredient extends React.Component {
 
 
     render() {
-        const { key, value } = this.props
+        const { value } = this.props
         console.log(this.props)
 
         return (
-            <li key={key}>
+            <li className='ingredient'>
                 {value}
             </li>
         )

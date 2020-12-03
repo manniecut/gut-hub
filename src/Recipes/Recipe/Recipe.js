@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Ingredient from './Ingredient/Ingredient';
-import Direction from './Direction/Direction';
 import GutHubContext from '../../GutHubContext';
 import config from '../../config';
 import './Recipe.css';
 import RecipeControls from './RecipeControls';
-import RecipeControlsEdit from './RecipeControls';
 
 class Recipe extends Component {
     state = {
@@ -31,13 +27,13 @@ class Recipe extends Component {
                 this.setState({
                     recipe: recipe,
                     parsed: {
-                        ingredients: JSON.parse(recipe.ingredients),
-                        directions: JSON.parse(recipe.directions)
+                        ingredients: recipe.ingredients.split('#'),
+                        directions: recipe.directions.split('#')
                     },
                     partsReady: true
                 })
             })
-            .catch(error => alert('Messages could not be found. Please Try Again'));
+            .catch(error => alert('Recipe could not be found. Please Try Again'));
     }
 
     getCreatorName = (buddyId) => {
@@ -54,124 +50,46 @@ class Recipe extends Component {
     }
 
 
+    /** Rendering */
+
     renderIngredientsList = () => {
         if (this.state.partsReady === true) {
-            const ingredients = Object.entries(this.state.parsed.ingredients)
-            Object.entries(ingredients).forEach(pair => {
-                console.log(pair[1])
-                let key = pair[1][0]
-                let value = pair[1][1]
-                console.log(key)
-                console.log(value)
-                return (
-                    <Ingredient
-                        key={key}
-                        value={value} />
-                )
-            })
-        } else {
+            const ingredients = this.state.parsed.ingredients
             return (
-                <Ingredient
-                    key={0}
-                    value={'loading'}
-                />
-            )
-
-        }
-
-
-        /*ingredients.forEach(value => {
-            console.log(value)
-            return (
-                <Ingredient
-                    ingredientId={value[0]}
-                    ingredientName={value[1]} />
- 
-            )
- 
-        })*/
-
-
-        /*for (const [key, value] of Object.entries(ingredients)) {
-            console.log(value)
-            return (
-                <Ingredient
-                    ingredientId={value[0]}
-                    ingredientName={value[1]} />
- 
-            )
-        }*/
-
-
-        /*.map(([key, ingredient], i) =>(
-            <Ingredient 
-                ingredientId={key}
-                ingredientName={ingredient[key]}
-            />
-        ))*/
-
-
-        /*for (let i = 1; i < ingredients.length; i++) {
-            const ingredient = ingredients[i].value
-            return (
-                <Ingredient
-                    ingredientId={i}
-                    ingredientName={ingredient} />
-            )
- 
-        }*/
-
-
-        /*for (const key in ingredients) {
-            console.log(key)
-            return (
-                <Ingredient
-                    ingredientId={key}
-                    ingredientName={ingredients[key]} />
-            )
-        }*/
-    }
-
-
-
-    renderRecipeControls = () => {
-        if (this.state.partsReady === true) {
-            return (
-                <RecipeControlsEdit
-                    recipeid={this.state.recipe.id}
-                />
-            )
-        }
-        else {
-            return (
-                <RecipeControls />
+                <ul>
+                    {ingredients.map(function (listvalue) {
+                        return <li>{listvalue}</li>
+                    })}
+                </ul>
             )
         }
     }
-
-
 
     renderDirectionsList = () => {
         if (this.state.partsReady === true) {
             const directions = this.state.parsed.directions
-            for (const key in directions) {
-                return (
-                    <Direction
-                        directionId={key}
-                        directionText={directions[key]}
-                    />
-                )
-            }
-        } else {
             return (
-                <Direction
-                    directionId={0}
-                    directionText={'loading'}
-                />
+                <ol>
+                    {directions.map(function (listvalue) {
+                        return <li>{listvalue}</li>
+                    })}
+                </ol>
             )
         }
     }
 
+    renderRecipeControls = () => {
+        const buddyid = this.state.buddy.id
+        const userid = this.context.user.userid
+        return (
+            <RecipeControls
+                buddyid={buddyid}
+                userid={userid}
+                recipeid={this.state.recipe.id}
+                history={this.props.history}
+            />
+        )
+    }
 
 
     render() {
@@ -184,34 +102,18 @@ class Recipe extends Component {
                 <h3>by: {this.state.buddy.username}</h3>
                 <p>{recipe.quickdesc}</p>
                 <div>
-                    <ul>
-                        <h3>Ingredients</h3>
-                        {this.renderIngredientsList()}
-                    </ul>
+                    <h3>Ingredients</h3>
+                    {this.renderIngredientsList()}
+
                 </div>
                 <div>
-                    <ol>
-                        <h3>Directions</h3>
-                        {this.renderDirectionsList()}
-                    </ol>
+                    <h3>Directions</h3>
+                    {this.renderDirectionsList()}
                 </div>
                 {this.renderRecipeControls()}
             </div>
         )
-
-
     }
 }
 
 export default Recipe;
-
-/*
-TO DO:
-<button className="recipe__button">
-    <span>+Groceries</span>
-</button>
-
-
-if
-
-*/

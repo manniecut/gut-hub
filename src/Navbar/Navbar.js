@@ -21,6 +21,9 @@ class Navbar extends Component {
                             <h3><NavLink className='nav__link' to="/cooklists">CookLists</NavLink></h3>
                         </li>
                         <li>
+                            <h3><NavLink className='nav__link' to="/messages">Messages</NavLink></h3>
+                        </li>
+                        <li>
                             <h3><NavLink className='nav__link' to="/buddies">Buddies</NavLink></h3>
                         </li>
                     </ul>

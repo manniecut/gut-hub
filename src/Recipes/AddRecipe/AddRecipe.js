@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GutHubContext from '../../GutHubContext';
-import './AddRecipe.css'
+import config from '../../config';
+import './AddRecipe.css';
 
 class AddRecipe extends Component {
     state = {
@@ -26,17 +27,41 @@ class AddRecipe extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
+
         const newRecipe = {
             title: this.state.title,
-            creator: this.context.user.userid,
             recipetype: this.state.recipetype,
             quickdesc: this.state.quickdesc,
-            ingredients: this.state.ingredients.toString(),
-            directions: this.state.directions.toString(),
-            addtlnotes: this.state.addtlnotes
+            ingredients: (this.state.ingredients.join('#')).toString(),
+            directions: (this.state.directions.join('#')).toString(),
+            addtlnotes: this.state.addtlnotes,
+            creator: this.context.user.userid
         }
-        console.log(newRecipe)
+        fetch(`${config.API_ENDPOINT}/recipes`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(newRecipe)
+        })
+        .then(res => {
+            if (!res.ok) {
+                return res.json().then(error => {
+                    throw error
+                })
+            }
+            return res.json()
+        })
+        .then(recipe => {
+            this.context.addRecipe(recipe)
+            this.props.history.push(`/recipes/${recipe.id}`)
+        })
+        .catch(error => {alert('Cant add recipe, please try again')})
     }
+
+
+
+    /** Form to State Updates */
 
     handleTitleUpdate = title => {
         this.setState({
@@ -93,13 +118,13 @@ class AddRecipe extends Component {
 
     addIngredient = (e) => {
         this.setState((prevState) => ({
-            ingredients: [...prevState.ingredients, { ingredient: "" }]
+            ingredients: [...prevState.ingredients, ""]
         }))
     }
 
     addDirection = (e) => {
         this.setState((prevState) => ({
-            directions: [...prevState.directions, { direction: "" }]
+            directions: [...prevState.directions, ""]
         }))
     }
 
@@ -152,9 +177,6 @@ class AddRecipe extends Component {
                         <option value='Other'>Other</option>
                     </select>
                 </div>
-
-
-
                 <div className='expanding_forms' onChange={this.handleIngredientChange}>
                     <label htmlFor='ingredients'><h4>Ingredients</h4></label>
                     {
@@ -176,13 +198,8 @@ class AddRecipe extends Component {
                     }
                     <button type='button' className='addrecipe__button' onClick={this.addIngredient}>+ New Ingredient</button>
                 </div>
-
-
-
-
                 <div className='expanding_forms' onChange={this.handleDirectionChange}>
                     <label htmlFor='directions'><h4>Directions</h4></label>
-
                     {
                         directions.map((direction, index) => {
                             let directionNumber = `direction-${index}`
@@ -202,22 +219,16 @@ class AddRecipe extends Component {
                     }
                     <button type='button' className='addrecipe__button' onClick={this.addDirection}>+ New Direction</button>
                 </div>
-
-
-
-
                 <div>
                     <label htmlFor='addtlnotes'><h4>Additional Notes:</h4></label>
                     <input type='text' name='addtlnotes' id='addtlnotes' onChange={e => this.handleNotesUpdate(e.target.value)} />
                 </div>
-
                 <button className='addrecipe__button' type='submit'>
                     Save
                     </button>
                 <button className='addrecipe__button' type='button' onClick={this.handleCancel}>
                     Cancel
                     </button>
-
             </form>
         )
     }

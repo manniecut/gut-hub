@@ -19,6 +19,7 @@ import GutHubTutorial from './GutHubTutorial/GutHubTutorial';
 import GutHubContext from './GutHubContext';
 import config from './config';
 import './App.css';
+import MessageCenter from './Buddies/MessageCenter/MessageCenter';
 
 class App extends Component {
   state = {
@@ -86,15 +87,15 @@ class App extends Component {
   handleDeleteUser()
   
   
-  /* Recipe *
-  
-  handleAddRecipe()
-  
-  handleUpdateRecipe()
-  
-  handleDeleteRecipe()
-  
-  
+  /* Recipe */
+
+  handleAddRecipe = newRecipe => {
+    this.setState({
+      recipes: [...this.state.recipes, newRecipe]
+    });
+  };
+
+
   /* Cooklists *
   
   handleAddCooklist()
@@ -155,6 +156,9 @@ class App extends Component {
             path="/groceries"
             component={Groceries} />
           <Route
+            path="/messages"
+            component={MessageCenter} />
+          <Route
             path="/tutorial"
             component={GutHubTutorial} />
 
@@ -186,7 +190,6 @@ class App extends Component {
 
   /* App Render */
 
-
   render() {
     const value = {
       user: this.state.user,
@@ -194,7 +197,9 @@ class App extends Component {
       recipes: this.state.recipes,
 
       login: this.handleLogin,
-      logout: this.handleLogout
+      logout: this.handleLogout,
+
+      addRecipe: this.handleAddRecipe
     }
 
     return (
@@ -204,7 +209,6 @@ class App extends Component {
           <main className="App__main">{this.renderMainRoutes()}</main>
         </div>
       </GutHubContext.Provider>
-
     );
   };
 }

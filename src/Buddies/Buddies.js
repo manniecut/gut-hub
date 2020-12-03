@@ -57,24 +57,18 @@ class Buddies extends Component {
             )
         } else {
             return (
-
                 <div className='buddiespage buddylist__row'>
-                    <div className='buddylist__column'>
-                        <MessageCenter />
-                    </div>
-                    <div className='buddylist__column'>
-                        <ul className='buddylist__ul'>
-                            <h2>Buddies</h2>
-                            {this.state.buddies.map(buddy =>
-                                <Buddy
-                                    key={buddy}
-                                    id={buddy} />
-                            )}
-                        </ul>
-                        <button className="float">
-                            <span className="button-label my-float"><Link to='/add/buddy/' className="buddy__add__button">Add Buddy</Link></span>
-                        </button>
-                    </div>
+                    <ul className='buddylist__ul'>
+                        <h2>Buddies</h2>
+                        {this.state.buddies.map(buddy =>
+                            <Buddy
+                                key={buddy}
+                                id={buddy} />
+                        )}
+                    </ul>
+                    <button className="float">
+                        <span className="button-label my-float"><Link to='/add/buddy/' className="buddy__add__button">Add Buddy</Link></span>
+                    </button>
                 </div>
             )
         }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GutHubContext from '../../GutHubContext';
 import Message from './Message/Message';
 import config from '../../config';
-//import './Buddy.css'
+import './MessageCenter.css'
 
 class MessageCenter extends Component {
     state = {
@@ -55,7 +55,7 @@ class MessageCenter extends Component {
     render() {
         const receivedMessages = this.state.messages
         return (
-            <ol className='buddylist__ol'><h2>Message Center</h2>
+            <ol className='buddiespage buddylist__ol'><h2>Message Center</h2>
                 {receivedMessages.map(message =>
                     <Message
                         key={message.id}
