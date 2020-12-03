@@ -57,8 +57,8 @@ class Recipe extends Component {
             const ingredients = this.state.parsed.ingredients
             return (
                 <ul>
-                    {ingredients.map(function (listvalue) {
-                        return <li>{listvalue}</li>
+                    {ingredients.map(function (listvalue, i) {
+                        return <li key={i}>{listvalue}</li>
                     })}
                 </ul>
             )
@@ -70,8 +70,8 @@ class Recipe extends Component {
             const directions = this.state.parsed.directions
             return (
                 <ol>
-                    {directions.map(function (listvalue) {
-                        return <li>{listvalue}</li>
+                    {directions.map(function (listvalue, i) {
+                        return <li key={i}>{listvalue}</li>
                     })}
                 </ol>
             )

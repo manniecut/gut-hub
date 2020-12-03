@@ -6,13 +6,17 @@ import './Login.css'
 class Login extends Component {
     static contextType = GutHubContext;
 
+    /*handleSubmit = e => {
+        e.preventDefault()
+    }*/
+
     render() {
         return (
             <>
                 <form className='LoginPage'>
                     <div>
                         <label htmlFor='username'><h4>Username:</h4></label>
-                        <input type='text' name='username' id='username' value='Guest' required readOnly />
+                        <input type='text' name='username' id='username' value='Guest' onSubmit={e => {this.props.handleLogin(e.target.value)}} required readOnly />
                         <label htmlFor='password'><h4>Password:</h4></label>
                         <input type='text' name='password' id='password' value='*****' required readOnly />
                     </div>

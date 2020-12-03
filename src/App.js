@@ -132,6 +132,7 @@ class App extends Component {
         <>
           <Route
             path="/login"
+            login={this.handleLogin}
             component={Login} />
           <Route
             path="/createaccount"
