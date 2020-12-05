@@ -4,7 +4,6 @@ import GutHubContext from '../GutHubContext';
 import Buddy from './Buddy/Buddy';
 import config from '../config';
 import './Buddies.css';
-import MessageCenter from './MessageCenter/MessageCenter';
 
 
 class Buddies extends Component {

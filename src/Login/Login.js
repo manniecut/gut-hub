@@ -78,6 +78,7 @@ class Login extends Component {
                             Login
                 </button>
                     </div>
+                    <p>This is a test version, you can sign in with: "Guest", "guest".</p>
                     <p>Or <Link to='/createaccount'>Create an Account</Link></p>
                 </form>
             </>

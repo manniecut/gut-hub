@@ -95,11 +95,23 @@ class App extends Component {
 
   }
 
-  /*handleAddUser()
-  
-  handleUpdateUser()
-  
-  handleDeleteUser()
+  handleAddUser = newUser => {
+    this.setState({
+      users: [...this.state.users, newUser]
+    })
+  }
+
+ /* handleUpdateUser = updatedUser => {
+    const newUsers = this.state.users.map(user =>
+      (user.id === updatedUser.id)
+        ? updatedUser
+        : user
+    )
+    console.log(newUsers)
+    this.setState({
+      users: newUsers
+    })
+  }*/
   
   
   /* Recipe */
@@ -138,9 +150,14 @@ class App extends Component {
       return (
         <>
           <Route
-            path="/"
+            path="/(|messages|recipes|cooklists|buddies)"
             component={Login} />
+          <Route
+            exact
+            path="/createaccount/"
+            component={CreateAccount} />
         </>
+
       )
     } else {
       return (
@@ -214,6 +231,8 @@ class App extends Component {
       handleLogin: this.handleLogin,
       logout: this.handleLogout,
       setUser: this.setUser,
+      addUser: this.handleAddUser,
+      updateUser: this.handleUpdateUser,
 
       addRecipe: this.handleAddRecipe
     }
