@@ -25,7 +25,7 @@ class App extends Component {
   state = {
     user: {
       username: '',
-      userid: null,
+      userid: '',
     },
     recipes: [],
     buddies: [],
@@ -64,11 +64,11 @@ class App extends Component {
 
   /* Users */
 
-  handleLogin = (username) => {
+  handleLogin = id => {
+    console.log(id)
     this.setState({
       user: {
-        username: 'Guest',
-        userid: 4,
+        userid: id
       },
       loggedin: true
     })
@@ -76,9 +76,24 @@ class App extends Component {
 
   handleLogout = () => {
     this.setState({
+      user: {
+        username: '',
+        userid: '',
+      },
       loggedin: false
     })
   };
+
+  setUser = (username, userId) => {
+    this.setState({
+      user: {
+        username: username,
+        userid: userId
+      },
+      loggedin: true
+    })
+
+  }
 
   /*handleAddUser()
   
@@ -132,7 +147,6 @@ class App extends Component {
         <>
           <Route
             path="/login"
-            login={this.handleLogin}
             component={Login} />
           <Route
             path="/createaccount"
@@ -197,8 +211,9 @@ class App extends Component {
       users: this.state.users,
       recipes: this.state.recipes,
 
-      login: this.handleLogin,
+      handleLogin: this.handleLogin,
       logout: this.handleLogout,
+      setUser: this.setUser,
 
       addRecipe: this.handleAddRecipe
     }

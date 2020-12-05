@@ -12,7 +12,7 @@ class SearchForm extends Component {
         return (
             <form className="search__form" onSubmit={this.handleSubmit} >
                 <h4>Filter:</h4>
-                <input type='query' name='query' id='query' onChange={e => this.props.updateQuery(e.target.value)} required />
+                <input className="filterquery" name='query' id='query' onChange={e => this.props.updateQuery(e.target.value)} required />
 
                 <select id='source' name='source' onChange={e => this.props.updateFilter(e.target.value)}>
                     <option value="false">All Recipes</option>
