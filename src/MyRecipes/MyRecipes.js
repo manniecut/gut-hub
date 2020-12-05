@@ -61,8 +61,6 @@ class MyRecipes extends Component {
 
     }
 
-
-
     render() {
         if (this.state.recipes === []) {
             return(

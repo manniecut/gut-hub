@@ -39,8 +39,6 @@ class DeleteButton extends Component {
     render() {
         const viewer = this.context.user.userid
         const creator = this.props.creator
-        console.log(viewer, creator)
-
         if (creator === viewer) {
             return (
                 <button className="recipe__button" type='button' onClick={this.handleClickDelete}>

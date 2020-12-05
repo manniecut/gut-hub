@@ -102,7 +102,7 @@ class App extends Component {
     })
   }
 
- /* handleUpdateUser = updatedUser => {
+  handleUpdateUser = updatedUser => {
     const newUsers = this.state.users.map(user =>
       (user.id === updatedUser.id)
         ? updatedUser
@@ -112,9 +112,9 @@ class App extends Component {
     this.setState({
       users: newUsers
     })
-  }*/
-  
-  
+  }
+
+
   /* Recipe */
 
   handleAddRecipe = newRecipe => {
@@ -124,7 +124,7 @@ class App extends Component {
   };
 
 
-  
+
   /* Messages *
   
   handleSendMessage()  // same as any previous Add function
@@ -143,7 +143,7 @@ class App extends Component {
       return (
         <>
           <Route
-            path="/(|search|myrecipes|cooklists|buddies)"
+            path="/(|search|myrecipes|messages|buddies)"
             component={Login} />
           <Route
             exact

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import Result from './Result/Result'
 import SearchForm from './SearchForm/SearchForm';
 import GutHubContext from '../GutHubContext';
@@ -44,12 +43,6 @@ class Search extends Component {
 
     }
 
-    handleSavedFilter = filter => {
-        this.setState({
-            saved: filter
-        })
-    }
-
 
 
     render() {
@@ -61,7 +54,6 @@ class Search extends Component {
                 <h2>Search Recipes</h2>
                 <SearchForm 
                     updateQuery={this.handleQueryUpdate}
-                    updateFilter={this.handleSavedFilter}
                 />
                 <ol className='rectangle-list'>Results:
                 {filteredRecipes.map(recipe =>

@@ -9,6 +9,7 @@ const GutHubContext = React.createContext({
 
     handleLogin: ( ) => { },
     setUser: ( ) => { },
+    updateUser: ( ) => { },
 
 
     addRecipe: ( ) => { },

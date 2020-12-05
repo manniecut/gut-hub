@@ -11,7 +11,8 @@ class HomeScreen extends Component {
             <div className='homescreen'>
                 <div>
                     <h3>Welcome, {this.context.user.username}!</h3>
-                    <p>You have 4 saved recipes and 2 CookLists.</p>
+                    <p>Click a tab above to get started</p>
+                    <p> or </p>
                 </div>
                 <div>
                     <p><Link to='/tutorial'>Click here for a quick rundown on using GutHub</Link></p>

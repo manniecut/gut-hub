@@ -19,8 +19,10 @@ class MessageCenter extends Component {
         const loggedInUser = this.context.user.userid
         const recMessages = this.context.users[loggedInUser - 1].received.split(',')
         const userMessages = []
+        console.log(loggedInUser, recMessages)
         recMessages.forEach(recMsg => {
             allMessages.forEach(message => {
+                console.log(recMsg)
                 if (message.id === parseInt(recMsg)) {
                     userMessages.push(message)
                 }
@@ -53,9 +55,9 @@ class MessageCenter extends Component {
 
     render() {
         const receivedMessages = this.state.messages
-        if (!receivedMessages) {
+        if (receivedMessages == '') {
             return (
-                <><h2>Messages</h2><p>No new messages.</p></>
+                <div className='buddiespage'><h2>Messages</h2><p>No new messages.</p></div>
             )
         } else {
             return (
