@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import GutHubContext from '../../GutHubContext';
-import DeleteButton from './DeleteButton';
 import config from '../../config';
 
-class RecipeControlsEdit extends Component {
+class DeleteButton extends Component {
 
     static defaultProps = {
         history: {
@@ -36,46 +35,30 @@ class RecipeControlsEdit extends Component {
             })
     }
 
-    renderDeleteButton() {
-        const creator = this.props.buddyid
-        const viewer = this.context.user.id
+
+    render() {
+        const viewer = this.context.user.userid
+        const creator = this.props.creator
         console.log(viewer, creator)
+
         if (creator === viewer) {
             return (
-                <button className="recipe__button" type='button' onClick={() => this.handleClickDelete()}>
+                <button className="recipe__button" type='button' onClick={this.handleClickDelete}>
                     <span>Delete</span>
                 </button>
             )
+        } else {
+            return (
+                <>
+                </>
+            )
         }
-
-    }
-
-    render() {
-        return (
-            <div className="recipe__controls">
-                <button className="recipe__button">
-                    <span>Save</span>
-                </button>
-                <button className="recipe__button">
-                    <span>Share</span>
-                </button>
-                <button className="recipe__button">
-                    <span>+CookList</span>
-                </button>
-                <DeleteButton 
-                    creator={this.props.buddyid}
-                    viewer={this.context.user.id}
-                    recipeid={this.props.recipeid}
-                    history={this.props.history}
-                />
-            </div>
-        )
     }
 }
 
 
 
-export default RecipeControlsEdit;
+export default DeleteButton;
 
 /*
 TO DO:
