@@ -57,11 +57,9 @@ class RecipeControlsEdit extends Component {
                     <span>Save</span>
                 </button>
                 <button className="recipe__button">
-                    <span>Share</span>
+                    <span>Send</span>
                 </button>
-                <button className="recipe__button">
-                    <span>+CookList</span>
-                </button>
+
                 <DeleteButton 
                     creator={this.props.buddyid}
                     viewer={this.context.user.id}
@@ -78,7 +76,12 @@ class RecipeControlsEdit extends Component {
 export default RecipeControlsEdit;
 
 /*
-TO DO:
+FUTURE UPDATES:
+
+<button className="recipe__button">
+    <span>+CookList</span>
+</button>
+
 
 <button className="recipe__button">
     <Link to={`/edit/recipe/${this.props.recipeid}`}><span>Edit</span></Link>

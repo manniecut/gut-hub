@@ -23,7 +23,6 @@ class MessageCenter extends Component {
             allMessages.forEach(message => {
                 if (message.id === parseInt(recMsg)) {
                     userMessages.push(message)
-
                 }
             })
         })
@@ -43,7 +42,7 @@ class MessageCenter extends Component {
                     messages: userMessages
                 })
             })
-            .catch(error => alert('Messages could not be found. Please Try Again'));
+            .catch(error => console.log('Messages could not be found. Please Try Again'));
 
     }
 
@@ -54,19 +53,25 @@ class MessageCenter extends Component {
 
     render() {
         const receivedMessages = this.state.messages
-        return (
-            <ol className='buddiespage buddylist__ol'><h2>Message Center</h2>
-                {receivedMessages.map(message =>
-                    <Message
-                        key={message.id}
-                        id={message.id}
-                        sentobject={message.sentobject}
-                        timesent={message.timesent}
-                        sender={message.sender}
-                    />
-                )}
-            </ol>
-        )
+        if (!receivedMessages) {
+            return (
+                <><h2>Messages</h2><p>No new messages.</p></>
+            )
+        } else {
+            return (
+                <ol className='buddiespage buddylist__ol'><h2>Messages</h2>
+                    {receivedMessages.map(message =>
+                        <Message
+                            key={message.id}
+                            id={message.id}
+                            sentobject={message.sentobject}
+                            timesent={message.timesent}
+                            sender={message.sender}
+                        />
+                    )}
+                </ol>
+            )
+        }
     }
 }
 

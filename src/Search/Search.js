@@ -10,8 +10,7 @@ class Search extends Component {
 
     state = {
         recipes: [],
-        query: '',
-        saved: false
+        query: ''
     }
 
     static defaultProps = {
@@ -23,13 +22,11 @@ class Search extends Component {
     static contextType = GutHubContext
 
     componentDidMount() {
-
         fetch(`${config.API_ENDPOINT}/recipes`)
             .then(res => {
                 if (!res.ok)
                     return res.json().then(e => Promise.reject(e));
                 return res.json();
-
             })
             .then(recipes => {
                 this.setState({
@@ -61,7 +58,7 @@ class Search extends Component {
         })
         return (
             <div className='SearchPage'>
-                <h2>Recipes</h2>
+                <h2>Search Recipes</h2>
                 <SearchForm 
                     updateQuery={this.handleQueryUpdate}
                     updateFilter={this.handleSavedFilter}
@@ -77,9 +74,6 @@ class Search extends Component {
                     />
                 )}
                 </ol>
-                <button className="float">
-                    <span className="button-label my-float"><Link to='/add/recipe' className='recipe__add__button'>Add Recipe</Link></span>
-                </button>
             </div>
         )
     }

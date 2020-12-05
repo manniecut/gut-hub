@@ -6,14 +6,15 @@ import Navbar from './Navbar/Navbar';
 import Search from './Search/Search';
 import Buddies from './Buddies/Buddies';
 import Recipe from './Recipes/Recipe/Recipe';
-import SavedCookLists from './CookLists/SavedCookLists/SavedCookLists';
-import Groceries from './Groceries/Groceries';
-import CookList from './CookLists/CookList/CookList';
+//import SavedCookLists from './CookLists/SavedCookLists/SavedCookLists';
+//import Groceries from './Groceries/Groceries';
+//import CookList from './CookLists/CookList/CookList';
 import EditRecipe from './Recipes/EditRecipe/EditRecipe';
 import Login from './Login/Login';
 import CreateAccount from './Login/CreateAccount/CreateAccount';
 import AddRecipe from './Recipes/AddRecipe/AddRecipe';
 import AddBuddy from './Buddies/AddBuddy/AddBuddy';
+import MyRecipes from './MyRecipes/MyRecipes';
 import GutHubTutorial from './GutHubTutorial/GutHubTutorial';
 
 import GutHubContext from './GutHubContext';
@@ -123,14 +124,6 @@ class App extends Component {
   };
 
 
-  /* Cooklists *
-  
-  handleAddCooklist()
-  
-  handleUpdateCooklist()
-  
-  handleDeleteCooklist()
-  
   
   /* Messages *
   
@@ -150,7 +143,7 @@ class App extends Component {
       return (
         <>
           <Route
-            path="/(|messages|recipes|cooklists|buddies)"
+            path="/(|search|myrecipes|cooklists|buddies)"
             component={Login} />
           <Route
             exact
@@ -175,18 +168,14 @@ class App extends Component {
             component={HomeScreen} />
           <Route
             exact
-            path="/recipes"
+            path="/search"
             component={Search} />
-          <Route
-            exact
-            path="/cooklists"
-            component={SavedCookLists} />
           <Route
             path="/buddies"
             component={Buddies} />
           <Route
-            path="/groceries"
-            component={Groceries} />
+            path="/myrecipes"
+            component={MyRecipes} />
           <Route
             path="/messages"
             component={MessageCenter} />
@@ -205,10 +194,6 @@ class App extends Component {
             path="/edit/recipe/:recipeid"
             component={EditRecipe} />
 
-          <Route
-            exact
-            path="/cooklists/:cooklistid"
-            component={CookList} />
 
           <Route
             path="/add/buddy"

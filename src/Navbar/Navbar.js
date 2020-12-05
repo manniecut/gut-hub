@@ -15,10 +15,10 @@ class Navbar extends Component {
                 <nav>
                     <ul>
                         <li>
-                            <h3><NavLink className='nav__link' to="/recipes">Recipes</NavLink></h3>
+                            <h3><NavLink className='nav__link' to="/search">Search</NavLink></h3>
                         </li>
                         <li>
-                            <h3><NavLink className='nav__link' to="/cooklists">CookLists</NavLink></h3>
+                            <h3><NavLink className='nav__link' to="/myrecipes">MyRecipes</NavLink></h3>
                         </li>
                         <li>
                             <h3><NavLink className='nav__link' to="/messages">Messages</NavLink></h3>
@@ -39,6 +39,13 @@ export default Navbar;
 /*
 
 To Do
+
+Search to magnifying glass
+
+<li>
+    <h3><NavLink className='nav__link' to="/cooklists">CookLists</NavLink></h3>
+</li>
+
 <li>
    <h3><NavLink className='nav__link' to="/groceries">Groceries</NavLink></h3>
 </li>
