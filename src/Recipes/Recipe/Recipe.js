@@ -101,6 +101,7 @@ class Recipe extends Component {
                 </span>
                 <h3>by: {this.state.buddy.username}</h3>
                 <p>{recipe.quickdesc}</p>
+                {this.renderRecipeControls()}
                 <div>
                     <h3>Ingredients</h3>
                     {this.renderIngredientsList()}
@@ -110,7 +111,6 @@ class Recipe extends Component {
                     <h3>Directions</h3>
                     {this.renderDirectionsList()}
                 </div>
-                {this.renderRecipeControls()}
             </div>
         )
     }

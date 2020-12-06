@@ -21,7 +21,6 @@ class SaveButton extends Component {
 
 
     componentDidUpdate() {
-        console.log('did update')
         const currentlySavedRecipes = this.props.currentlySaved
         const recipeToSave = (this.props.recipeToSave).toString()
         if ((this.state.loaded === false) && (currentlySavedRecipes.includes(recipeToSave) === true)) {
@@ -68,24 +67,54 @@ class SaveButton extends Component {
 
 
     handleRecipeSave = e => {
-        console.log('handle save')
-        const { loggedInUser } = this.state
-        const user = this.context.users[loggedInUser - 1]
-        fetch(`${config.API_ENDPOINT}/users/${loggedInUser}`, {
-            method: 'PATCH',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify(user)
-        })
-            .then(res => {
-                if (!res.ok)
-                    return res
-                        .then(e => Promise.reject(e))
-                return res
-            })
-            .then(this.context.updateUser(user))
-            .catch(error => { console.log('error') })
+        console.log('handle recipe save button')
+
+        const { currentlySaved, recipeToSave } = this.state
+        const userIndex = ((parseInt(this.state.loggedInUser)) - 1)
+        console.log(userIndex)
+        //setting userIndex, currentlySaved, recipeToSave
+
+
+
+        if (this.state.buttonText === "Save") {
+            console.log('saving..')
+
+            const fullString = (currentlySaved.concat(recipeToSave)).toString()
+            console.log(fullString)
+            //create fullString from combining saved and new recipe strings
+
+
+            const user = this.context.users[userIndex]
+            //user.savedrecipes = fullString
+            console.log(user)
+            //creating user object and adding new string
+
+
+            //     fetch(`${config.API_ENDPOINT}/users/${loggedInUser}`, {
+            //         method: 'PATCH',
+            //         headers: {
+            //             'content-type': 'application/json',
+            //         },
+            //         body: JSON.stringify(user)
+            //     })
+            //         .then(res => {
+            //             if (!res.ok)
+            //                 return res
+            //                     .then(e => Promise.reject(e))
+            //             return res
+            //         })
+            //         .then(this.context.updateUser(user))
+            //         .catch(error => { console.log('error') })
+            //sending patch to server
+
+
+
+        } else if (this.state.buttonText === "UnSave") {
+            console.log('unsaving..')
+
+            const filteredString = (currentlySaved.filter(num => num !== recipeToSave)).toString()
+            console.log(filteredString)
+        }
     }
 
 
