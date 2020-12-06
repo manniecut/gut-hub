@@ -30,9 +30,6 @@ class Buddy extends Component {
 
     }
 
-    handleClickDelete = e => {
-
-    }
 
     render() {
         return (
@@ -41,7 +38,7 @@ class Buddy extends Component {
                     <h3 className='Buddy__username'>
                             {this.state.buddy.username}
                     </h3>
-                    <button className='Buddy__delete' type='button'>Remove</button>
+                    <button className='Buddy__delete' type='button' onClick={e => this.props.delete(this.state.buddy.id)}>Remove</button>
                 </li>
             </>
         )

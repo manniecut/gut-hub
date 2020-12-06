@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CookListSummary from './CookListSummary/CookListSummary';
 import GutHubContext from '../../GutHubContext';
 import SearchForm from '../../Search/SearchForm/SearchForm';
+import { orderUsers } from '../../guthub-helpers';
 import config from '../../config';
 import './SavedCookLists.css';
 
@@ -39,7 +40,7 @@ class SavedCookLists extends Component {
     getSavedLists = (cooklists) => {
         // compares saved to stored and stores the saved ones
         const loggedInUser = this.context.user.userid
-        const savedCookLists = this.context.users[loggedInUser - 1].received.split(',')
+        const savedCookLists = (orderUsers(this.context.users))[loggedInUser - 1].received.split(',')
         const savedLists = []
         savedCookLists.forEach(savedList => {
             cooklists.forEach(list => {
@@ -48,7 +49,7 @@ class SavedCookLists extends Component {
                 }
             })
         })
-       return savedLists
+        return savedLists
     }
 
 

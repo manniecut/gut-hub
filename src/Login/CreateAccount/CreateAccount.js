@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GutHubContext from '../../GutHubContext';
+import { orderUsers } from '../../guthub-helpers';
 import config from '../../config';
 
 class CreateAccount extends Component {
@@ -25,7 +26,7 @@ class CreateAccount extends Component {
     handleSubmit = e => {
         e.preventDefault();
         const { username, pass, check, email } = this.state
-        const users = this.context.users
+        const users = orderUsers(this.context.users)
         if (check !== pass) {
             console.log('check passwords')
         } else {

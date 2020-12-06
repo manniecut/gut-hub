@@ -114,6 +114,10 @@ class App extends Component {
     })
   }
 
+  handleAddBuddy = buddy => {
+
+  }
+
 
   /* Recipe */
 
@@ -218,6 +222,7 @@ class App extends Component {
       setUser: this.setUser,
       addUser: this.handleAddUser,
       updateUser: this.handleUpdateUser,
+      addBuddy: this.handleAddBuddy,
 
       addRecipe: this.handleAddRecipe
     }

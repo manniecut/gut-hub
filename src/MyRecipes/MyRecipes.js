@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Result from '../Search/Result/Result'
 import SearchForm from '../Search/SearchForm/SearchForm';
+import { orderUsers } from '../guthub-helpers';
 import GutHubContext from '../GutHubContext';
 import config from '../config';
 import '../Search/Search.css';
+
 
 class MyRecipes extends Component {
 
@@ -42,7 +44,7 @@ class MyRecipes extends Component {
     getSavedRecipes = (recipes) => {
         // compares saved to stored and stores the saved ones
         const loggedInUser = this.context.user.userid
-        const savedRecIndexs = this.context.users[loggedInUser - 1].savedrecipes.split(',')
+        const savedRecIndexs = (orderUsers(this.context.users))[loggedInUser - 1].savedrecipes.split(',')
         const savedRecipes = []
         savedRecIndexs.forEach(index => {
             recipes.forEach(recipe => {

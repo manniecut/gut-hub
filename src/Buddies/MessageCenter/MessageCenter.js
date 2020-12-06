@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GutHubContext from '../../GutHubContext';
 import Message from './Message/Message';
+import { orderUsers } from '../../guthub-helpers';
 import config from '../../config';
 import './MessageCenter.css'
 
@@ -17,7 +18,7 @@ class MessageCenter extends Component {
 
     getMessagesForUser = (allMessages) => {
         const loggedInUser = this.context.user.userid
-        const recMessages = this.context.users[loggedInUser - 1].received.split(',')
+        const recMessages = (orderUsers(this.context.users))[loggedInUser - 1].received.split(',')
         const userMessages = []
         console.log(loggedInUser, recMessages)
         recMessages.forEach(recMsg => {

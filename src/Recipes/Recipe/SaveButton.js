@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { orderUsers } from '../../guthub-helpers';
 import GutHubContext from '../../GutHubContext';
 import config from '../../config';
 
@@ -16,7 +17,6 @@ class SaveButton extends Component {
             goBack: () => { }
         }
     }
-
     static contextType = GutHubContext;
 
 
@@ -42,78 +42,65 @@ class SaveButton extends Component {
         }
     }
 
-    // handleSaveUpdate = (recipe, currentlySaved) => {
-    //     const loggedInUser = this.context.user.userid
-    //     const fullString = (currentlySaved.concat(recipe)).toString()
-    //     const user = this.context.users[loggedInUser - 1]
-    //     user.savedrecipes = fullString
-    //     console.log(user)
-    //     fetch(`${config.API_ENDPOINT}/users/${loggedInUser}`, {
-    //         method: 'PATCH',
-    //         headers: {
-    //             'content-type': 'application/json',
-    //         },
-    //         body: JSON.stringify(user)
-    //     })
-    //             .then(res => {
-    //         if (!res.ok)
-    // return res
-    //     .then(e => Promise.reject(e))
-    // return res
-    //             })
-    //             .then(this.context.updateUser(user))
-    //     .catch(error => { console.log('error') })
-    // }
-
 
     handleRecipeSave = e => {
-        console.log('handle recipe save button')
-
+        // console.log('handle recipe save button')
         const { currentlySaved, recipeToSave } = this.state
         const userIndex = ((parseInt(this.state.loggedInUser)) - 1)
-        console.log(userIndex)
+        const user = (orderUsers(this.context.users))[userIndex]
+        // console.log(userIndex)
+        // console.log(user)
         //setting userIndex, currentlySaved, recipeToSave
-
-
-
         if (this.state.buttonText === "Save") {
-            console.log('saving..')
-
+            // console.log('saving..')
             const fullString = (currentlySaved.concat(recipeToSave)).toString()
-            console.log(fullString)
-            //create fullString from combining saved and new recipe strings
-
-
-            const user = this.context.users[userIndex]
-            //user.savedrecipes = fullString
-            console.log(user)
-            //creating user object and adding new string
-
-
-            //     fetch(`${config.API_ENDPOINT}/users/${loggedInUser}`, {
-            //         method: 'PATCH',
-            //         headers: {
-            //             'content-type': 'application/json',
-            //         },
-            //         body: JSON.stringify(user)
-            //     })
-            //         .then(res => {
-            //             if (!res.ok)
-            //                 return res
-            //                     .then(e => Promise.reject(e))
-            //             return res
-            //         })
-            //         .then(this.context.updateUser(user))
-            //         .catch(error => { console.log('error') })
+            // console.log(fullString)
+            user.savedrecipes = fullString
+            // console.log(user)
+            //create fullString from combining saved and new recipe strings and add to user object
+            fetch(`${config.API_ENDPOINT}/users/${this.state.loggedInUser}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(user)
+            })
+                .then(res => {
+                    if (!res.ok)
+                        return res
+                            .then(e => Promise.reject(e))
+                    return res
+                })
+                .then(this.context.updateUser(user))
+                .then(this.setState({
+                    buttonText: "UnSave"
+                }))
+                .catch(error => { console.log('error') })
             //sending patch to server
-
-
-
         } else if (this.state.buttonText === "UnSave") {
-            console.log('unsaving..')
-
+            // console.log('unsaving..')
             const filteredString = (currentlySaved.filter(num => num !== recipeToSave)).toString()
-            console.log(filteredString)
+            // console.log(filteredString)
+            user.savedrecipes = filteredString
+            fetch(`${config.API_ENDPOINT}/users/${this.state.loggedInUser}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(user)
+            })
+                .then(res => {
+                    if (!res.ok)
+                        return res
+                            .then(e => Promise.reject(e))
+                    return res
+                })
+                .then(this.context.updateUser(user))
+                .then(this.setState({
+                    buttonText: "Save"
+                }))
+                .catch(error => { console.log('error') })
+            //sending patch to server
         }
     }
 

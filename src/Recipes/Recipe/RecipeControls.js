@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import GutHubContext from '../../GutHubContext';
-import DeleteButton from './DeleteButton';
-import config from '../../config';
 import SaveButton from './SaveButton';
+import DeleteButton from './DeleteButton';
+import { orderUsers } from '../../guthub-helpers';
+import GutHubContext from '../../GutHubContext';
+import config from '../../config';
 
 class RecipeControls extends Component {
 
@@ -43,7 +44,7 @@ class RecipeControls extends Component {
 
     render() {
         const loggedInUser = this.context.user.userid
-        const currentlySaved = this.context.users[loggedInUser - 1].savedrecipes.split(',')
+        const currentlySaved = (orderUsers(this.context.users))[loggedInUser - 1].savedrecipes.split(',')
         return (
             <div className="recipe__controls">
                 <SaveButton

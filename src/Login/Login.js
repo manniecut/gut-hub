@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { orderUsers } from '../guthub-helpers';
 import GutHubContext from '../GutHubContext';
 import './Login.css'
 
@@ -16,7 +17,7 @@ class Login extends Component {
     handleSubmit = e => {
         e.preventDefault();
         const { username, password, userId } = this.state
-        const users = this.context.users
+        const users = orderUsers(this.context.users)
         users.forEach(user => {
             if (user.username === username && user.pass === password) {
                 this.context.setUser(username, userId)
@@ -29,7 +30,7 @@ class Login extends Component {
     /** Form to State Functions */
 
     handleSetUser = username => {
-        const users = this.context.users
+        const users = orderUsers(this.context.users)
         users.forEach(user => {
             if (user.username === username) {
                 this.setState({
