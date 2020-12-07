@@ -40,6 +40,23 @@ class RecipeControls extends Component {
             })
     }
 
+    renderSender() {
+        const loggedInUser = this.context.user.userid
+        const buddyList = (orderUsers(this.context.users))[loggedInUser - 1].buddylist.split(',')
+        console.log(buddyList)
+        if (buddyList == "") {
+            return (<></>)
+        } else {
+            return (
+                <button className="recipe__button">
+                    <Link to={`/recipes/${this.props.recipeid}/send`} className="send__link"><span>Send</span></Link>
+                </button>
+            )
+        }
+
+
+    }
+
 
 
 
@@ -53,9 +70,7 @@ class RecipeControls extends Component {
                     currentlySaved={currentlySaved}
                     recipeToSave={this.props.recipeid}
                 />
-                <button className="recipe__button">
-                    <Link to={`/recipes/${this.props.recipeid}/send`} className="send__link"><span>Send</span></Link>
-                </button>
+                {this.renderSender()}
                 <DeleteButton
                     creator={this.props.buddyid}
                     viewer={this.context.user.userid}
