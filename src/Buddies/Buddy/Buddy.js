@@ -20,16 +20,13 @@ class Buddy extends Component {
                 if (!res.ok)
                     return res.json().then(e => Promise.reject(e));
                 return res.json();
-
             })
             .then(buddy => {
                 this.setState({ buddy: buddy })
             }
             )
             .catch(error => alert('Buddy could not be found. Please Try Again'));
-
     }
-
 
     render() {
         return (

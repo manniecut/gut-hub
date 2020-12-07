@@ -62,7 +62,7 @@ class AddBuddy extends Component {
                         return res
                     })
                     .then(this.context.updateUser(user))
-                    .then(this.props.history.goBack())
+                    .then(this.props.history.push('/buddies'))
                     .catch(error => { console.log('error') })
             }
         })

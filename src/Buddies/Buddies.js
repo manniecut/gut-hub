@@ -9,9 +9,8 @@ import './Buddies.css';
 
 class Buddies extends Component {
     state = {
-        loggedInUser: this.context.user.userid,
-        users: [],
         buddies: [],
+        updatedBuddies: [],
         received: []
     }
 
@@ -24,42 +23,11 @@ class Buddies extends Component {
     static contextType = GutHubContext
 
     componentDidMount() {
-        fetch(`${config.API_ENDPOINT}/users/${this.state.loggedInUser}/`)
-            .then(res => {
-                if (!res.ok)
-                    return res.json().then(e => Promise.reject(e));
-                return res.json();
-
-            })
-            .then(userinfo => {
-                const { buddylist, received } = userinfo;
-                if (buddylist) {
-                    this.setState({
-                        buddies: buddylist.split(','),
-                        received: received.split(',')
-                    })
-                }
-            })
-            .catch(error => alert('Buddies could not be found. Please Try Again'));
-    }
-
-    componentDidUpdate() {
-        fetch(`${config.API_ENDPOINT}/users/${this.state.loggedInUser}/`)
-            .then(res => {
-                if (!res.ok)
-                    return res.json().then(e => Promise.reject(e));
-                return res.json();
-            })
-            .then(userinfo => {
-                const { buddylist, received } = userinfo;
-                if (buddylist) {
-                    this.setState({
-                        buddies: buddylist.split(','),
-                        received: received.split(',')
-                    })
-                }
-            })
-            .catch(error => alert('Buddies could not be found. Please Try Again'));
+        const userIndex = ((parseInt(this.context.user.userid)) - 1)
+        const user = (orderUsers(this.context.users))[userIndex]
+        this.setState({
+            buddies: user.buddylist.split(',')
+        })
     }
 
     orderUsers = users => {
@@ -67,11 +35,13 @@ class Buddies extends Component {
     }
 
     handleClickDelete = id => {
-        const currentlySaved = this.state.buddies
-        console.log(currentlySaved)
-        const userIndex = ((parseInt(this.state.loggedInUser)) - 1)
+        const currentBuddies = this.state.buddies
+        console.log(currentBuddies)
+        const userIndex = ((parseInt(this.context.user.userid)) - 1)
         const user = (orderUsers(this.context.users))[userIndex]
-        const filteredString = (this.state.buddies.filter(bud => bud !== id.toString())).toString()
+        const filtered = (currentBuddies.filter(bud => bud !== id.toString()))
+        console.log(filtered)
+        const filteredString = filtered.toString()
         user.buddylist = filteredString
         console.log(user)
         fetch(`${config.API_ENDPOINT}/users/${user.id}`, {
@@ -88,13 +58,15 @@ class Buddies extends Component {
                 return res
             })
             .then(this.context.updateUser(user))
+            .then(this.setState({
+                buddies: filtered
+            }))
             .catch(error => { console.log('error') })
-
     }
 
 
     render() {
-        if (!this.state.buddies) {
+        if (this.state.buddies == "") {
             return (
                 <div className='buddiespage'>
                     <h2>Buddies</h2>

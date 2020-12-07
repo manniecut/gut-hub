@@ -56,6 +56,13 @@ class Login extends Component {
         return (
             <>
                 <form className='LoginPage' onSubmit={this.handleSubmit}>
+                    <h2>Welcome to GutHub!</h2>
+                    <p>GutHub is a simple recipe tracking and meal planning app.
+                </p>
+                    <p>The goal is to allow you to keep tabs on your favorite recipes,
+                    with a very simple way to share them so you can stay on the
+                    same page with people you live or coordinate meals with.
+                </p><br />
                     <div>
                         <label htmlFor='username'><h4>Username:</h4></label>
                         <input

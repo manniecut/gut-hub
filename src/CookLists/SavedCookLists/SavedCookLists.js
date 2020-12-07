@@ -90,7 +90,6 @@ class SavedCookLists extends Component {
                                 id={cooklist.id}
                                 title={cooklist.title}
                                 quickdesc={cooklist.quickdesc}
-
                             />
                         )}
                     </ul>
@@ -115,13 +114,11 @@ class SavedCookLists extends Component {
                                 id={cooklist.id}
                                 title={cooklist.title}
                                 quickdesc={cooklist.quickdesc}
-
                             />
                         )}
                     </ul>
                 </div>
             )
-
         }
     }
 }

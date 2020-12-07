@@ -46,7 +46,6 @@ class MessageCenter extends Component {
                 })
             })
             .catch(error => console.log('Messages could not be found. Please Try Again'));
-
     }
 
 
@@ -94,21 +93,18 @@ class MessageCenter extends Component {
                     messages: userMessages
                 })
             })
-            .then(console.log('xxx'))
             .catch(error => { console.log({ error }) })
     }
 
     render() {
         const receivedMessages = this.state.messages
-        const msgNumber = this.state.messageString.length
-        console.log(msgNumber)
         if (receivedMessages == '') {
             return (
                 <div className='buddiespage'><h2>Messages</h2><p>No messages.</p></div>
             )
         } else {
             return (
-                <ol className='buddiespage buddylist__ol'><h2>You have {msgNumber} Messages</h2>
+                <ol className='buddiespage buddylist__ol'><h2>Messages</h2>
                     {receivedMessages.map(message =>
                         <Message
                             key={message.id}

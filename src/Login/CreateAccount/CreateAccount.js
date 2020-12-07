@@ -33,6 +33,7 @@ class CreateAccount extends Component {
             users.forEach(user => {
                 if (user.username === username) {
                     alert('username exists')
+                    return
                 } else {
                     const newUser = {
                         username: username,
