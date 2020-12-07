@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import SaveButton from './SaveButton';
 import DeleteButton from './DeleteButton';
 import { orderUsers } from '../../guthub-helpers';
@@ -52,7 +53,7 @@ class RecipeControls extends Component {
                     recipeToSave={this.props.recipeid}
                 />
                 <button className="recipe__button">
-                    <span>Send</span>
+                    <Link to={`/recipes/${this.props.recipeid}/send`}><span>Send</span></Link>
                 </button>
                 <DeleteButton
                     creator={this.props.buddyid}

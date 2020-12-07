@@ -21,6 +21,7 @@ import GutHubContext from './GutHubContext';
 import config from './config';
 import './App.css';
 import MessageCenter from './Buddies/MessageCenter/MessageCenter';
+import SendRecipe from './Recipes/SendRecipe/SendRecipe';
 
 class App extends Component {
   state = {
@@ -191,6 +192,10 @@ class App extends Component {
             exact
             path="/recipes/:recipeid"
             component={Recipe} />
+            <Route
+            exact
+            path="/recipes/:recipeid/send"
+            component={SendRecipe} />
           <Route
             path="/add/recipe"
             component={AddRecipe} />
@@ -223,6 +228,8 @@ class App extends Component {
       addUser: this.handleAddUser,
       updateUser: this.handleUpdateUser,
       addBuddy: this.handleAddBuddy,
+
+      sendMessage: this.sendMessage,
 
       addRecipe: this.handleAddRecipe
     }
