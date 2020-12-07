@@ -17,6 +17,7 @@ class Message extends Component {
     static contextType = GutHubContext;
 
     handleClickDelete = e => {
+        this.props.delete(this.props.id)
 
     }
 
@@ -52,7 +53,7 @@ class Message extends Component {
                     <p>
                         From: {this.state.buddyName}
                     </p>
-                    <button className='Message__delete' type='button'>Delete</button>
+                    <button className='Message__delete' type='button' onClick={this.handleClickDelete}>Delete</button>
 
 
                 </li>

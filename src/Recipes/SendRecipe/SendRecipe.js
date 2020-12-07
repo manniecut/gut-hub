@@ -134,7 +134,7 @@ class SendRecipe extends Component {
         console.log(buddies)
         for (let i = 0; i < buddies.length; i++) {
             console.log(buddies[i])
-            content.push(<option value={buddies[i].id}>{buddies[i].username}</option>)
+            content.push(<option key={buddies[i].id} value={buddies[i].id}>{buddies[i].username}</option>)
 
         }
         return content

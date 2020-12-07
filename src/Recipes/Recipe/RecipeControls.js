@@ -5,6 +5,7 @@ import DeleteButton from './DeleteButton';
 import { orderUsers } from '../../guthub-helpers';
 import GutHubContext from '../../GutHubContext';
 import config from '../../config';
+import './Recipe.css'
 
 class RecipeControls extends Component {
 
@@ -53,7 +54,7 @@ class RecipeControls extends Component {
                     recipeToSave={this.props.recipeid}
                 />
                 <button className="recipe__button">
-                    <Link to={`/recipes/${this.props.recipeid}/send`}><span>Send</span></Link>
+                    <Link to={`/recipes/${this.props.recipeid}/send`} className="send__link"><span>Send</span></Link>
                 </button>
                 <DeleteButton
                     creator={this.props.buddyid}

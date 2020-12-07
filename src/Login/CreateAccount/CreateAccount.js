@@ -111,7 +111,7 @@ class CreateAccount extends Component {
 
                     <label htmlFor='password'>Password:</label>
                     <input
-                        type='text'
+                        type='password'
                         name='password'
                         id='password'
                         onChange={e => this.handlePassUpdate(e.target.value)}
@@ -119,7 +119,7 @@ class CreateAccount extends Component {
 
                     <label htmlFor='password'>Password Again:</label>
                     <input
-                        type='text'
+                        type='password'
                         name='password'
                         id='password'
                         onChange={e => this.handleCheckUpdate(e.target.value)}
@@ -128,12 +128,9 @@ class CreateAccount extends Component {
                     <label htmlFor='password'>Email (optional, for latest updates):</label>
                     <input
                         type='text'
-                        name='password'
-                        id='password'
-                        onChange={e => this.handleEmailUpdate(e.target.value)}
-                        required />
-
-
+                        name='email'
+                        id='email'
+                        onChange={e => this.handleEmailUpdate(e.target.value)} />
                     <div >
                         <p>By signing up you agree that you've been made aware that this is currently in
                     testing phase and the password isn't super secure so please use a throwaway password.</p>
