@@ -126,9 +126,6 @@ class SendRecipe extends Component {
     }
 
     optionRender() {
-        const users = orderUsers(this.context.users)
-        const userIndex = ((parseInt(this.context.user.userid)) - 1)
-        const userInfo = users[userIndex]
         const buddies = this.state.details
         let content = []
         console.log(buddies)
