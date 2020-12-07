@@ -53,9 +53,10 @@ class SendRecipe extends Component {
         e.preventDefault();
         console.log('sending')
         const newMessage = {
-            sentObject: `/recipes/${this.state.recipeId}`,
+            sentobject: `/recipes/${this.state.recipeId}`,
             sender: this.context.user.userid
         }
+        console.log(newMessage)
         fetch(`${config.API_ENDPOINT}/messages`, {
             method: 'POST',
             headers: {
@@ -82,31 +83,33 @@ class SendRecipe extends Component {
 
         const updatedUser = this.context.users[((this.state.sendTo) - 1)]
 
-        updatedUser.received = (updatedUser.received).concat(message.id)
+        updatedUser.received = this.concatString(updatedUser.received, message.id)
 
         console.log(updatedUser)
 
-        // fetch(`${config.API_ENDPOINT}/users/${updatedUser.id}`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type': 'application/json',
-        //     },
-        //     body: JSON.stringify(updatedUser)
-        // })
-        //     .then(res => {
-        //         if (!res.ok) {
-        //             return res.json().then(error => {
-        //                 throw error
-        //             })
-        //         }
-        //         return res.json()
-        //     })
-        //     .then(message => {
-        //         this.context.updateUser(message)
-        //         this.props.history.goBack()
-        //     })
-        //     .catch(error => { alert('Cant send recipe, please try again') })
+        fetch(`${config.API_ENDPOINT}/users/${updatedUser.id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(updatedUser)
+        })
 
+            .then(message => {
+                this.props.history.goBack()
+                console.log('success')
+            })
+            .catch(error => { console.log(error) })
+
+    }
+
+    concatString = (received, newMessage) => {
+        if (received === '') {
+            return (received.concat(newMessage))
+        }
+        else if (received !== '') {
+            return (received.concat(',' + newMessage))
+        }
     }
 
 
@@ -122,46 +125,41 @@ class SendRecipe extends Component {
         })
     }
 
-    optionRender = () => {
+    optionRender() {
+        const users = orderUsers(this.context.users)
+        const userIndex = ((parseInt(this.context.user.userid)) - 1)
+        const userInfo = users[userIndex]
         const buddies = this.state.details
-        return (
-            <select
-                id='sendTo'
-                name='sendTo'
-                onChange={e => this.handleRecipientUpdate(e.target.value)}
-                defaultValue=""
-                required
-            >
-                <option value="" disabled hidden>Choose here</option>
+        let content = []
+        console.log(buddies)
+        for (let i = 0; i < buddies.length; i++) {
+            console.log(buddies[i])
+            content.push(<option value={buddies[i].id}>{buddies[i].username}</option>)
 
-                {buddies.forEach(buddy => {
-                    console.log(buddy.id, buddy.username)
-                    return (
-                        <option value={buddy.id}>{buddy.username}
-
-                        </option>
-                    )
-                })}
-
-            </select>
-        )
-
+        }
+        return content
     }
-
-
-
 
 
     /** Render */
 
     render() {
-
         if (this.state.partsReady === true) {
-
             return (
                 <form className='send__recipe__form' onSubmit={this.handleSubmit}>
-                    <label htmlFor='sendTo'><h4>Send To:</h4></label>
-                    {this.optionRender()}
+                    <label htmlFor='recipetype'><h4>Send To:</h4></label>
+                    <select
+                        id='recipetype'
+                        name='recipetype'
+                        onChange={e => this.handleRecipientUpdate(e.target.value)}
+                        defaultValue=""
+                        required
+                    >
+                        <option value="" disabled hidden>Choose here</option>
+                        {this.optionRender()}
+                    </select>
+
+
                     <button className='addrecipe__button' type='submit'>
                         Send
                     </button>
@@ -170,11 +168,12 @@ class SendRecipe extends Component {
                     </button>
                 </form>
             )
-        }
-        else if (this.state.partsReady === false) {
+        } else if (this.state.partsReady === false) {
             return (
                 <form className='send__recipe__form' onSubmit={this.handleSubmit}>
-                    <label htmlFor='sendTo'><h4>Send To:</h4></label>
+                    <label htmlFor='recipetype'><h4>Send To:</h4></label>
+
+
                     <button className='addrecipe__button' type='submit'>
                         Send
                     </button>
@@ -183,8 +182,6 @@ class SendRecipe extends Component {
                     </button>
                 </form>
             )
-
-
         }
     }
 }
