@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import GutHubContext from '../../GutHubContext';
-import { orderUsers } from '../../guthub-helpers';
 import config from '../../config';
 
 class CreateAccount extends Component {
@@ -23,46 +22,54 @@ class CreateAccount extends Component {
         this.props.history.goBack();
     };
 
+    validateNewUser = (username, pass, check) => {
+        const users = this.context.users
+        const usernames = []
+        users.forEach(user => {
+            usernames.push(user.username)
+        })
+        if ((usernames.includes(username)) && (check === pass)) {
+            alert('username exists')
+            return false
+        } else if ((check !== pass)) {
+            alert('check passwords')
+            return false
+        } else
+            return true
+    }
+
     handleSubmit = e => {
         e.preventDefault();
         const { username, pass, check, email } = this.state
-        const users = orderUsers(this.context.users)
-        if (check !== pass) {
-            console.log('check passwords')
-        } else {
-            users.forEach(user => {
-                if (user.username === username) {
-                    alert('username exists')
-                    return
-                } else {
-                    const newUser = {
-                        username: username,
-                        pass: pass,
-                        email: email,
-                    }
-                    console.log(newUser)
-                    fetch(`${config.API_ENDPOINT}/users`, {
-                        method: 'POST',
-                        headers: {
-                            'content-type': 'application/json'
-                        },
-                        body: JSON.stringify(newUser)
-                    })
-                        .then(res => {
-                            if (!res.ok) {
-                                return res.json().then(error => {
-                                    throw error
-                                })
-                            }
-                            return res.json()
-                        })
-                        .then(user => {
-                            console.log('user created')
-                            this.context.addUser(user)
-                            this.props.history.push(`/`)
-                        })
-                }
+        const validation = this.validateNewUser(username, pass, check)
+        console.log(validation)
+        if (validation === true) {
+            const newUser = {
+                username: username,
+                pass: pass,
+                email: email,
+            }
+            console.log(newUser)
+            fetch(`${config.API_ENDPOINT}/users`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(newUser)
             })
+                .then(res => {
+                    if (!res.ok) {
+                        return res.json().then(error => {
+                            throw error
+                        })
+                    }
+                    return res.json()
+                })
+                .then(user => {
+                    console.log('user created')
+                    this.context.addUser(user)
+                    this.props.history.push(`/`)
+                })
         }
     }
 
@@ -118,11 +125,11 @@ class CreateAccount extends Component {
                         onChange={e => this.handlePassUpdate(e.target.value)}
                         required />
 
-                    <label htmlFor='password'>Password Again:</label>
+                    <label htmlFor='passcheck'>Password Again:</label>
                     <input
                         type='password'
-                        name='password'
-                        id='password'
+                        name='passcheck'
+                        id='passcheck'
                         onChange={e => this.handleCheckUpdate(e.target.value)}
                         required />
 
