@@ -23,8 +23,7 @@ class Buddy extends Component {
             })
             .then(buddy => {
                 this.setState({ buddy: buddy })
-            }
-            )
+            })
             .catch(error => alert('Buddy could not be found. Please Try Again'));
     }
 
@@ -33,7 +32,7 @@ class Buddy extends Component {
             <>
                 <li className='Buddy'>
                     <h3 className='Buddy__username'>
-                            {this.state.buddy.username}
+                        {this.state.buddy.username}
                     </h3>
                     <button className='Buddy__delete' type='button' onClick={e => this.props.delete(this.state.buddy.id)}>Remove</button>
                 </li>
@@ -41,5 +40,6 @@ class Buddy extends Component {
         )
     }
 }
+
 
 export default Buddy;

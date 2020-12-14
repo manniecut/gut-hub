@@ -71,7 +71,6 @@ class SendRecipe extends Component {
                 return res.json()
             })
             .then(message => {
-                //this.context.sendMessage(message) //adds message to state
                 this.handleBuddyReceive(message)
             })
             .catch(error => { alert('Cant send recipe, please try again') })
@@ -90,7 +89,6 @@ class SendRecipe extends Component {
             },
             body: JSON.stringify(updatedUser)
         })
-
             .then(message => {
                 this.props.history.goBack()
             })
@@ -125,7 +123,6 @@ class SendRecipe extends Component {
         let content = []
         for (let i = 0; i < buddies.length; i++) {
             content.push(<option key={buddies[i].id} value={buddies[i].id}>{buddies[i].username}</option>)
-
         }
         return content
     }

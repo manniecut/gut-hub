@@ -1,6 +1,5 @@
 html {
     width: 100%;
-    /*margin: auto;*/
     background-color: #BBB9BC;
 }
 
@@ -8,14 +7,3 @@ main.App__main {
     width: 100%;
     padding: 0;
 }
-
-/*@media all and (min-width: 800px) {
-    main.App__main {
-        
-        width: 80%;
-    display: flex;
-    justify-content: center;
-    padding-left: 10%;
-    }
-    
-}*/

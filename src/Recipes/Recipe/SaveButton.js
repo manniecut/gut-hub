@@ -4,6 +4,7 @@ import GutHubContext from '../../GutHubContext';
 import config from '../../config';
 
 class SaveButton extends Component {
+    
     state = {
         loggedInUser: '',
         currentlySaved: '',

@@ -1,10 +1,8 @@
 import React from 'react';
 
 const GutHubContext = React.createContext({
-    /* not final */
     user: [],
     recipes: [],
-    lists: [],
     buddies: [],
 
     handleLogin: ( ) => { },
@@ -18,9 +16,6 @@ const GutHubContext = React.createContext({
     updateCooklist: ( ) => { },
     deleteCooklist: ( ) => { },
 
-    sendMessage: ( ) => { },
-    deleteMessage: ( ) => { },
-    
     fetchError: null,
 })
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import GutHubContext from '../../GutHubContext';
 import './Result.css'
 
+
 class Result extends Component {
     static defaultProps = {
         onDeleteRecipe: () => { }
@@ -16,7 +17,6 @@ class Result extends Component {
         return (
             <>
                 <li key={id} className='Result'>
-
                     <h3 className='Result__username'>
                         <Link to={url}>{title}</Link>
                     </h3>
@@ -29,5 +29,6 @@ class Result extends Component {
         )
     }
 }
+
 
 export default Result;

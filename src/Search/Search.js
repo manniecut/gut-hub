@@ -40,9 +40,7 @@ class Search extends Component {
         this.setState({
             query: query
         })
-
     }
-
 
 
     render() {
@@ -70,5 +68,6 @@ class Search extends Component {
         )
     }
 }
+
 
 export default Search;

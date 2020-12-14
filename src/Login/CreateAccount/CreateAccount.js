@@ -107,7 +107,6 @@ class CreateAccount extends Component {
             <>
                 <h2>Create Account</h2>
                 <form className='LoginPage' onSubmit={this.handleSubmit}>
-
                     <label htmlFor='username'>Username:</label>
                     <input
                         type='text'
@@ -147,12 +146,12 @@ class CreateAccount extends Component {
                         <button className='cancel__button' type='button' onClick={this.handleCancel}>
                             Cancel
                          </button>
-
                     </div>
                 </form>
             </>
         )
     }
 }
+
 
 export default CreateAccount;

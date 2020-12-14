@@ -6,9 +6,6 @@ import Navbar from './Navbar/Navbar';
 import Search from './Search/Search';
 import Buddies from './Buddies/Buddies';
 import Recipe from './Recipes/Recipe/Recipe';
-//import SavedCookLists from './CookLists/SavedCookLists/SavedCookLists';
-//import Groceries from './Groceries/Groceries';
-//import CookList from './CookLists/CookList/CookList';
 import EditRecipe from './Recipes/EditRecipe/EditRecipe';
 import Login from './Login/Login';
 import CreateAccount from './Login/CreateAccount/CreateAccount';
@@ -16,12 +13,13 @@ import AddRecipe from './Recipes/AddRecipe/AddRecipe';
 import AddBuddy from './Buddies/AddBuddy/AddBuddy';
 import MyRecipes from './MyRecipes/MyRecipes';
 import GutHubTutorial from './GutHubTutorial/GutHubTutorial';
+import MessageCenter from './Buddies/MessageCenter/MessageCenter';
+import SendRecipe from './Recipes/SendRecipe/SendRecipe';
 
 import GutHubContext from './GutHubContext';
 import config from './config';
 import './App.css';
-import MessageCenter from './Buddies/MessageCenter/MessageCenter';
-import SendRecipe from './Recipes/SendRecipe/SendRecipe';
+
 
 class App extends Component {
   state = {
@@ -35,8 +33,9 @@ class App extends Component {
   }
 
 
+
   /******** FETCH INTO STATE ON STARTUP ********/
-  // initially fetch user's stuff
+  // initially fetch users and recipes
 
   componentDidMount() {
     Promise.all([
@@ -93,7 +92,6 @@ class App extends Component {
       },
       loggedin: true
     })
-
   }
 
   handleAddUser = newUser => {
@@ -113,11 +111,8 @@ class App extends Component {
     })
   }
 
-  handleAddBuddy = buddy => {
 
-  }
-
-
+  
   /* Recipe */
 
   handleAddRecipe = newRecipe => {
@@ -127,14 +122,6 @@ class App extends Component {
   };
 
 
-
-  /* Messages *
-  
-  handleSendMessage()  // same as any previous Add function
-  
-  handleDeleteMessage()
-  
-  
   
   /******** RENDERING ********/
 
@@ -153,7 +140,6 @@ class App extends Component {
             path="/createaccount/"
             component={CreateAccount} />
         </>
-
       )
     } else {
       return (
@@ -201,7 +187,6 @@ class App extends Component {
             path="/edit/recipe/:recipeid"
             component={EditRecipe} />
 
-
           <Route
             path="/add/buddy"
             component={AddBuddy} />
@@ -225,9 +210,6 @@ class App extends Component {
       setUser: this.setUser,
       addUser: this.handleAddUser,
       updateUser: this.handleUpdateUser,
-      addBuddy: this.handleAddBuddy,
-
-      sendMessage: this.sendMessage,
 
       addRecipe: this.handleAddRecipe
     }
@@ -242,6 +224,7 @@ class App extends Component {
     );
   };
 }
+
 
 
 export default App;

@@ -57,17 +57,3 @@ class DeleteButton extends Component {
 
 
 export default DeleteButton;
-
-/*
-TO DO:
-
-<button className="recipe__button">
-    <Link to={`/edit/recipe/${this.props.recipeid}`}><span>Edit</span></Link>
-</button>
-
-
-<button className="recipe__button">
-    <span>+Groceries</span>
-</button>
-
-*/

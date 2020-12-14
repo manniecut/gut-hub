@@ -19,9 +19,3 @@ class SearchForm extends Component {
 }
 
 export default SearchForm;
-
-
-/*
-work on the filtering function
-
-*/

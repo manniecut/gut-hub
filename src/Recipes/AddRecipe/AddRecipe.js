@@ -27,7 +27,6 @@ class AddRecipe extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-
         const newRecipe = {
             title: this.state.title,
             recipetype: this.state.recipetype,
@@ -233,5 +232,6 @@ class AddRecipe extends Component {
         )
     }
 }
+
 
 export default AddRecipe;

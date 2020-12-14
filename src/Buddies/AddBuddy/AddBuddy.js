@@ -70,8 +70,8 @@ class AddBuddy extends Component {
         this.setState({
             buddyQuery: name
         })
-
     }
+
 
     render() {
         return (
@@ -79,7 +79,6 @@ class AddBuddy extends Component {
                 <div>
                     <label htmlFor='username'><h4>Buddy's Username:</h4></label>
                     <input type='text' name='username' id='username' onChange={e => this.handleBuddyQuery(e.target.value)} required />
-
                 </div>
                 <div>
                     <button type='submit' className='addbuddy__button'>
@@ -88,11 +87,11 @@ class AddBuddy extends Component {
                     <button type='button' className='canceladd__button' onClick={this.handleCancel}>
                         Cancel
                         </button>
-
                 </div>
             </form>
         )
     }
 }
+
 
 export default AddBuddy;

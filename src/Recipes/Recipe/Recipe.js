@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import GutHubContext from '../../GutHubContext';
+import RecipeControls from './RecipeControls';
 import config from '../../config';
 import './Recipe.css';
-import RecipeControls from './RecipeControls';
+
 
 class Recipe extends Component {
+
     state = {
         recipe: [],
         parsed: [],
@@ -115,5 +117,6 @@ class Recipe extends Component {
         )
     }
 }
+
 
 export default Recipe;

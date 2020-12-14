@@ -52,12 +52,7 @@ class RecipeControls extends Component {
                 </button>
             )
         }
-
-
     }
-
-
-
 
 
     render() {
@@ -84,22 +79,3 @@ class RecipeControls extends Component {
 
 
 export default RecipeControls;
-
-/*
-FUTURE UPDATES:
-
-<button className="recipe__button">
-    <span>+CookList</span>
-</button>
-
-
-<button className="recipe__button">
-    <Link to={`/edit/recipe/${this.props.recipeid}`}><span>Edit</span></Link>
-</button>
-
-
-<button className="recipe__button">
-    <span>+Groceries</span>
-</button>
-
-*/

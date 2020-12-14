@@ -34,21 +34,5 @@ class Navbar extends Component {
     }
 }
 
+
 export default Navbar;
-
-
-/*
-
-To Do
-
-Search to magnifying glass
-
-<li>
-    <h3><NavLink className='nav__link' to="/cooklists">CookLists</NavLink></h3>
-</li>
-
-<li>
-   <h3><NavLink className='nav__link' to="/groceries">Groceries</NavLink></h3>
-</li>
-
-    */

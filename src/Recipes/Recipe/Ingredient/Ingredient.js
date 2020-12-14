@@ -3,7 +3,6 @@ import './Ingredient.css'
 
 class Ingredient extends React.Component {
 
-
     render() {
         const { value } = this.props
         return (
@@ -11,8 +10,6 @@ class Ingredient extends React.Component {
                 {value}
             </li>
         )
-
-
     }
 }
 

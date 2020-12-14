@@ -3,6 +3,7 @@ import GutHubContext from '../GutHubContext';
 import './HomeScreen.css'
 
 class HomeScreen extends Component {
+    
     static contextType = GutHubContext;
 
     render() {
@@ -26,5 +27,6 @@ class HomeScreen extends Component {
         )
     }
 }
+
 
 export default HomeScreen;

@@ -43,14 +43,11 @@ class Login extends Component {
         })
     }
 
-
-
     handleSetPass = pass => {
         this.setState({
             password: md5(pass)
         })
     }
-
 
 
     render() {
@@ -94,5 +91,6 @@ class Login extends Component {
         )
     }
 }
+
 
 export default Login;

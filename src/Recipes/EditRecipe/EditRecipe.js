@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class AddRecipe extends Component {
+
     state = {
         title: [],
         ingredients: [],
@@ -29,22 +30,22 @@ class AddRecipe extends Component {
                 directions: [e.target.value]
             })
         }
-
     }
-
-
 
     addIngredient = (e) => {
         this.setState((prevState) => ({
             ingredients: [...prevState.ingredients, { ingredient: "" }]
         }))
     }
+
     addDirection = (e) => {
         this.setState((prevState) => ({
             directions: [...prevState.directions, { direction: "" }]
         }))
     }
+
     handleSubmit = (e) => { e.preventDefault() }
+
 
     render() {
         let { ingredients, directions } = this.state
@@ -97,7 +98,6 @@ class AddRecipe extends Component {
                 </div>
                 <div className='expanding_forms' onChange={this.handleDirectionChange}>
                     <label htmlFor='directions'><h4>Directions</h4></label>
-
                     {
                         directions.map((direction, index) => {
                             let directionNumber = `direction-${index}`
@@ -121,17 +121,16 @@ class AddRecipe extends Component {
                     <label htmlFor='addtlnotes'><h4>Additional Notes:</h4></label>
                     <input type='text' name='addtlnotes' id='addtlnotes' />
                 </div>
-
                 <button className='addrecipe__button' type='submit'>
                     Save
                     </button>
                 <button className='addrecipe__button' type='button'>
                     Cancel
                     </button>
-
             </form>
         )
     }
 }
+
 
 export default AddRecipe;
