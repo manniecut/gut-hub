@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import md5 from 'md5';
 import GutHubContext from '../../GutHubContext';
 import config from '../../config';
 import './CreateAccount.css'
@@ -83,13 +84,13 @@ class CreateAccount extends Component {
 
     handlePassUpdate = pass => {
         this.setState({
-            pass: pass
+            pass: md5(pass)
         })
     }
 
     handleCheckUpdate = check => {
         this.setState({
-            check: check
+            check: md5(check)
         })
     }
 

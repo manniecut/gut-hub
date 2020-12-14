@@ -38,6 +38,9 @@ input[type="text"], select {
     border: 1px solid black;
 }
 
+select {
+    margin-left: 5px;
+}
 
 input[type="text"]#direction {
     padding: 0;

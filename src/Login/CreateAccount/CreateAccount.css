@@ -31,19 +31,19 @@ input[type="submit"] {
 }
 
 input[type="username"], select {
-    padding: 0;
+    padding: 2px;
     padding-top: 10px;
     padding-bottom: 10px;
-    width: 100%;
+    width: 99%;
     margin: 0;
     border: 1px solid black;
 }
 
 input[type="password"] {
-    padding: 0;
+    padding: 2px;
     padding-top: 10px;
     padding-bottom: 10px;
-    width: 100%;
+    width: 99%;
     margin: 0;
     border: 1px solid black;
 }

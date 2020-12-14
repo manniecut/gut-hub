@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import logo from '../img/logo.png';
-import search from '../img/search.svg';
 import './Navbar.css';
 
 class Navbar extends Component {

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { orderUsers } from '../guthub-helpers';
 import GutHubContext from '../GutHubContext';
-import './Login.css'
+import md5 from 'md5';
+import './Login.css';
 
 class Login extends Component {
 
@@ -46,7 +47,7 @@ class Login extends Component {
 
     handleSetPass = pass => {
         this.setState({
-            password: pass
+            password: md5(pass)
         })
     }
 
