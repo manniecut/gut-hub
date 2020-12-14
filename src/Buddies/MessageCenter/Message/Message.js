@@ -50,7 +50,7 @@ class Message extends Component {
             <>
                 <li key={id} className='Message'>
                     <h3 className="Message__title"><Link to={this.props.sentobject}>{this.state.sent.title}</Link></h3>
-                    <p>
+                    <p className='message__from'>
                         From: {this.state.buddyName}
                     </p>
                     <button className='Message__delete' type='button' onClick={this.handleClickDelete}>Delete</button>

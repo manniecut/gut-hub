@@ -51,12 +51,10 @@ class SendRecipe extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log('sending')
         const newMessage = {
             sentobject: `/recipes/${this.state.recipeId}`,
             sender: this.context.user.userid
         }
-        console.log(newMessage)
         fetch(`${config.API_ENDPOINT}/messages`, {
             method: 'POST',
             headers: {
@@ -85,8 +83,6 @@ class SendRecipe extends Component {
 
         updatedUser.received = this.concatString(updatedUser.received, message.id)
 
-        console.log(updatedUser)
-
         fetch(`${config.API_ENDPOINT}/users/${updatedUser.id}`, {
             method: 'PATCH',
             headers: {
@@ -97,7 +93,6 @@ class SendRecipe extends Component {
 
             .then(message => {
                 this.props.history.goBack()
-                console.log('success')
             })
             .catch(error => { console.log(error) })
 
@@ -128,9 +123,7 @@ class SendRecipe extends Component {
     optionRender() {
         const buddies = this.state.details
         let content = []
-        console.log(buddies)
         for (let i = 0; i < buddies.length; i++) {
-            console.log(buddies[i])
             content.push(<option key={buddies[i].id} value={buddies[i].id}>{buddies[i].username}</option>)
 
         }
@@ -160,7 +153,7 @@ class SendRecipe extends Component {
                     <button className='addrecipe__button' type='submit'>
                         Send
                     </button>
-                    <button className='addrecipe__button' type='button' onClick={this.handleCancel}>
+                    <button className='canceladdrecipe__button' type='button' onClick={this.handleCancel}>
                         Cancel
                     </button>
                 </form>
@@ -174,7 +167,7 @@ class SendRecipe extends Component {
                     <button className='addrecipe__button' type='submit'>
                         Send
                     </button>
-                    <button className='addrecipe__button' type='button' onClick={this.handleCancel}>
+                    <button className='canceladdrecipe__button' type='button' onClick={this.handleCancel}>
                         Cancel
                     </button>
                 </form>

@@ -43,7 +43,6 @@ class RecipeControls extends Component {
     renderSender() {
         const loggedInUser = this.context.user.userid
         const buddyList = (orderUsers(this.context.users))[loggedInUser - 1].buddylist.split(',')
-        console.log(buddyList)
         if (buddyList == "") {
             return (<></>)
         } else {

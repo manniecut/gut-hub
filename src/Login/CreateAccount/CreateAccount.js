@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GutHubContext from '../../GutHubContext';
 import config from '../../config';
+import './CreateAccount.css'
 
 class CreateAccount extends Component {
     state = {
@@ -42,14 +43,12 @@ class CreateAccount extends Component {
         e.preventDefault();
         const { username, pass, check, email } = this.state
         const validation = this.validateNewUser(username, pass, check)
-        console.log(validation)
         if (validation === true) {
             const newUser = {
                 username: username,
                 pass: pass,
                 email: email,
             }
-            console.log(newUser)
             fetch(`${config.API_ENDPOINT}/users`, {
                 method: 'POST',
                 headers: {
@@ -66,7 +65,6 @@ class CreateAccount extends Component {
                     return res.json()
                 })
                 .then(user => {
-                    console.log('user created')
                     this.context.addUser(user)
                     this.props.history.push(`/`)
                 })
@@ -145,7 +143,7 @@ class CreateAccount extends Component {
                         <button className='login__button' type='submit'>
                             Create
                          </button>
-                        <button className='login__button' type='button' onClick={this.handleCancel}>
+                        <button className='cancel__button' type='button' onClick={this.handleCancel}>
                             Cancel
                          </button>
 

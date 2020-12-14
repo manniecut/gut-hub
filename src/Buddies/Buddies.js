@@ -36,14 +36,11 @@ class Buddies extends Component {
 
     handleClickDelete = id => {
         const currentBuddies = this.state.buddies
-        console.log(currentBuddies)
         const userIndex = ((parseInt(this.context.user.userid)) - 1)
         const user = (orderUsers(this.context.users))[userIndex]
         const filtered = (currentBuddies.filter(bud => bud !== id.toString()))
-        console.log(filtered)
         const filteredString = filtered.toString()
         user.buddylist = filteredString
-        console.log(user)
         fetch(`${config.API_ENDPOINT}/users/${user.id}`, {
             method: 'PATCH',
             headers: {
@@ -78,7 +75,7 @@ class Buddies extends Component {
             )
         } else {
             return (
-                <div className='buddiespage buddylist__row'>
+                <div className='buddiespage'>
                     <ul className='buddylist__ul'>
                         <h2>Buddies</h2>
                         {this.state.buddies.map(buddy =>

@@ -21,7 +21,6 @@ class MessageCenter extends Component {
         const loggedInUser = this.context.user.userid
         const recMessages = (orderUsers(this.context.users))[loggedInUser - 1].received.split(',')
         const userMessages = []
-        console.log(loggedInUser, recMessages)
         recMessages.forEach(recMsg => {
             allMessages.forEach(message => {
                 if (message.id === parseInt(recMsg)) {
@@ -50,7 +49,6 @@ class MessageCenter extends Component {
 
 
     handleClickDelete = id => {
-        console.log('delete' + id)
         fetch(`${config.API_ENDPOINT}/messages/${id}`, {
             method: 'DELETE',
             headers: {
@@ -70,15 +68,11 @@ class MessageCenter extends Component {
 
     handleUpdateUserMsgs = id => {
         const users = orderUsers(this.context.users)
-        console.log(users)
         const userIndex = ((parseInt(this.context.user.userid)) - 1)
-        console.log(userIndex)
         const userInfo = users[userIndex]
         const recMessages = userInfo.received.split(',')
         const filteredString = (recMessages.filter(num => num !== id.toString())).toString()
-        console.log(filteredString)
         userInfo.received = filteredString
-        console.log(userInfo)
         fetch(`${config.API_ENDPOINT}/users/${userInfo.id}`, {
             method: 'PATCH',
             headers: {
@@ -104,7 +98,7 @@ class MessageCenter extends Component {
             )
         } else {
             return (
-                <ol className='buddiespage buddylist__ol'><h2>Messages</h2>
+                <ol className='buddiespage buddylist__ol'><h2>Received Messages</h2>
                     {receivedMessages.map(message =>
                         <Message
                             key={message.id}

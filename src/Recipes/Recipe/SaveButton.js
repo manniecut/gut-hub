@@ -44,19 +44,12 @@ class SaveButton extends Component {
 
 
     handleRecipeSave = e => {
-        // console.log('handle recipe save button')
         const { currentlySaved, recipeToSave } = this.state
         const userIndex = ((parseInt(this.state.loggedInUser)) - 1)
         const user = (orderUsers(this.context.users))[userIndex]
-        // console.log(userIndex)
-        // console.log(user)
-        //setting userIndex, currentlySaved, recipeToSave
         if (this.state.buttonText === "Save") {
-            // console.log('saving..')
             const fullString = (currentlySaved.concat(recipeToSave)).toString()
-            // console.log(fullString)
             user.savedrecipes = fullString
-            // console.log(user)
             //create fullString from combining saved and new recipe strings and add to user object
             fetch(`${config.API_ENDPOINT}/users/${this.state.loggedInUser}`, {
                 method: 'PATCH',
@@ -78,9 +71,7 @@ class SaveButton extends Component {
                 .catch(error => { console.log('error') })
             //sending patch to server
         } else if (this.state.buttonText === "UnSave") {
-            // console.log('unsaving..')
             const filteredString = (currentlySaved.filter(num => num !== recipeToSave)).toString()
-            // console.log(filteredString)
             user.savedrecipes = filteredString
             fetch(`${config.API_ENDPOINT}/users/${this.state.loggedInUser}`, {
                 method: 'PATCH',

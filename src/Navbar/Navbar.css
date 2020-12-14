@@ -1,5 +1,5 @@
 header {
-    background-color: #000000;
+    background-color:#6C74A4;
     margin-bottom: 40px;
 }
 
@@ -50,18 +50,22 @@ header, footer {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+img {
+    height: 1em;
+}
+
 .App__header a {
     color: #ffffff;
     text-decoration: none;
 }
 
 .nav__link:hover {
-    color: #2fffaf;
+    color:#B08D7E;
     cursor: pointer;
 }
 
 .nav__link.active {
-    color: #ffd900;
+    color: #BBB9BC;
 }
 
 @media all and (min-width: 800px) {
@@ -80,6 +84,6 @@ header, footer {
         margin-right: 0px;
     }
     header nav ul li a:hover {
-        color: #dbdbdb;
+        color: #BBB9BC;
     }
 }

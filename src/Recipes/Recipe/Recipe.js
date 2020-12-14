@@ -69,7 +69,7 @@ class Recipe extends Component {
         if (this.state.partsReady === true) {
             const directions = this.state.parsed.directions
             return (
-                <ol>
+                <ol className='directions__list'>
                     {directions.map(function (listvalue, i) {
                         return <li key={i}>{listvalue}</li>
                     })}

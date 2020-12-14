@@ -196,7 +196,7 @@ class AddRecipe extends Component {
                             )
                         })
                     }
-                    <button type='button' className='addrecipe__button' onClick={this.addIngredient}>+ New Ingredient</button>
+                    <button type='button' className='addspace__button' onClick={this.addIngredient}>+ New Ingredient</button>
                 </div>
                 <div className='expanding_forms' onChange={this.handleDirectionChange}>
                     <label htmlFor='directions'><h4>Directions</h4></label>
@@ -217,7 +217,7 @@ class AddRecipe extends Component {
                             )
                         })
                     }
-                    <button type='button' className='addrecipe__button' onClick={this.addDirection}>+ New Direction</button>
+                    <button type='button' className='addspace__button' onClick={this.addDirection}>+ New Direction</button>
                 </div>
                 <div>
                     <label htmlFor='addtlnotes'><h4>Additional Notes:</h4></label>
@@ -226,7 +226,7 @@ class AddRecipe extends Component {
                 <button className='addrecipe__button' type='submit'>
                     Save
                     </button>
-                <button className='addrecipe__button' type='button' onClick={this.handleCancel}>
+                <button className='canceladdrecipe__button' type='button' onClick={this.handleCancel}>
                     Cancel
                     </button>
             </form>

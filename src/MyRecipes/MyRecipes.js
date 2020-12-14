@@ -32,7 +32,6 @@ class MyRecipes extends Component {
             })
             .then(recipes => {
                 const savedRecs = this.getSavedRecipes(recipes)
-                console.log(savedRecs)
                 this.setState({
                     recipes: savedRecs
                 })

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import logo from '../img/logo.png';
+import search from '../img/search.svg';
 import './Navbar.css';
 
 class Navbar extends Component {
@@ -9,7 +11,7 @@ class Navbar extends Component {
             <header className="App__header">
                 <div>
                     <h1>
-                        <Link className='nav__link' to='/'>GutHub</Link>
+                        <Link className='nav__link' to='/'><img src={logo} />GutHub</Link>
                     </h1>
                 </div>
                 <nav>

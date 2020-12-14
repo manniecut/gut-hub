@@ -6,10 +6,11 @@
     padding: 10px;
     padding-top: 0;
     margin: auto;
+    margin-bottom: 40px;
     max-width: 500px;
     border: solid 3px black;
     border-radius: 4px;
-    background-color:rgb(141, 141, 141);
+    background-color:#7a635a;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
@@ -30,33 +31,77 @@ input[type="submit"] {
 }
 
 input[type="text"], select {
-    padding: 10px;
-    width: 80%;
+    padding: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: auto;
     border: 1px solid black;
 }
 
 
 input[type="text"]#direction {
-    height: 200px;
+    padding: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    margin: 0;
+    border: 1px solid black;
 }
 
 .addrecipe__button {
-    font-weight: 550;
+    font-weight: 750;
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
     padding: 10px;
-    margin: 5px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
     width: 100%;
     border: 0;
-    background-color: #383838;
+    background-color: #95BB9A;
     border-radius: 5px;
-    color: #bdbcbc;
+    color: #ffffff;
+    font-size: 12px;
+    height: var(--note-button-height);
+    position: relative;
+}
+
+.canceladdrecipe__button {
+    font-weight: 750;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    padding: 10px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 0;
+    background-color: #5E2424;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 12px;
+    height: var(--note-button-height);
+    position: relative;
+}
+
+.addspace__button {
+    font-weight: 750;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    padding: 10px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 0;
+    background-color: #848385;
+    border-radius: 5px;
+    color: #ffffff;
     font-size: 12px;
     height: var(--note-button-height);
     position: relative;
 }
 
 .expanding_forms {
-    margin:5px;
+    margin:10px;
     padding: 3px;
     border: 2px solid gray;
+    background-color: #B08D7E;
 }

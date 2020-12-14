@@ -67,7 +67,6 @@ class App extends Component {
   /* Users */
 
   handleLogin = id => {
-    console.log(id)
     this.setState({
       user: {
         userid: id
@@ -109,7 +108,6 @@ class App extends Component {
         ? updatedUser
         : user
     )
-    console.log(newUsers)
     this.setState({
       users: newUsers
     })

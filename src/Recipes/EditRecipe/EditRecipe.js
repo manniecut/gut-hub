@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './EditRecipe.css'
 
 class AddRecipe extends Component {
     state = {

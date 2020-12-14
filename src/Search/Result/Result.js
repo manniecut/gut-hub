@@ -20,7 +20,7 @@ class Result extends Component {
                     <h3 className='Result__username'>
                         <Link to={url}>{title}</Link>
                     </h3>
-                    <p>
+                    <p className='recipe__quickdesc'>
                         {quickdesc}
                     </p>
 

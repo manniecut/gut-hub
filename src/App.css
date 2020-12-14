@@ -1,11 +1,12 @@
 html {
     width: 100%;
     /*margin: auto;*/
+    background-color: #BBB9BC;
 }
 
 main.App__main {
     width: 100%;
-    padding-left: 0;
+    padding: 0;
 }
 
 /*@media all and (min-width: 800px) {

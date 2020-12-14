@@ -8,7 +8,7 @@
     margin: auto;
     border: solid 3px black;
     border-radius: 4px;
-    background-color:rgb(141, 141, 141);
+    background-color:#B08D7E;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
@@ -17,19 +17,9 @@ input {
     width: 100%;
 }
 
-input[type="submit"] {
-    font-weight: 550;
-    font-family: "Open Sans", Arial, Helvetica, sans-serif;
-    font-size: 13pt;
-    padding: 10px;
-    width: 100%;
-    border: 0;
-    background-color: rgb(148, 148, 148);
-}
-
 .filterquery {
     padding: 10px;
-    width: 80%;
+    width: 90%;
     border: 1px solid black;
 }
 
@@ -45,7 +35,7 @@ select {
     padding: 10px;
     width: 100%;
     border: 0;
-    background-color: #383838;
+    background-color: #d31111;
     border-radius: 5px;
     color: #bdbcbc;
     font-size: 12px;

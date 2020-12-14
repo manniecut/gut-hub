@@ -2,12 +2,14 @@
     --note-height: 100px;
     color: #000000;
     height: var(--note-height);
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     max-width: 380px;
     padding: 8px 0 8px 8px;
     position: relative;
-    border: 2px solid black;
+    border: 2px solid #95BB9A;
     border-radius: 3px;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
 .Result__delete {
@@ -51,4 +53,11 @@
 
 .Result__title a:hover {
     color: #2fe0ff;
+}
+
+.recipe__quickdesc {
+    padding: auto;
+    margin-top: 10px;
+    margin-left: 5px;
+    text-overflow: ellipsis;
 }
