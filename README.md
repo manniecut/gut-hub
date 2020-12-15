@@ -5,8 +5,9 @@
 GutHub is a simple recipe sharing app. The goal is to allow you to keep tabs on your favorite recipes, with a simple way to share them so you can stay on the same page with people you live or coordinate meals with.
 
 
-## Live Site
-[GutHub](https://gut-hub.vercel.app/)
+## Live Site & Server
+- [GutHub](https://gut-hub.vercel.app/)
+- [Server Repository](https://github.com/manniecut/gut-hub-server)
 
 ## Table of contents
 
