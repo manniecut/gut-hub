@@ -10,7 +10,7 @@ class Navbar extends Component {
             <header className="App__header">
                 <div>
                     <h1>
-                        <Link className='nav__link' to='/'><img src={logo} />GutHub</Link>
+                        <Link className='nav__link' to='/'><img src={logo} alt='Gut-Hub logo' />GutHub</Link>
                     </h1>
                 </div>
                 <nav>
