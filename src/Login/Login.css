@@ -13,6 +13,11 @@
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
+form h3 { 
+    font-size: 22px;
+    padding: 10px;
+}
+
 h3, h4 {
     padding: 2px;
     padding-top: 4px;
@@ -26,10 +31,10 @@ input[type="submit"] {
     padding: 10px;
     width: 100%;
     border: 0;
-    background-color:#95BB9A;
+    background-color:#3C5D3D;
 }
 
-input[type="username"], select {
+select {
     padding: 10px;
     width: 90%;
     margin:auto;
@@ -46,6 +51,11 @@ input[type="text"]#direction {
     height: 200px;
 }
 
+form a {
+    color: black;
+    font-weight: 600;
+}
+
 .login__button {
     font-weight: 550;
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
@@ -53,7 +63,7 @@ input[type="text"]#direction {
     margin: 5px;
     width: 100%;
     border: 1px solid black;
-    background-color:#95BB9A;
+    background-color:#3C5D3D;
     border-radius: 5px;
     color: #ffffff;
     font-size: 12px;

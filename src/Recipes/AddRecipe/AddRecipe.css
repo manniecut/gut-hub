@@ -10,7 +10,7 @@
     max-width: 500px;
     border: solid 3px black;
     border-radius: 4px;
-    background-color:#7a635a;
+    background-color:#A8908A;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
@@ -60,7 +60,7 @@ input[type="text"]#direction {
     margin-bottom: 10px;
     width: 100%;
     border: 0;
-    background-color: #95BB9A;
+    background-color: #3C5D3D;
     border-radius: 5px;
     color: #ffffff;
     font-size: 12px;
@@ -94,7 +94,7 @@ input[type="text"]#direction {
     margin-bottom: 10px;
     width: 100%;
     border: 0;
-    background-color: #848385;
+    background-color: #6A544E;
     border-radius: 5px;
     color: #ffffff;
     font-size: 12px;

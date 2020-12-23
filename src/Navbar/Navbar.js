@@ -16,16 +16,16 @@ class Navbar extends Component {
                 <nav>
                     <ul>
                         <li>
-                            <h3><NavLink className='nav__link' to="/search">Search</NavLink></h3>
+                            <h2><NavLink className='nav__link' to="/search">Search</NavLink></h2>
                         </li>
                         <li>
-                            <h3><NavLink className='nav__link' to="/myrecipes">MyRecipes</NavLink></h3>
+                            <h2><NavLink className='nav__link' to="/myrecipes">MyRecipes</NavLink></h2>
                         </li>
                         <li>
-                            <h3><NavLink className='nav__link' to="/messages">Messages</NavLink></h3>
+                            <h2><NavLink className='nav__link' to="/messages">Messages</NavLink></h2>
                         </li>
                         <li>
-                            <h3><NavLink className='nav__link' to="/buddies">Buddies</NavLink></h3>
+                            <h2><NavLink className='nav__link' to="/buddies">Buddies</NavLink></h2>
                         </li>
                     </ul>
                 </nav>

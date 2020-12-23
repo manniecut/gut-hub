@@ -38,13 +38,12 @@ class Login extends Component {
                 return res.json()
             })
             .then(res => {
-                console.log(res)
                 this.context.setUser(res, this.state.userId)
             })
             .catch(error => { alert('Incorrect login, please try again.') })
     }
 
-    
+
     /** Form to State Functions */
 
     // sets the user in the state and matches it's ID
@@ -73,7 +72,7 @@ class Login extends Component {
         return (
             <>
                 <form className='LoginPage' onSubmit={this.handleSubmit}>
-                    <h2>Welcome to GutHub!</h2>
+                    <h3>Welcome to GutHub!</h3>
                     <p>GutHub is a simple recipe tracking and meal planning app.
                 </p>
                     <p>The goal is to allow you to keep tabs on your favorite recipes,
@@ -83,7 +82,7 @@ class Login extends Component {
                     <div>
                         <label htmlFor='username'><h4>Username:</h4></label>
                         <input
-                            type='username'
+                            type='text'
                             name='username'
                             id='username'
                             onChange={e => this.handleSetUser(e.target.value)}

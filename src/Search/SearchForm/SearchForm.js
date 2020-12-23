@@ -11,7 +11,7 @@ class SearchForm extends Component {
     render() {
         return (
             <form className="search__form" onSubmit={this.handleSubmit} >
-                <h4>Filter:</h4>
+                <label htmlFor="Filter">Filter:</label>
                 <input className="filterquery" name='query' id='query' onChange={e => this.props.updateQuery(e.target.value)} required />
             </form>
         )

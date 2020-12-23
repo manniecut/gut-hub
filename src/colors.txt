@@ -1,9 +1,12 @@
 Main color #6C74A4 - bluish
+#4A5178
 
 Light accent - #BBB9BC - light slate gray
 Dark accent - #B08D7E - rosy brown
 
 Green accept color - #95BB9A
+#3C5D3D
+
 Red cancel color - #5E2424
 
 
