@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { orderUsers } from '../guthub-helpers';
 import GutHubContext from '../GutHubContext';
 import md5 from 'md5';
+import config from '../config';
 import './Login.css';
 
 class Login extends Component {
@@ -17,19 +18,36 @@ class Login extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        const { username, password, userId } = this.state
-        const users = orderUsers(this.context.users)
-        users.forEach(user => {
-            if (user.username === username && user.pass === password) {
-                this.context.setUser(username, userId)
-                return
-            }
+        const loggingUser = {
+            password: this.state.password,
+            username: this.state.username
+        }
+        fetch(`${config.API_ENDPOINT}/login`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(loggingUser)
         })
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(error => {
+                        throw error
+                    })
+                }
+                return res.json()
+            })
+            .then(res => {
+                console.log(res)
+                this.context.setUser(res, this.state.userId)
+            })
+            .catch(error => { alert('Incorrect login, please try again.') })
     }
 
-
+    
     /** Form to State Functions */
 
+    // sets the user in the state and matches it's ID
     handleSetUser = username => {
         const users = orderUsers(this.context.users)
         users.forEach(user => {
@@ -43,6 +61,7 @@ class Login extends Component {
         })
     }
 
+    // sets encrypted pass in the state
     handleSetPass = pass => {
         this.setState({
             password: md5(pass)

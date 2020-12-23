@@ -12,7 +12,6 @@ import CreateAccount from './Login/CreateAccount/CreateAccount';
 import AddRecipe from './Recipes/AddRecipe/AddRecipe';
 import AddBuddy from './Buddies/AddBuddy/AddBuddy';
 import MyRecipes from './MyRecipes/MyRecipes';
-import GutHubTutorial from './GutHubTutorial/GutHubTutorial';
 import MessageCenter from './Buddies/MessageCenter/MessageCenter';
 import SendRecipe from './Recipes/SendRecipe/SendRecipe';
 
@@ -168,9 +167,6 @@ class App extends Component {
           <Route
             path="/messages"
             component={MessageCenter} />
-          <Route
-            path="/tutorial"
-            component={GutHubTutorial} />
 
           <Route
             exact
