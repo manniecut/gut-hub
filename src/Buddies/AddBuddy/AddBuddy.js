@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import GutHubContext from '../../GutHubContext';
+import { orderUsers } from '../../guthub-helpers';
 import config from '../../config';
-import { orderUsers } from '../../guthub-helpers'
 import './AddBuddy.css';
 
 class AddBuddy extends Component {
+
+    // this component creates a single text field form for adding buddies
 
     static contextType = GutHubContext;
 
@@ -23,6 +25,7 @@ class AddBuddy extends Component {
         this.props.history.goBack();
     };
 
+    // the following function adds the new buddy to the buddy list storage string
     concatString = (buddylist, id) => {
         if (buddylist === '') {
             return (buddylist.concat(id))
@@ -34,11 +37,12 @@ class AddBuddy extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        const name = this.state.buddyQuery
-        const users = orderUsers(this.context.users)
-        const userIndex = ((parseInt(this.state.userId)) - 1)
-        const userInfo = (orderUsers(this.context.users))[userIndex]
+        const name = this.state.buddyQuery // buddy to be added
+        const users = orderUsers(this.context.users) // all users in numerical order by ID
+        const userIndex = ((parseInt(this.state.userId)) - 1) // getting the index for the current user
+        const userInfo = (orderUsers(this.context.users))[userIndex] // getting the current user's information
         users.forEach(user => {
+            // does some validation checks and then a fetch to store the new buddy list
             if ((this.state.userId === user.id) && !((userInfo.buddylist).includes(user.id)) && (user.username === name)) {
                 alert("Can't add yourself!")
             } else if ((user.username === name) && ((userInfo.buddylist).includes(user.id))) {
@@ -66,6 +70,7 @@ class AddBuddy extends Component {
         })
     }
 
+    // sets state with the buddy to be added
     handleBuddyQuery = name => {
         this.setState({
             buddyQuery: name

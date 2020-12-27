@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import GutHubContext from '../../../GutHubContext';
+import GutHubContext from '../../GutHubContext';
 import { Link } from 'react-router-dom';
-import config from '../../../config'
+import config from '../../config'
 import './Message.css'
+
+// this component is an individual message for the message list
 
 class Message extends Component {
     state = {
@@ -22,6 +24,7 @@ class Message extends Component {
     }
 
     componentDidMount = () => {
+        // the component is populated with the information of the received message
         const buddyId = this.props.sender
         const sentobject = this.props.sentobject
         Promise.all([

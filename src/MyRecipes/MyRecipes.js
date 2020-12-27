@@ -5,8 +5,9 @@ import SearchForm from '../Search/SearchForm/SearchForm';
 import { orderUsers } from '../guthub-helpers';
 import GutHubContext from '../GutHubContext';
 import config from '../config';
-import '../Search/Search.css';
+import './MyRecipes.css';
 
+// This component allows the user to scroll and search through their saved recipes
 
 class MyRecipes extends Component {
 
@@ -23,6 +24,7 @@ class MyRecipes extends Component {
 
     static contextType = GutHubContext
 
+    // retrieves the user's recipes
     componentDidMount() {
         fetch(`${config.API_ENDPOINT}/recipes`)
             .then(res => {
@@ -40,6 +42,7 @@ class MyRecipes extends Component {
 
     }
 
+    // separates the user's saved recipes from the others
     getSavedRecipes = (recipes) => {
         // compares saved to stored and stores the saved ones
         const loggedInUser = this.context.user.userid

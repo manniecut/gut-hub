@@ -4,6 +4,7 @@ import RecipeControls from './RecipeControls';
 import config from '../../config';
 import './Recipe.css';
 
+// this component displays the recipes information
 
 class Recipe extends Component {
 
@@ -16,6 +17,7 @@ class Recipe extends Component {
 
     static contextType = GutHubContext;
 
+    // gets the recipe's information and adds to state
     componentDidMount() {
         const id = this.props.match.params.recipeid
         fetch(`${config.API_ENDPOINT}/recipes/${id}`)
@@ -38,6 +40,7 @@ class Recipe extends Component {
             .catch(error => alert('Recipe could not be found. Please Try Again'));
     }
 
+    // uses the creator's id to find their name
     getCreatorName = (buddyId) => {
         fetch(`${config.API_ENDPOINT}/users/${buddyId}/`)
             .then(res => {
@@ -53,6 +56,9 @@ class Recipe extends Component {
 
 
     /** Rendering */
+
+
+    // the directions and ingredients lists generate list items for each item that is added them
 
     renderIngredientsList = () => {
         if (this.state.partsReady === true) {
@@ -80,6 +86,7 @@ class Recipe extends Component {
         }
     }
 
+    //the recipe controls component has different controls based on the logged in user (ex: save/unsave, delete)
     renderRecipeControls = () => {
         const buddyid = this.state.buddy.id
         const userid = this.context.user.userid

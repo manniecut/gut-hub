@@ -4,6 +4,8 @@ import GutHubContext from '../../GutHubContext';
 import config from '../../config';
 import './CreateAccount.css'
 
+// this component allows the user to create an account to use with GutHub
+
 class CreateAccount extends Component {
     state = {
         username: '',
@@ -24,6 +26,7 @@ class CreateAccount extends Component {
         this.props.history.goBack();
     };
 
+    // this is a validation check to see if the username is taken, and if the password matches the check
     validateNewUser = (username, pass, check) => {
         const users = this.context.users
         const usernames = []
@@ -39,7 +42,9 @@ class CreateAccount extends Component {
         } else
             return true
     }
+    
 
+    // sends the new user object to be created in the database
     handleSubmit = e => {
         e.preventDefault();
         const { username, pass, check, email } = this.state

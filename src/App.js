@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-
 import HomeScreen from './HomeScreen/HomeScreen';
 import Navbar from './Navbar/Navbar';
 import Search from './Search/Search';
 import Buddies from './Buddies/Buddies';
 import Recipe from './Recipes/Recipe/Recipe';
-import EditRecipe from './Recipes/EditRecipe/EditRecipe';
 import Login from './Login/Login';
 import CreateAccount from './Login/CreateAccount/CreateAccount';
 import AddRecipe from './Recipes/AddRecipe/AddRecipe';
 import AddBuddy from './Buddies/AddBuddy/AddBuddy';
 import MyRecipes from './MyRecipes/MyRecipes';
-import MessageCenter from './Buddies/MessageCenter/MessageCenter';
+import MessageCenter from './MessageCenter/MessageCenter';
 import SendRecipe from './Recipes/SendRecipe/SendRecipe';
-
 import GutHubContext from './GutHubContext';
 import config from './config';
 import './App.css';
@@ -179,9 +176,6 @@ class App extends Component {
           <Route
             path="/add/recipe"
             component={AddRecipe} />
-          <Route
-            path="/edit/recipe/:recipeid"
-            component={EditRecipe} />
 
           <Route
             path="/add/buddy"

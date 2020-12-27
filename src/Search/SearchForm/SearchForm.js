@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './SearchForm.css'
 
+// this is the input form component for the search page
+
 class SearchForm extends Component {
 
     handleSubmit = e => {

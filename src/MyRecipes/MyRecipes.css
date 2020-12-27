@@ -1,0 +1,88 @@
+.SearchPage {
+    margin: auto;
+    width: 97%;
+    max-width: 500px;
+  }
+  
+  .float {
+    font-weight: 550;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    position: relative;
+    border: 0;
+    background-color: #383838;
+    border-radius: 5px;
+    color: #bdbcbc;
+    width: 75px;
+    height: 50px;
+    top: 150px;
+    right: 100px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .my-float {
+    margin-top: 22px;
+  }
+  
+  .recipe__add__button {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  ol {
+    counter-reset: li;
+    list-style: none;
+    *list-style: decimal;
+    margin:auto;
+    margin-bottom: 4em;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+  }
+  
+  .rectangle-list {
+    margin: auto;
+    padding: 40px;
+  }
+  
+  .rectangle-list a {
+    position: relative;
+    display: block;
+    margin: 0em 0 0em 2.5em;
+    color: #3a3e58;
+    text-decoration: none;
+    transition: all .3s ease-out;
+  }
+  
+  .rectangle-list a:hover {
+    background: #eee;
+  }
+  
+  .rectangle-list a:before {
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    left: -2.5em;
+    top: 50%;
+    margin-top: -1em;
+    background: #BBB9BC;
+    border-radius: 15px;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .rectangle-list a:after {
+    position: absolute;
+    content: '';
+    border: .5em solid transparent;
+    left: -1em;
+    top: 50%;
+    margin-top: -.5em;
+    transition: all .3s ease-out;
+  }
+  
+  .rectangle-list a:hover:after {
+    left: -.5em;
+    border-left-color: #7c7c7c;
+  }

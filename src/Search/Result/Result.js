@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import GutHubContext from '../../GutHubContext';
 import './Result.css'
 
+// this component is for an individual result on the search list
 
 class Result extends Component {
     static defaultProps = {

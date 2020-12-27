@@ -3,6 +3,8 @@ import GutHubContext from '../../GutHubContext';
 import config from '../../config';
 import './Buddy.css'
 
+// this component is an individual buddy to be displayed on the buddy list
+
 class Buddy extends Component {
     state = {
         buddy: []
@@ -13,6 +15,7 @@ class Buddy extends Component {
 
     static contextType = GutHubContext;
 
+    // when component loads, fetch information for corresponding buddy
     componentDidMount() {
         const buddyId = this.props.id;
         fetch(`${config.API_ENDPOINT}/users/${buddyId}/`)

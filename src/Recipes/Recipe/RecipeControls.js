@@ -4,8 +4,9 @@ import SaveButton from './SaveButton';
 import DeleteButton from './DeleteButton';
 import { orderUsers } from '../../guthub-helpers';
 import GutHubContext from '../../GutHubContext';
-import config from '../../config';
 import './Recipe.css'
+
+//the recipe controls component has different controls based on the logged in user (ex: save/unsave, delete)
 
 class RecipeControls extends Component {
 
@@ -17,32 +18,11 @@ class RecipeControls extends Component {
 
     static contextType = GutHubContext;
 
-    handleClickDelete = e => {
-        e.preventDefault()
-        const recipeid = this.props.recipeid
-        fetch(`${config.API_ENDPOINT}/recipes/${recipeid}`, {
-            method: 'DELETE',
-            headers: {
-                'content-type': 'application/json'
-            },
-        })
-            .then(res => {
-                if (!res.ok)
-                    return res
-                        .then(e = Promise.reject(e))
-                return res
-            })
-            .then(() => {
-                this.props.history.push('/recipes')
-            })
-            .catch(error => {
-                console.error({ error })
-            })
-    }
-
+    // renders the send button, which links to a paget with the send component, and takes the current recipe information along as a parameter 
     renderSender() {
         const loggedInUser = this.context.user.userid
         const buddyList = (orderUsers(this.context.users))[loggedInUser - 1].buddylist.split(',')
+        // eslint-disable-next-line
         if (buddyList == "") {
             return (<></>)
         } else {

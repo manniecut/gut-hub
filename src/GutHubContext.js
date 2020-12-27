@@ -9,14 +9,8 @@ const GutHubContext = React.createContext({
     setUser: ( ) => { },
     updateUser: ( ) => { },
 
-
     addRecipe: ( ) => { },
-
-    addCooklist: ( ) => { },
-    updateCooklist: ( ) => { },
-    deleteCooklist: ( ) => { },
-
-    fetchError: null,
+    
 })
 
 export default GutHubContext

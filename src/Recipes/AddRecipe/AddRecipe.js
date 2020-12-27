@@ -3,6 +3,8 @@ import GutHubContext from '../../GutHubContext';
 import config from '../../config';
 import './AddRecipe.css';
 
+// this component is an input form that allows the user to add recipes to the database
+
 class AddRecipe extends Component {
     state = {
         title: '',
@@ -25,6 +27,7 @@ class AddRecipe extends Component {
         this.props.history.goBack()
     }
 
+    // sends a recipe object to the server for creation in the databse
     handleSubmit = e => {
         e.preventDefault();
         const newRecipe = {
@@ -89,6 +92,7 @@ class AddRecipe extends Component {
 
 
     /** Dynamic Form Functions */
+        // these functions add new inputs for their respective fields and links them to the state
 
     handleIngredientChange = (e) => {
         if ("ingredient".includes(e.target.className)) {
@@ -136,7 +140,8 @@ class AddRecipe extends Component {
         return (
             <form className='add__recipe__form' onSubmit={this.handleSubmit}>
                 <div>
-                    <label htmlFor='title'><h3>New Recipe</h3></label>
+                <h3>New Recipe: {this.state.title}</h3>
+                    <label htmlFor='title'>Recipe Title:</label>
                     <input
                         type='text'
                         name='title'
@@ -145,7 +150,7 @@ class AddRecipe extends Component {
                         required />
                 </div>
                 <div>
-                    <label htmlFor='quickdesc'><h4>Quick Description:</h4></label>
+                    <label htmlFor='quickdesc'>Quick Description:</label>
                     <input
                         type='text'
                         name='quickdesc'
@@ -154,7 +159,7 @@ class AddRecipe extends Component {
                     />
                 </div>
                 <div>
-                    <label htmlFor='recipetype'><h4>Select Recipe Type:</h4></label>
+                    <label htmlFor='recipetype'>Select Recipe Type:</label>
                     <select
                         id='recipetype'
                         name='recipetype'
@@ -177,7 +182,7 @@ class AddRecipe extends Component {
                     </select>
                 </div>
                 <div className='expanding_forms' onChange={this.handleIngredientChange}>
-                    <label htmlFor='ingredients'><h4>Ingredients</h4></label>
+                    <label htmlFor='ingredients'>Ingredients</label>
                     {
                         ingredients.map((ingredient, index) => {
                             let ingredientNumber = `ingredient-${index}`
@@ -198,7 +203,7 @@ class AddRecipe extends Component {
                     <button type='button' className='addspace__button' onClick={this.addIngredient}>+ New Ingredient</button>
                 </div>
                 <div className='expanding_forms' onChange={this.handleDirectionChange}>
-                    <label htmlFor='directions'><h4>Directions</h4></label>
+                    <label htmlFor='directions'>Directions</label>
                     {
                         directions.map((direction, index) => {
                             let directionNumber = `direction-${index}`
@@ -219,7 +224,7 @@ class AddRecipe extends Component {
                     <button type='button' className='addspace__button' onClick={this.addDirection}>+ New Direction</button>
                 </div>
                 <div>
-                    <label htmlFor='addtlnotes'><h4>Additional Notes:</h4></label>
+                    <label htmlFor='addtlnotes'>Additional Notes:</label>
                     <input type='text' name='addtlnotes' id='addtlnotes' onChange={e => this.handleNotesUpdate(e.target.value)} />
                 </div>
                 <button className='addrecipe__button' type='submit'>

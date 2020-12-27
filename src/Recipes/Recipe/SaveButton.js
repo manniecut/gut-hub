@@ -3,6 +3,8 @@ import { orderUsers } from '../../guthub-helpers';
 import GutHubContext from '../../GutHubContext';
 import config from '../../config';
 
+// this component is a save/unsave button. it fetches and conditionally changes appearance
+
 class SaveButton extends Component {
     
     state = {
@@ -20,7 +22,7 @@ class SaveButton extends Component {
     }
     static contextType = GutHubContext;
 
-
+    // renders the proper appearance based on if user has saved the recipe or not
     componentDidUpdate() {
         const currentlySavedRecipes = this.props.currentlySaved
         const recipeToSave = (this.props.recipeToSave).toString()
@@ -43,7 +45,7 @@ class SaveButton extends Component {
         }
     }
 
-
+    // sends a request to the server to save the user's updated saved recipe storage string, based on if adding or removing
     handleRecipeSave = e => {
         const { currentlySaved, recipeToSave } = this.state
         const userIndex = ((parseInt(this.state.loggedInUser)) - 1)

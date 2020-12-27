@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import GutHubContext from '../../GutHubContext';
 import config from '../../config';
 
+// this component is a delete button that sends a delete request to the server
+
 class DeleteButton extends Component {
 
     static defaultProps = {
@@ -28,7 +30,7 @@ class DeleteButton extends Component {
                 return res
             })
             .then(() => {
-                this.props.history.push('/recipes')
+                this.props.history.push('/search')
             })
             .catch(error => {
                 console.error({ error })

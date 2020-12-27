@@ -4,6 +4,8 @@ import { orderUsers } from '../../guthub-helpers';
 import config from '../../config';
 import './SendRecipe.css';
 
+// this component allows the user to select a buddy to send the recipe to
+
 class SendRecipe extends Component {
     state = {
         buddylist: '',

@@ -6,6 +6,8 @@ import { orderUsers } from '../guthub-helpers'
 import config from '../config';
 import './Buddies.css';
 
+// this component displays the user's list of buddies
+
 
 class Buddies extends Component {
     state = {
@@ -22,6 +24,7 @@ class Buddies extends Component {
 
     static contextType = GutHubContext
 
+    //gets user's stored buddy string and converts it to an array to put in state
     componentDidMount() {
         const userIndex = ((parseInt(this.context.user.userid)) - 1)
         const user = (orderUsers(this.context.users))[userIndex]
@@ -30,10 +33,7 @@ class Buddies extends Component {
         })
     }
 
-    orderUsers = users => {
-        users.sort((a, b) => (a.id > b.id) ? 1 : -1)
-    }
-
+    // removes a buddy from user's buddy list
     handleClickDelete = id => {
         const currentBuddies = this.state.buddies
         const userIndex = ((parseInt(this.context.user.userid)) - 1)

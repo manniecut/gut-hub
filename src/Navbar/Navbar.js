@@ -3,6 +3,8 @@ import { NavLink, Link } from 'react-router-dom';
 import logo from '../img/logo.png';
 import './Navbar.css';
 
+// this is the navigation bar component, it adjusts to the screen size and links are highlighted when selected
+
 class Navbar extends Component {
 
     render() {

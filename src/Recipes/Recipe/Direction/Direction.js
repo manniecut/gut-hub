@@ -1,5 +1,6 @@
 import React from 'react';
 
+// this component is for a Directions list item
 
 class Direction extends React.Component {
 

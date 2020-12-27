@@ -5,6 +5,8 @@ import GutHubContext from '../GutHubContext';
 import config from '../config';
 import './Search.css';
 
+// this component renders a searchable list of all availble recipes
+
 class Search extends Component {
 
     state = {
@@ -20,6 +22,7 @@ class Search extends Component {
 
     static contextType = GutHubContext
 
+    // populates the list with recipes from the database
     componentDidMount() {
         fetch(`${config.API_ENDPOINT}/recipes`)
             .then(res => {
@@ -36,6 +39,7 @@ class Search extends Component {
 
     }
 
+    // keeps the state updated with the user's query
     handleQueryUpdate = query => {
         this.setState({
             query: query

@@ -6,6 +6,8 @@ import md5 from 'md5';
 import config from '../config';
 import './Login.css';
 
+// this is the login component for GutHub
+
 class Login extends Component {
 
     state = {
@@ -80,7 +82,7 @@ class Login extends Component {
                     same page with people you live or coordinate meals with.
                 </p><br />
                     <div>
-                        <label htmlFor='username'><h4>Username:</h4></label>
+                        <label htmlFor='username'>Username:</label>
                         <input
                             type='text'
                             name='username'
@@ -88,7 +90,7 @@ class Login extends Component {
                             onChange={e => this.handleSetUser(e.target.value)}
                             required
                         />
-                        <label htmlFor='password'><h4>Password:</h4></label>
+                        <label htmlFor='password'>Password:</label>
                         <input
                             type='password'
                             name='password'

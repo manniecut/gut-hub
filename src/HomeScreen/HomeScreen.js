@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import GutHubContext from '../GutHubContext';
 import './HomeScreen.css'
 
+// this component is what the user sees upon logging in, it provides a quick description of GutHub and allows logging out
+
 class HomeScreen extends Component {
     
     static contextType = GutHubContext;
