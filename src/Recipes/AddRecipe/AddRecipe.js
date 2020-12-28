@@ -200,7 +200,7 @@ class AddRecipe extends Component {
                             )
                         })
                     }
-                    <button type='button' className='addspace__button' onClick={this.addIngredient}>+ New Ingredient</button>
+                    <button type='button' className='addspace__button' onClick={this.addIngredient}>+ Ingredient Space</button>
                 </div>
                 <div className='expanding_forms' onChange={this.handleDirectionChange}>
                     <label htmlFor='directions'>Directions</label>
@@ -221,7 +221,7 @@ class AddRecipe extends Component {
                             )
                         })
                     }
-                    <button type='button' className='addspace__button' onClick={this.addDirection}>+ New Direction</button>
+                    <button type='button' className='addspace__button' onClick={this.addDirection}>+ Direction Space</button>
                 </div>
                 <div>
                     <label htmlFor='addtlnotes'>Additional Notes:</label>
