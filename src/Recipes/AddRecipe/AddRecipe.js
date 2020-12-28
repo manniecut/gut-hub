@@ -98,7 +98,7 @@ class AddRecipe extends Component {
         if ("ingredient".includes(e.target.className)) {
             let ingredients = [...this.state.ingredients]
             ingredients[e.target.dataset.id] = e.target.value
-            this.setState({ ingredients }, () => console.log(this.state))
+            this.setState({ ingredients })
         } else {
             this.setState({
                 ingredients: [e.target.value]
@@ -110,7 +110,7 @@ class AddRecipe extends Component {
         if ("direction".includes(e.target.className)) {
             let directions = [...this.state.directions]
             directions[e.target.dataset.id] = e.target.value
-            this.setState({ directions }, () => console.log(this.state))
+            this.setState({ directions })
         } else {
             this.setState({
                 directions: [e.target.value]
