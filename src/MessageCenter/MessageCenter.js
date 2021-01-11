@@ -97,6 +97,7 @@ class MessageCenter extends Component {
 
     render() {
         const receivedMessages = this.state.messages
+        // eslint-disable-next-line
         if (receivedMessages == '') {
             return (
                 <div className='buddiespage'><h2>Messages</h2><p>No messages.</p></div>
