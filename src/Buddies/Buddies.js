@@ -63,6 +63,7 @@ class Buddies extends Component {
 
 
     render() {
+        // eslint-disable-next-line
         if (this.state.buddies == "") {
             return (
                 <div className='buddiespage'>
